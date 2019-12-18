@@ -6,7 +6,7 @@
   <DataGrid items="{items}" resource="{resource}"></DataGrid>
 
   items = array of data
-  resource = objet containing gridoptions (see ag-grid doc)
+  resource = object containing gridoptions (see ag-grid doc)
 
   Prerequisite:
 
