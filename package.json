@@ -1,0 +1,53 @@
+{
+  "name": "svelte-app",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public"
+  },
+  "devDependencies": {
+    "@fullcalendar/core": "4.3.0",
+    "@fullcalendar/daygrid": "4.3.0",
+    "@fullcalendar/interaction": "4.3.0",
+    "@fullcalendar/timegrid": "4.3.0",
+    "@rollup/plugin-commonjs": "^11.0.0",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "coffeescript": "^2.4.1",
+    "gulp": "^4.0.2",
+    "gulp-coffee": "^3.0.3",
+    "node-sass": "^4.12.0",
+    "postcss": "^7.0.23",
+    "pug": "^2.0.4",
+    "rollup": "^1.20.0",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^5.1.2",
+    "sugar": "^2.0.6",
+    "sugar-inflections": "^2.0.6",
+    "sugar-language": "^2.0.6",
+    "svelte": "^3.18.2",
+    "svelte-mui": "^0.3.3",
+    "svelte-preprocess": "^3.1.2",
+    "svelte-spa-router": "^2.0.0",
+    "uuid": "^3.3.3"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^16.0.0",
+    "@ckeditor/ckeditor5-build-balloon": "^16.0.0",
+    "@ckeditor/ckeditor5-build-balloon-block": "^16.0.0",
+    "@ckeditor/ckeditor5-build-decoupled-document": "^16.0.0",
+    "@ckeditor/ckeditor5-code-block": "^16.0.0",
+    "@fullcalendar/list": "^4.3.0",
+    "cl-editor": "^1.4.0",
+    "codemirror": "^5.51.0",
+    "dexie": "^2.0.4",
+    "fast-deep-equal": "^3.1.1",
+    "gulp-sass": "^4.0.2",
+    "hypermd": "^0.3.11",
+    "js-cookie": "^2.2.1",
+    "marked": "^0.8.0",
+    "mathjs": "^6.6.0",
+    "sirv-cli": "^0.4.4"
+  }
+}
