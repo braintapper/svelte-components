@@ -1,0 +1,63 @@
+@each $color in $color_list
+
+
+  @each $shade in $shade_list
+    [bg="#{$shade}#{$color}"]
+      background-color: unquote("var(--#{$shade}#{$color})")
+
+      @if ($shade == lightest-) or ($shade == lighter-) or ($shade==light-)
+        color: $darkest-gray
+      @else if ($shade == "")
+        @if ($color == yellow)
+          color: $darkest-gray
+        @else
+          color: $white
+      @else if ($shade==dark-)
+        @if ($color == yellow)
+          color: $darkest-gray
+        @else
+          color: $white
+      @else
+        color: $white
+
+    [fg="#{$shade}#{$color}"]
+      color: unquote("var(--#{$shade}#{$color})")
+    [bc="#{$shade}#{$color}"]
+      border-color: unquote("var(--#{$shade}#{$color})")
+
+
+
+[bg="black"]
+  background-color: $black
+  color: $white
+[fg="black"]
+  color: $black
+[bc="black"]
+  border-color: $black
+
+[bg="white"]
+  background-color: $white
+  color: $black
+[fg="white"]
+  color: $white
+
+[bg="critical"]
+  background-color: $critical
+  color: $white
+[fg="critical"]
+  color: $critical
+[bg="primary"]
+  background-color: $primary
+  color: $white
+[fg="primary"]
+  color: $primary
+
+
+
+[bg="transparent"]
+  background-color: transparent
+  color: black
+[fg="transparent"]
+  color: transparent
+[bc="none"]
+  border-color: transparent

@@ -1,0 +1,154 @@
+// ## Responsive sizing
+
+// Thresholds match Angular Material thresholds
+
+// xs
+$xs-max: 599.9999px
+
+// sm
+$sm-min: 600px
+$sm-max: 959.9999px
+
+// md
+$md-min: 960px
+$md-max: 1279.9999px
+
+// lg
+$lg-min: 1280px
+$lg-max: 1919.9999px
+
+// xl
+$xl-min: 1920px
+
+
+// exact sizes
+
+@mixin width-xs
+  @media  (max-width: $xs-max)
+    @content
+@mixin width-sm
+  @media (min-width: $sm-min) and (max-width: $sm-max)
+    @content
+@mixin width-md
+  @media (min-width: $md-min) and (max-width: $md-max)
+    @content
+@mixin width-lg
+  @media (min-width: $lg-min) and (max-width: $lg-max)
+    @content
+@mixin width-xl
+  @media (min-width: $xl-min)
+    @content
+
+
+// greater than
+
+@mixin width-gt-xs
+  @media (min-width: $sm-min)
+    @content
+
+@mixin width-gt-sm
+  @media (min-width: $md-min)
+    @content
+
+@mixin width-gt-md
+  @media (min-width: $lg-min)
+    @content
+
+@mixin width-gt-lg
+  @media (min-width: $xl-min)
+    @content
+
+// less than
+
+@mixin width-lt-sm
+  @media (max-width: $xs-max)
+    @content
+
+
+@mixin width-lt-md
+  @media (max-width: $sm-max)
+    @content
+
+@mixin width-lt-lg
+  @media (max-width: $md-max)
+    @content
+
+@mixin width-lt-xl
+  @media (max-width: $lg-max)
+    @content
+
+
+// show only for that width
+
+[width-xs-only]
+  @include width-gt-xs
+    display: none !important
+
+[width-sm-only]
+  @include width-lt-sm
+    display: none !important
+  @include width-gt-sm
+    display: none !important
+
+[width-md-only]
+  @include width-lt-md
+    display: none !important
+  @include width-gt-md
+    display: none !important
+
+[width-lg-only]
+  @include width-lt-lg
+    display: none !important
+  @include width-gt-lg
+    display: none !important
+
+
+[width-xl-only]
+  @include width-lt-xl
+    display: none !important
+
+
+
+// show anything greater than [size]
+
+
+
+[width-gt-xs]
+  @include width-lt-sm
+    display: none !important
+[width-gt-sm]
+  @include width-lt-md
+    display: none !important
+[width-gt-md]
+  @include width-lt-lg
+    display: none !important
+
+[width-gt-lg]
+  @include width-lt-xl
+    display: none !important
+
+// [width-gt-xl]
+  // no such size
+
+
+// show anything less than [size]
+
+//[width-lt-xs]
+  // no such size
+
+[width-lt-sm]
+  @include width-gt-xs
+    display: none !important
+
+[width-lt-md]
+  @include width-gt-sm
+    display: none !important
+
+[width-lt-lg]
+  @include width-gt-md
+    display: none !important
+
+[width-lt-xl]
+  @include width-gt-lg
+    display: none !important
+

@@ -1,0 +1,409 @@
+
+html
+  min-width: 320px // iPhone 5 and older
+
+
+html, body, nav, section
+
+  width: 100%
+
+
+.vertically-centered
+  position: relative
+  top: 50%
+  transform: translateY(-50%)
+  /* prefixes needed for cross-browser support */
+  -ms-transform: translateY(-50%)
+  -webkit-transform: translateY(-50%)
+
+.horizontally-centered
+  margin: 0 auto
+  //left: 50%
+  //transform: translateX(-50%)
+  /* prefixes needed for cross-browser support */
+  //-ms-transform: translateX(-50%)
+  //-webkit-transform: translateX(-50%)
+
+[no-padding]
+  padding: 0px 0px !important
+
+[no-margin]
+  margin: 0px 0px !important
+
+.shadow-vertical
+  @include vertical-box-shadow(2px, 5px, 0.5)
+
+.shadow-top, [shadow-top]
+  @include vertical-box-shadow(2px, 5px, 0.2)
+
+
+.shadow-bottom, [shadow-bottom]
+  @include vertical-box-shadow-bottom(2px, 5px, 0.2)
+
+
+.shadow-right
+  @include horizontal-box-shadow(2px, 5px, 0.5)
+
+
+.shadow-left
+  @include horizontal-box-shadow(-2px, 5px, 0.5)
+
+
+
+
+.fixed
+  position: fixed !important
+
+
+// eliminate blue glow
+input:focus, textarea:focus, select:focus, button:focus, div:focus
+
+  @include no-glow
+
+
+
+// ## Resets
+
+.red-bg
+  background: red
+
+
+
+h1, h2, h3, h4, h5, h6
+  margin: 0px
+
+
+div
+  margin: 0px
+  padding: 0px
+
+.block
+  display: block !important
+
+
+.no-overflow
+  overflow: hidden
+
+
+ul.unstyled
+  padding: 0px
+  list-style-type: none
+
+ul
+  margin: 0px
+  padding: 0px
+  li
+    margin: 0px 0px 0px 18px
+    padding: 0px
+
+
+
+// fix spacing problems for inline-blocks
+.il-fix
+  font-size: 0px
+
+
+// default link behaviour
+a
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+
+// special case no decoration
+a.nd, a.button, a.tab, a.action, a.panel-button
+  text-decoration: none
+  &:hover
+    text-decoration:none
+
+
+.half
+  width: 50%
+.third
+  width: 33%
+.quarter
+  width: 25%
+.fifth
+  width: 20%
+.space-right
+  margin-right: 12px
+
+
+// ## Hard Codes
+
+
+[a="c"]
+  text-align: center !important
+[a="l"]
+  text-align: left !important
+[a="r"]
+  text-align: right !important
+
+
+// note hide and show conflicts with angular material, use dont-show
+[show="false"], [hide="true"], [dont-show="true"]
+  display: none !important
+
+
+[full-width]
+  width: 100%
+
+[break-word]
+  word-wrap: break-word
+
+
+// this is here since font-awesome is regularly updated
+
+.fa-empty
+  width: 18px
+  height: 13px
+  display: inline-block
+
+
+
+.hidden
+  display: none !important
+
+
+
+
+span.effort
+  margin-left: 24px
+
+
+
+
+.table
+  display: table
+  .tr
+    display: table-row
+    .td
+      display: table-cell
+      vertical-align: middle
+
+    .td.quarter
+      width: 25%
+
+
+
+// ## Shortcuts
+
+.table
+  display: table
+  width: 100%
+
+
+.table-row
+  display: table-row
+
+.table-cell
+  display: table-cell
+  &.label
+    font-size: 13px
+  div
+    display: inline-block
+
+
+.w100
+  width: 100%
+
+.w50p
+  width: 50%
+
+
+// ### Text alignment overrides
+
+.l, .tal, .tl
+  text-align: left !important
+
+.r, .tar
+  text-align: right !important
+
+.c, .tac, .tc
+  text-align: center !important
+
+
+
+.half
+  width: 50%
+
+.fifth
+  width: 20%
+
+.quarter
+  width: 25%
+
+.third
+  width: 33%
+
+// ## size (x and y)
+.s16
+  height: 16px !important
+  width: 16px !important
+
+.s24
+  height: 24px !important
+  width: 24px !important
+
+.s32
+  height: 32px !important
+  width: 32px !important
+
+.s48
+  height: 48px !important
+  width: 48px !important
+
+
+// width
+
+[w="a"]
+  width: auto !important
+[w="25"]
+  width: 25px
+[w="50"]
+  width: 50px
+[w="100"]
+  width: 100px
+[w="110"]
+  width: 110px
+[w="140"]
+  width: 140px
+[w="200"]
+  width: 200px
+
+
+[a="l"], [align="left"]
+  text-align: left !important
+[a="c"], [align="center"]
+  text-align: center !important
+[a="r"], [align="right"]
+  text-align: right !important
+
+[va="t"]
+  vertical-align: top
+[va="m"]
+  vertical-align: middle
+[va="b"]
+  vertical-align: bottom
+
+// ### Padding
+
+
+
+.p0, .np
+  padding: 0px
+.pl10
+  padding-left: 10px
+
+.pl15
+  padding-left: 15px
+
+.pl20
+  padding-left: 20px
+
+.pr6
+  padding-right: 6px
+
+
+.pr10
+  padding-right: 10px
+
+.pr12
+  padding-right: 12px
+
+.pr15
+  padding-right: 15px
+
+.pr20
+  padding-right: 20px
+
+
+.pt4
+  padding-top: 4px
+
+.pt12
+  padding-top: 12px
+
+
+// ### Margin
+
+.m0, .nm
+  margin: 0px
+
+
+.ml6
+  margin-left: 6px !important
+
+
+.ml15
+  margin-left: 15px !important
+.ml20
+  margin-left: 20px !important
+.mr6
+  margin-right: 6px !important
+.mr10
+  margin-right: 10px !important
+
+.mr15
+  margin-right: 15px !important
+.mr20
+  margin-right: 20px !important
+
+.mb12
+  margin-bottom: 12px !important
+.mb16
+  margin-bottom: 16px !important
+
+.ib
+  display: inline-block !important
+
+
+.vat, .vt
+  vertical-align: top
+
+.vam, .vm
+  vertical-align: middle
+
+.vab, .vb
+  vertical-align: bottom
+
+
+// linethrough
+.st, .lt
+  text-decoration: line-through !important
+
+.b
+  font-weight: bold
+
+.stuffed
+  margin-top: 150px
+
+.scrollable
+  overflow: auto !important
+
+// shrink aligns
+
+.r_c
+  @media (min-width: 600px)
+    text-align: right
+  @media (max-width: 599px)
+    text-align: center
+.l_c
+  @media (min-width: 600px)
+    text-align: left
+  @media (max-width: 599px)
+    text-align: center
+.r_l
+  @media (min-width: 600px)
+    text-align: right
+  @media (max-width: 599px)
+    text-align: left
+
+.c_l
+  @media (min-width: 600px)
+    text-align: center
+  @media (max-width: 599px)
+    text-align: left
+
+b
+  font-weight: bold

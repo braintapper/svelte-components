@@ -1,0 +1,40 @@
+
+
+button, input[type="button"]
+
+  &[normal]
+    padding: 6px 12px
+    background-color: var(--lighter-gray)
+    color: var(--black)
+    border-radius: 4px
+    &:hover
+      background-color: var(--lightest-gray)
+    &:active, &:focus
+      background-color: var(--gray)
+    &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active
+      background: var(--lightest-gray)
+      color: var(--light-gray)
+  &[critical]
+    background-color: var(--critical)
+    color: var(--white)
+    &:hover
+      background-color: var(--critical-hover)
+
+
+    &:active, &:focus
+      background-color: var(--critical-active)
+    &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active
+      background-color: var(--critical-disabled)
+      color: var(--dark-gray)
+  &[primary]
+    background-color: var(--primary)
+    color: var(--white)
+    &:hover
+      background-color: var(--primary-hover)
+    &:active, &:focus
+      background-color: var(--primary-active)
+    &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active
+      background-color: var(--primary-disabled)
+      color: var(--dark-gray)
+  &[icon]
+    padding: 0px
