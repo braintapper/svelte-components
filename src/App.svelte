@@ -14,8 +14,8 @@
 
   import Index from './pages/Index.svelte'
 
-  import Sugar from "sugar"
-  Sugar.extend()
+
+
 
 
 

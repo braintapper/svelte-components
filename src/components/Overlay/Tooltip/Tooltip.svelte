@@ -1,88 +1,69 @@
-<script>
-  // todo: inject menu width ul[role=menu] or maybe use a class , narrow, medium, wide
+<script lang="coffeescript">
+
+  # todo: inject menu width ul[role=menu] or maybe use a class , narrow, medium, wide
 
 
-  let className = undefined;
-  export { className as class };
-  export let direction = 'bottom';
-  export let flipped = false;
-  export let icon = undefined;
-  export let iconClass = undefined;
-  export let iconDescription = 'Open and close list of options';
-  export let id = Math.random();
+  import { createEventDispatcher, setContext, afterUpdate } from 'svelte'
+  import { slide } from 'svelte/transition'
+  import { writable } from 'svelte/store'
 
-  export let open = false;
-  export let style = undefined;
-  export let tabindex = '0';
+  `export let direction = 'bottom'`
+  `export let flipped = false`
+  `export let id = uuid()`
+  `export let style = undefined`
+  `export let tabindex = '0'`
 
-  import { createEventDispatcher, setContext, afterUpdate } from 'svelte';
-  import { slide } from 'svelte/transition';
-  import { writable } from 'svelte/store';
+  dispatch = createEventDispatcher();
 
+  show = false
 
-  const dispatch = createEventDispatcher();
+  triggerRef = undefined
+  buttonWidth = undefined
+  tooltipRef = undefined
 
-  let items = writable([]);
-  let currentId = writable(undefined);
-  let focusedId = writable(undefined);
-  let currentIndex = writable(-1);
-
-  let buttonRef = undefined;
-  let buttonWidth = undefined;
-  let tooltipRef = undefined;
-
-  function openMenu() {
-
-    open = true;
-  }
-
-  function closeMenu() {
-    open = false;
-  }
-
-  function onKeydown(event) {
-    if (event.key === 'Escape') {
-      event.stopPropagation();
-      open = false;
-    }
-  }
+  showTooltip = () ->
+    show = true
 
 
-  afterUpdate(() => {
+  hideTooltip = () ->
+    show = false
 
 
-    if (open) {
-      const { width, height } = buttonRef.getBoundingClientRect();
+  onKeydown = (event) ->
+    if (event.key == 'Escape')
+      event.stopPropagation()
+      show = false
 
-      buttonWidth = width;
+  afterUpdate () ->
 
-      let offsetX = 0;
-      let offsetY = 0;
+    if show
+      width = triggerRef.getBoundingClientRect().width
+      height = triggerRef.getBoundingClientRect().height
 
+      buttonWidth = width
 
-      if (flipped) {
-        tooltipRef.style.left = 'auto';
-        tooltipRef.style.right = 0;
-      }
+      offsetX = 0
+      offsetY = 0
 
-      if (direction === 'top') {
-        tooltipRef.style.top = 'auto';
-        tooltipRef.style.bottom = height + 'px';
-      }
-
-      //tooltipRef.style.left = offsetX + 'px';
-      //tooltipRef.style.marginTop = offsetY + 'px';
-    }
+      if (flipped)
+        tooltipRef.style.left = 'auto'
+        tooltipRef.style.right = 0
 
 
-  });
-  $: ariaLabel = $$props['aria-label'] || 'menu';
+      if (direction == 'top')
+        tooltipRef.style.top = 'auto'
+        tooltipRef.style.bottom = height + 'px'
 
+
+  `$: ariaLabel = $$props['aria-label'] || 'menu'`
 
 </script>
 <style lang="sass">
 
-
+  [tooltipcontainer]
+    display: inline-block
+    position: relative
+    width: auto
 
 
   [role=tooltip]
@@ -137,34 +118,24 @@
       width: 0.375rem
 
 
-  [tooltipcontainer]
-    display: inline-block
-    position: relative
-    width: auto
+
 </style>
 
 
-<div tooltipcontainer {style}>
-  <div
-  bind:this={buttonRef}
-  on:mouseover={openMenu}
-  on:mouseout={closeMenu}
-  on:click={closeMenu}
-  on:blur={closeMenu}
-  on:keydown={onKeydown}>
-  <slot name="trigger">{@html trigger}</slot>
+<div tooltipcontainer {style} {id}>
+  <div bind:this={triggerRef} on:mouseover={showTooltip} on:mouseout={hideTooltip} on:click={hideTooltip} on:blur={hideTooltip} on:keydown={onKeydown}>
+    <slot/>
   </div>
-  {#if open}
-    <div
-      bind:this={tooltipRef}
-      {id}
-      role="tooltip"
-      aria-label={ariaLabel}
-      data-floating-menu-direction={direction}
-      transition:slide="{{duration: 75}}"
-      >
-      <span caret />
-      <slot />
-    </div>
-  {/if}
+{#if show}
+  <div
+    bind:this={tooltipRef}
+    {id}
+    role="tooltip"
+    aria-label={ariaLabel}
+    data-floating-menu-direction={direction}
+    transition:slide="{{duration: 75}}"
+    >
+    <slot name="tip"/>
+  </div>
+{/if}
 </div>
