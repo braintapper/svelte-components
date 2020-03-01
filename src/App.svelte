@@ -5,7 +5,6 @@
 
 
 
-  import { collection, databaseLoaded } from './helpers/stores.js'
 
 
 

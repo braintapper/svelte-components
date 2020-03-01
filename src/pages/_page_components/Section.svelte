@@ -9,6 +9,8 @@
     header
       margin-bottom: 24px
 
+    h3
+      margin-bottom: 12px
 
 </style>
 
