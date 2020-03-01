@@ -1,0 +1,35 @@
+.cl-content {
+  padding: 24px !important; }
+
+.cl-actionbar {
+  padding: 0px 24px; }
+  .cl-actionbar button {
+    margin: 0px; }
+
+.cl-content, .cl-preview {
+  font-size: 14px; }
+  .cl-content h1, .cl-content h2, .cl-content h3, .cl-preview h1, .cl-preview h2, .cl-preview h3 {
+    margin: 0px !important;
+    font-weight: bold; }
+  .cl-content h1, .cl-preview h1 {
+    font-size: 24px;
+    margin-bottom: 18px !important; }
+  .cl-content h2, .cl-preview h2 {
+    font-size: 18px;
+    margin-bottom: 12px !important; }
+  .cl-content h3, .cl-preview h3 {
+    font-size: 14px;
+    margin-bottom: 10px !important; }
+  .cl-content p, .cl-content ul, .cl-content ol, .cl-content figure, .cl-preview p, .cl-preview ul, .cl-preview ol, .cl-preview figure {
+    margin: 0px 0px 10px 0px !important; }
+  .cl-content blockquote p:last-child, .cl-preview blockquote p:last-child {
+    margin-bottom: 0px !important; }
+  .cl-content:hover, .cl-preview:hover {
+    background: #eeeeee; }
+
+.cl-content {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important; }
+
+.cl-preview {
+  min-height: 24px; }

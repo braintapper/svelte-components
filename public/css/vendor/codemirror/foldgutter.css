@@ -1,0 +1,28 @@
+/* appears after the text, not in teh gutter */
+
+.CodeMirror-foldmarker {
+  display: none;
+  vertical-align: middle
+}
+
+/* actual gutter, both need to have values */
+.CodeMirror-foldgutter {
+  width: .7em;
+  padding-right: 8px
+}
+.CodeMirror-foldgutter-open,
+.CodeMirror-foldgutter-folded {
+  cursor: pointer;
+  font-size: 30px;
+}
+.CodeMirror-foldgutter-open:after {
+  content: "\25BE";
+}
+.CodeMirror-foldgutter-folded:after {
+  content: "\25B8";
+}
+
+/* this contains the down or left triangle in the gutter */
+.CodeMirror-gutter-wrapper > .Codemirror-gutter-elt {
+  left: -6px
+}
