@@ -138,7 +138,9 @@
 
 
   [tooltipcontainer]
+    display: inline-block
     position: relative
+    width: auto
 </style>
 
 
