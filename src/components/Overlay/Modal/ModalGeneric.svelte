@@ -1,6 +1,12 @@
 <script>
   import { onDestroy } from 'svelte';
 
+  //window.scrollTo(0,0)
+  document.body.style = "overflow:hidden"
+
+  onDestroy( () => {
+    document.body.style = ""
+  })
   let modal;
 
   var handle_keydown, previously_focused;
@@ -58,7 +64,7 @@
 
   modal {
       display: block;
-      position: absolute;
+      position: fixed;
       left: 50%;
       top: 50%;
       width: calc(100vw - 4em);
