@@ -3,12 +3,10 @@
 
   import { createEventDispatcher } from 'svelte'
 
+  import Menu from "../../Overlay/Menu/Menu.svelte"
+
   dispatch = createEventDispatcher()
 
-  className = undefined
-
-
-  # export { className as class };
   `export let disabled = false`
   `export let id = uuid()`
   `export let items = []`
@@ -63,6 +61,8 @@
     highlightedIndex = index
 
 
+  inputFocus = ()->
+    showMenu = true
 
   updateItem = (item)->
     `value = item[idKey]`
@@ -104,13 +104,17 @@
   `$: selectedItem = items[selectedIndex]`
   `$: invalid = (filteredItems.length == 0) && (inputValue.length > 0)`
 
+  `$: blankSlate = 'No input matching !' + inputValue + '"'`
 
-
-
+  menuClick = (e)->
+    console.log "menuClick"
+    console.log e.detail
+    value = e.detail[idKey]
+    inputValue = e.detail[labelKey]
   bodyClick = (event) ->
     if comboboxRef
       unless comboboxRef.contains(event.target)
-        console.log "blur"
+        console.log "combobox blur"
         showMenu = false
 
   clear = ()->
@@ -152,7 +156,7 @@
 </style>
 
 
-<svelte:body on:click={bodyClick} />
+
 
 <div {style}>
   <div role="combobox"
@@ -180,10 +184,8 @@
         aria-controls={showMenu ? menuId : undefined}
         aria-owns={showMenu ? menuId : undefined}
         {placeholder}
-        on:click={() => {
-          console.log("listbox field click, show menu");
-          showMenu = true;
-        }}
+        on:click={inputFocus}
+        on:focus={inputFocus}
         on:keydown
         on:keydown|stopPropagation={inputKeyChange}
         on:keyup={inputKeyChange}
@@ -200,19 +202,7 @@
       </button>
 
     </listboxfield>
-    {#if showMenu}
-      <div menu aria-label={ariaLabel} {id}>
-        {#each filteredItems as item, i (item.id || i)}
-          <button menu-item id={item[idKey]} active={selectedIndex === i || selectedId === item.id} highlighted={highlightedIndex === i || selectedIndex === i} on:click={menuItemClick(item,i)}>
-            {item[labelKey]}
-          </button>
-        {/each}
-        {#if filteredItems.length == 0}
-          <button menu-item>
-            No items found matching "{inputValue}"
-          </button>
-        {/if}
-      </div>
-    {/if}
+    <Menu bind:showMenu={showMenu} items={filteredItems} on:click={menuClick} {labelKey} {idKey} bind:blankSlate={blankSlate} bind:parent={comboboxRef}/>
+    showMenu: {showMenu}
   </div>
 </div>

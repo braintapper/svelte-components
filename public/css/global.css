@@ -8484,7 +8484,11 @@ body {
   --primary: #4c6ef5;
   --primary-hover: #5c7cfa;
   --primary-active: #364fc7;
-  --primary-disabled: #91a7ff; }
+  --primary-disabled: #91a7ff;
+  --menu-background: #ffffff;
+  --menu-hover: #ffffff;
+  --menu-active: #ffffff;
+  --menu-disabled: #ffffff; }
 
 [bg="lightest-gray"] {
   background-color: var(--lightest-gray);
