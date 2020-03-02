@@ -34,7 +34,7 @@
 
 
   <div>
-    &lt;ComboBox style="width: 300px; margin-bottom: 24px" size="xl" placeholder="Select a code syntax"  id="combobox-&#123;uuid()&#125;" bind:value=&#123;item.data.mode&#125; items=&#123;comboBoxItems&#125; &#123;shouldFilterItem&#125; on:change=&#123;comboBoxUpdated&#125; /&gt;
+    &lt;ComboBox bind:value=&#123;item.data.mode&#125; items=&#123;comboBoxItems&#125; on:change=&#123;comboBoxUpdated&#125; /&gt;
 
   </div>
 
