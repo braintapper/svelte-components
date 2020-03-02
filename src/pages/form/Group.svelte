@@ -9,6 +9,7 @@
   import InlineInput  from "./InlineInput.svelte"
   import TimeInput  from "./TimeInput.svelte"
   import Checkbox  from "./Checkbox.svelte"
+  import Combobox  from "./Combobox.svelte"
 
 </script>
 <Group title="Form">
@@ -19,4 +20,5 @@
   <TimeInput/>
   <DurationInput/>
   <Checkbox/>
+  <Combobox/>
 </Group>
