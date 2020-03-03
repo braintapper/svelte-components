@@ -9,6 +9,8 @@
     header
       margin-bottom: 24px
 
+    h1
+      font-size: 32px
     h3
       margin-bottom: 12px
 
@@ -16,7 +18,7 @@
 
 <section>
   <header>
-    <h2>{title}</h2>
+    <h1>{title}</h1>
   </header>
   <article>
     <slot/>

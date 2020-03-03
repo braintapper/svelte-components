@@ -4,7 +4,9 @@
 
 
 
+  import TopSplit from "./components/Layout/TopSplit.svelte"
 
+  import TopNavigator from "./pages/_page_components/TopNavigator.svelte"
 
 
 
@@ -14,6 +16,34 @@
 
   import Index from './pages/Index.svelte'
 
+  import Styles from './pages/styles/Group.svelte'
+  import Form from './pages/form/Group.svelte'
+  import Overlay from './pages/overlay/Group.svelte'
+  import Icons from './pages/icons/Group.svelte'
+  import Css from './pages/css/Group.svelte'
+
+  links = [
+    {
+      url: "#/"
+      text: "Styles"
+    }
+    {
+      url: "#/css"
+      text: "CSS"
+    }
+    {
+      url: "#/form"
+      text: "Form"
+    }
+    {
+      url: "#/overlay"
+      text: "Overlay"
+    }
+    {
+      url: "#/icons"
+      text: "Icons"
+    }
+  ]
 
 
 
@@ -21,7 +51,13 @@
 
 
   routes =
-    '/': Index
+    '/': Styles
+    '/styles': Styles
+    '/form': Form
+    '/overlay': Overlay
+    '/icons': Icons
+    '/css': Css
+
 
   appName = "Svelte-Components"
 
@@ -30,17 +66,26 @@
 
 
 </script>
-<style>
+<style lang="sass">
+  div[slot="content"]
+    padding: var(--spacing-xxl)
 </style>
 
-<template lang="pug">
-  svelte:head
-    title { appName }
-    //link(rel="stylesheet" href="./css/fullcalendar/core/main.css" lang="css" media=screen)
+
+<svelte:head>
+    <title>{ appName }</title>
+    <!--link(rel="stylesheet" href="./css/fullcalendar/core/main.css" lang="css" media=screen)
     //link(rel="stylesheet" href="./css/fullcalendar/daygrid/main.css" lang="css" media=screen)
     //link(rel="stylesheet" href="./css/fullcalendar/timegrid/main.css" lang="css" media=screen)
     //link(rel="stylesheet" href="./css/fullcalendar/list/main.css" lang="css" media=screen)
+    -->
+</svelte:head>
 
-  Router('{routes}')
-
-</template>
+<TopSplit header={true} headerSize="42px" footer={false}>
+  <div slot="header">
+    <TopNavigator {links}/>
+  </div>
+  <div slot="content">
+    <Router {routes}/>
+  </div>
+</TopSplit>

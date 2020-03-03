@@ -7,6 +7,7 @@
     margin-bottom: 36px
     h1
       font-size: 36px
+      color: var(--dark-blue)
 
 </style>
 
