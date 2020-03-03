@@ -47,7 +47,7 @@
     height: 88px
 
   swatch
-    border-radius: 10px
+    border-radius: var(--corner-m)
     height: 80px
     width: 80px
     position: relative

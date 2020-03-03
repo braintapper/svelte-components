@@ -1,17 +1,14 @@
-// set variables
-@import "global/variables/colors.sass"
-@import "global/variables/typography.sass"
-@import "global/variables/measures.sass"
+// set variables used in multiple files
+@import "global/variables/responsive.sass"
+
 
 // mixins
 @import "global/mixins/mixins.sass"
 
 
 // core
-
 @import "global/core/resets.sass"
 @import "global/core/layout.sass"
-@import "global/core/css_variables.sass"
 
 // generated using mixins
 @import "global/generated/colors.sass"
@@ -20,7 +17,11 @@
 @import "global/generated/responsive.sass"
 
 // common
+@import "global/common/fonts.sass"
 @import "global/common/typography.sass"
 @import "global/common/form.sass"
-@import "global/common/buttons.sass"
+@import "global/common/buttons.sass" // always load after form
 @import "global/common/table.sass"
+
+// finally
+@import "global/css_variables.sass"

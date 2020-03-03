@@ -28,6 +28,8 @@ ul, ol {
 table {
   border-spacing: 0;
   border-collapse: collapse; }
+  table td, table th {
+    vertical-align: top; }
 
 @-moz-document url-prefix() {
   [layout-fill] {
@@ -8363,151 +8365,6 @@ table {
   [hide-print]:not([show-print]):not([show]) {
     display: none !important; } }
 
-/* css variables below */
-/* these can be used and overridden in svelte */
-:root {
-  --lightest-gray: #dee2e6;
-  --lighter-gray: #ced4da;
-  --light-gray: #adb5bd;
-  --gray: #868e96;
-  --dark-gray: #495057;
-  --darker-gray: #343a40;
-  --darkest-gray: #212529;
-  --lightest-purple: #e5dbff;
-  --lighter-purple: #d0bfff;
-  --light-purple: #b197fc;
-  --purple: #9775fa;
-  --dark-purple: #845ef7;
-  --darker-purple: #7048e8;
-  --darkest-purple: #5f3dc4;
-  --lightest-blue: #dbe4ff;
-  --lighter-blue: #bac8ff;
-  --light-blue: #91a7ff;
-  --blue: #5c7cfa;
-  --dark-blue: #4c6ef5;
-  --darker-blue: #3b5bdb;
-  --darkest-blue: #364fc7;
-  --lightest-green: #c3fae8;
-  --lighter-green: #63e6be;
-  --light-green: #20c997;
-  --green: #12b886;
-  --dark-green: #0ca678;
-  --darker-green: #099268;
-  --darkest-green: #087f5b;
-  --lightest-yellow: #fff3bf;
-  --lighter-yellow: #ffec99;
-  --light-yellow: #ffe066;
-  --yellow: #ffd43b;
-  --dark-yellow: #fcc419;
-  --darker-yellow: #fab005;
-  --darkest-yellow: #f59f00;
-  --lightest-orange: #ffe8cc;
-  --lighter-orange: #ffc078;
-  --light-orange: #ffa94d;
-  --orange: #fd7e14;
-  --dark-orange: #f76707;
-  --darker-orange: #e8590c;
-  --darkest-orange: #d9480f;
-  --lightest-red: #ffe3e3;
-  --lighter-red: #ffa8a8;
-  --light-red: #ff8787;
-  --red: #fa5252;
-  --dark-red: #f03e3e;
-  --darker-red: #e03131;
-  --darkest-red: #c92a2a;
-  --black: #212529;
-  --white: #ffffff;
-  --box-shadow: #adb5bd;
-  --critical: #f03e3e;
-  --critical-hover: #fa5252;
-  --critical-active: #c92a2a;
-  --critical-disabled: #ff8787;
-  --code: #4c6ef5;
-  --primary: #4c6ef5;
-  --primary-hover: #5c7cfa;
-  --primary-active: #364fc7;
-  --primary-disabled: #91a7ff;
-  --icon-color-normal: #212529;
-  --icon-color-normal-hover: #5c7cfa;
-  --icon-color-normal-active: #3b5bdb;
-  --icon-color-normal-disabled: #868e96;
-  --icon-color-primary: #5c7cfa;
-  --icon-color-primary-hover: #91a7ff;
-  --icon-color-primary-active: #3b5bdb;
-  --icon-color-primary-disabled: #bac8ff;
-  --icon-color-critical: #fa5252;
-  --icon-color-critical-hover: #ff8787;
-  --icon-color-critical-active: #e03131;
-  --icon-color-critical-disabled: #ffa8a8;
-  --menu-background: #ffffff;
-  --menu-hover: #ffffff;
-  --menu-active: #ffffff;
-  --menu-disabled: #ffffff;
-  --font-family-primary: NunitoSans;
-  --font-family-primary-bold: NunitoSans;
-  --font-family-primary-src: /fonts/NunitoSans-Regular.ttf;
-  --font-family-primary-bold-src: /fonts/NunitoSans-Bold.ttf;
-  --font-family-secondary: NunitoSans;
-  --font-family-secondary-bold: NunitoSans;
-  --font-family-secondary-src: /fonts/NunitoSans-Regular.ttf;
-  --font-family-secondary-bold-src: /fonts/NunitoSans-Bold.ttf;
-  --font-family-monospace: Cascadia;
-  --font-family-monospace-bold: Cascadia;
-  --font-family-monospace-src: /fonts/Cascadia.ttf;
-  --font-family-monospace-bold-src: /fonts/Cascadia.ttf;
-  --font-normal: normal;
-  --font-bold: bold;
-  --font-xxl: 28px;
-  --font-xl: 24px;
-  --font-l: 20px;
-  --font-m: 18px;
-  --font-s: 14px;
-  --font-xs: 11px;
-  --text-spacing-xxl: 28px;
-  --text-spacing-xl: 24px;
-  --text-spacing-l: 20px;
-  --text-spacing-m: 18px;
-  --text-spacing-s: 14px;
-  --text-spacing-xs: 11px;
-  --spacing-xxl: 72px;
-  --spacing-xxl: 72px;
-  --spacing-xl: 54px;
-  --spacing-l: 48px;
-  --spacing-m: 36px;
-  --spacing-s: 24px;
-  --spacing-xs: 18px;
-  --spacing-xxs: 14px;
-  --fine-spacing-xxl: 14px;
-  --fine-spacing-xl: 12px;
-  --fine-spacing-l: 10px;
-  --fine-spacing-m: 8px;
-  --fine-spacing-s: 6px;
-  --fine-spacing-xs: 4px;
-  --fine-spacing-xxs: 2px;
-  --corner-sharp: 0px;
-  --corner-s: 2px;
-  --corner-m: 4px;
-  --corner-l: 6px;
-  --corner-circle: 100%;
-  --breakpoint-min: 320px;
-  --breakpoint-xs: 600px;
-  --breakpoint-sm: 960px;
-  --breakpoint-md: 1280px;
-  --breakpoint-lg: 1920px;
-  --breakpoint-xs-1: 599.9999px;
-  --breakpoint-sm-1: 959.9999px;
-  --breakpoint-md-1: 1279.9999px;
-  --breakpoint-lg-1: 1919.9999px;
-  --responsive-xs-min: 320px;
-  --responsive-xs-max: 599.9999px;
-  --responsive-sm-min: 600px;
-  --responsive-sm-max: 959.9999px;
-  --responsive-md-min: 960px;
-  --responsive-md-max: 1279.9999px;
-  --responsive-lg-min: 1280px;
-  --responsive-lg-max: 1919.9999px;
-  --responsive-xl-min: 1920px; }
-
 [bg="lightest-gray"] {
   background-color: var(--lightest-gray);
   color: var(--darkest-gray); }
@@ -9958,29 +9815,246 @@ button[type="button"], input[type="button"] {
         button[type="button"][icon]:focus svg path.match-fill, button[type="button"][icon]:active svg path.match-fill, input[type="button"][icon]:focus svg path.match-fill, input[type="button"][icon]:active svg path.match-fill {
           fill: var(--icon-color-normal-active); }
 
+button[type="button"], input[type="button"] {
+  padding: 6px 12px;
+  background-color: var(--lighter-gray);
+  color: var(--black);
+  border-radius: 4px; }
+  button[type="button"]:hover, input[type="button"]:hover {
+    background-color: var(--lightest-gray); }
+  button[type="button"]:active, button[type="button"]:focus, input[type="button"]:active, input[type="button"]:focus {
+    background-color: var(--gray); }
+  button[type="button"][disabled="true"], button[type="button"][disabled="true"]:hover, button[type="button"][disabled="true"]:focus, button[type="button"][disabled="true"]:active, input[type="button"][disabled="true"], input[type="button"][disabled="true"]:hover, input[type="button"][disabled="true"]:focus, input[type="button"][disabled="true"]:active {
+    background: var(--lightest-gray);
+    color: var(--light-gray); }
+  button[type="button"][critical], button[type="button"][state="critical"], input[type="button"][critical], input[type="button"][state="critical"] {
+    background-color: var(--critical);
+    color: var(--white); }
+    button[type="button"][critical]:hover, button[type="button"][state="critical"]:hover, input[type="button"][critical]:hover, input[type="button"][state="critical"]:hover {
+      background-color: var(--critical-hover); }
+    button[type="button"][critical]:active, button[type="button"][critical]:focus, button[type="button"][state="critical"]:active, button[type="button"][state="critical"]:focus, input[type="button"][critical]:active, input[type="button"][critical]:focus, input[type="button"][state="critical"]:active, input[type="button"][state="critical"]:focus {
+      background-color: var(--critical-active); }
+    button[type="button"][critical][disabled="true"], button[type="button"][critical][disabled="true"]:hover, button[type="button"][critical][disabled="true"]:focus, button[type="button"][critical][disabled="true"]:active, button[type="button"][state="critical"][disabled="true"], button[type="button"][state="critical"][disabled="true"]:hover, button[type="button"][state="critical"][disabled="true"]:focus, button[type="button"][state="critical"][disabled="true"]:active, input[type="button"][critical][disabled="true"], input[type="button"][critical][disabled="true"]:hover, input[type="button"][critical][disabled="true"]:focus, input[type="button"][critical][disabled="true"]:active, input[type="button"][state="critical"][disabled="true"], input[type="button"][state="critical"][disabled="true"]:hover, input[type="button"][state="critical"][disabled="true"]:focus, input[type="button"][state="critical"][disabled="true"]:active {
+      background-color: var(--critical-disabled);
+      color: var(--dark-gray); }
+  button[type="button"][primary], button[type="button"][state="primary"], input[type="button"][primary], input[type="button"][state="primary"] {
+    background-color: var(--primary);
+    color: var(--white); }
+    button[type="button"][primary]:hover, button[type="button"][state="primary"]:hover, input[type="button"][primary]:hover, input[type="button"][state="primary"]:hover {
+      background-color: var(--primary-hover); }
+    button[type="button"][primary]:active, button[type="button"][primary]:focus, button[type="button"][state="primary"]:active, button[type="button"][state="primary"]:focus, input[type="button"][primary]:active, input[type="button"][primary]:focus, input[type="button"][state="primary"]:active, input[type="button"][state="primary"]:focus {
+      background-color: var(--primary-active); }
+    button[type="button"][primary][disabled="true"], button[type="button"][primary][disabled="true"]:hover, button[type="button"][primary][disabled="true"]:focus, button[type="button"][primary][disabled="true"]:active, button[type="button"][state="primary"][disabled="true"], button[type="button"][state="primary"][disabled="true"]:hover, button[type="button"][state="primary"][disabled="true"]:focus, button[type="button"][state="primary"][disabled="true"]:active, input[type="button"][primary][disabled="true"], input[type="button"][primary][disabled="true"]:hover, input[type="button"][primary][disabled="true"]:focus, input[type="button"][primary][disabled="true"]:active, input[type="button"][state="primary"][disabled="true"], input[type="button"][state="primary"][disabled="true"]:hover, input[type="button"][state="primary"][disabled="true"]:focus, input[type="button"][state="primary"][disabled="true"]:active {
+      background-color: var(--primary-disabled);
+      color: var(--dark-gray); }
+  button[type="button"][icon], input[type="button"][icon] {
+    padding: 0px;
+    background-color: transparent;
+    color: var(--icon-color-normal); }
+    button[type="button"][icon] svg, input[type="button"][icon] svg {
+      fill: var(--icon-color-normal); }
+      button[type="button"][icon] svg path.match-fill, input[type="button"][icon] svg path.match-fill {
+        fill: var(--icon-color-normal); }
+    button[type="button"][icon]:hover, button[type="button"][icon]:active, button[type="button"][icon]:focus, button[type="button"][icon][disabled="true"], button[type="button"][icon][disabled="true"]:hover, button[type="button"][icon][disabled="true"]:focus, button[type="button"][icon][disabled="true"]:active, input[type="button"][icon]:hover, input[type="button"][icon]:active, input[type="button"][icon]:focus, input[type="button"][icon][disabled="true"], input[type="button"][icon][disabled="true"]:hover, input[type="button"][icon][disabled="true"]:focus, input[type="button"][icon][disabled="true"]:active {
+      background-color: transparent; }
+    button[type="button"][icon][critical], button[type="button"][icon][state="critical"], input[type="button"][icon][critical], input[type="button"][icon][state="critical"] {
+      color: var(--icon-color-critical); }
+      button[type="button"][icon][critical] svg, button[type="button"][icon][state="critical"] svg, input[type="button"][icon][critical] svg, input[type="button"][icon][state="critical"] svg {
+        fill: var(--icon-color-critical); }
+        button[type="button"][icon][critical] svg path.match-fill, button[type="button"][icon][state="critical"] svg path.match-fill, input[type="button"][icon][critical] svg path.match-fill, input[type="button"][icon][state="critical"] svg path.match-fill {
+          fill: var(--icon-color-critical); }
+      button[type="button"][icon][critical]:hover, button[type="button"][icon][state="critical"]:hover, input[type="button"][icon][critical]:hover, input[type="button"][icon][state="critical"]:hover {
+        color: var(--icon-color-critical-hover); }
+        button[type="button"][icon][critical]:hover svg, button[type="button"][icon][state="critical"]:hover svg, input[type="button"][icon][critical]:hover svg, input[type="button"][icon][state="critical"]:hover svg {
+          fill: var(--icon-color-critical-hover); }
+          button[type="button"][icon][critical]:hover svg path.match-fill, button[type="button"][icon][state="critical"]:hover svg path.match-fill, input[type="button"][icon][critical]:hover svg path.match-fill, input[type="button"][icon][state="critical"]:hover svg path.match-fill {
+            fill: var(--icon-color-critical-hover); }
+      button[type="button"][icon][critical]:focus, button[type="button"][icon][critical]:active, button[type="button"][icon][state="critical"]:focus, button[type="button"][icon][state="critical"]:active, input[type="button"][icon][critical]:focus, input[type="button"][icon][critical]:active, input[type="button"][icon][state="critical"]:focus, input[type="button"][icon][state="critical"]:active {
+        color: var(--icon-color-critical-active); }
+        button[type="button"][icon][critical]:focus svg, button[type="button"][icon][critical]:active svg, button[type="button"][icon][state="critical"]:focus svg, button[type="button"][icon][state="critical"]:active svg, input[type="button"][icon][critical]:focus svg, input[type="button"][icon][critical]:active svg, input[type="button"][icon][state="critical"]:focus svg, input[type="button"][icon][state="critical"]:active svg {
+          fill: var(--icon-color-critical-active); }
+          button[type="button"][icon][critical]:focus svg path.match-fill, button[type="button"][icon][critical]:active svg path.match-fill, button[type="button"][icon][state="critical"]:focus svg path.match-fill, button[type="button"][icon][state="critical"]:active svg path.match-fill, input[type="button"][icon][critical]:focus svg path.match-fill, input[type="button"][icon][critical]:active svg path.match-fill, input[type="button"][icon][state="critical"]:focus svg path.match-fill, input[type="button"][icon][state="critical"]:active svg path.match-fill {
+            fill: var(--icon-color-critical-active); }
+      button[type="button"][icon][critical][disabled="true"], button[type="button"][icon][critical][disabled="true"]:hover, button[type="button"][icon][critical][disabled="true"]:focus, button[type="button"][icon][critical][disabled="true"]:active, button[type="button"][icon][state="critical"][disabled="true"], button[type="button"][icon][state="critical"][disabled="true"]:hover, button[type="button"][icon][state="critical"][disabled="true"]:focus, button[type="button"][icon][state="critical"][disabled="true"]:active, input[type="button"][icon][critical][disabled="true"], input[type="button"][icon][critical][disabled="true"]:hover, input[type="button"][icon][critical][disabled="true"]:focus, input[type="button"][icon][critical][disabled="true"]:active, input[type="button"][icon][state="critical"][disabled="true"], input[type="button"][icon][state="critical"][disabled="true"]:hover, input[type="button"][icon][state="critical"][disabled="true"]:focus, input[type="button"][icon][state="critical"][disabled="true"]:active {
+        color: var(--icon-color-critical-disabled); }
+        button[type="button"][icon][critical][disabled="true"] svg, button[type="button"][icon][critical][disabled="true"]:hover svg, button[type="button"][icon][critical][disabled="true"]:focus svg, button[type="button"][icon][critical][disabled="true"]:active svg, button[type="button"][icon][state="critical"][disabled="true"] svg, button[type="button"][icon][state="critical"][disabled="true"]:hover svg, button[type="button"][icon][state="critical"][disabled="true"]:focus svg, button[type="button"][icon][state="critical"][disabled="true"]:active svg, input[type="button"][icon][critical][disabled="true"] svg, input[type="button"][icon][critical][disabled="true"]:hover svg, input[type="button"][icon][critical][disabled="true"]:focus svg, input[type="button"][icon][critical][disabled="true"]:active svg, input[type="button"][icon][state="critical"][disabled="true"] svg, input[type="button"][icon][state="critical"][disabled="true"]:hover svg, input[type="button"][icon][state="critical"][disabled="true"]:focus svg, input[type="button"][icon][state="critical"][disabled="true"]:active svg {
+          fill: var(--icon-color-critical-disabled); }
+          button[type="button"][icon][critical][disabled="true"] svg path.match-fill, button[type="button"][icon][critical][disabled="true"]:hover svg path.match-fill, button[type="button"][icon][critical][disabled="true"]:focus svg path.match-fill, button[type="button"][icon][critical][disabled="true"]:active svg path.match-fill, button[type="button"][icon][state="critical"][disabled="true"] svg path.match-fill, button[type="button"][icon][state="critical"][disabled="true"]:hover svg path.match-fill, button[type="button"][icon][state="critical"][disabled="true"]:focus svg path.match-fill, button[type="button"][icon][state="critical"][disabled="true"]:active svg path.match-fill, input[type="button"][icon][critical][disabled="true"] svg path.match-fill, input[type="button"][icon][critical][disabled="true"]:hover svg path.match-fill, input[type="button"][icon][critical][disabled="true"]:focus svg path.match-fill, input[type="button"][icon][critical][disabled="true"]:active svg path.match-fill, input[type="button"][icon][state="critical"][disabled="true"] svg path.match-fill, input[type="button"][icon][state="critical"][disabled="true"]:hover svg path.match-fill, input[type="button"][icon][state="critical"][disabled="true"]:focus svg path.match-fill, input[type="button"][icon][state="critical"][disabled="true"]:active svg path.match-fill {
+            fill: var(--icon-color-critical-disabled); }
+    button[type="button"][icon][primary], button[type="button"][icon][state="primary"], input[type="button"][icon][primary], input[type="button"][icon][state="primary"] {
+      color: var(--icon-color-primary); }
+      button[type="button"][icon][primary] svg, button[type="button"][icon][state="primary"] svg, input[type="button"][icon][primary] svg, input[type="button"][icon][state="primary"] svg {
+        fill: var(--icon-color-primary); }
+        button[type="button"][icon][primary] svg path.match-fill, button[type="button"][icon][state="primary"] svg path.match-fill, input[type="button"][icon][primary] svg path.match-fill, input[type="button"][icon][state="primary"] svg path.match-fill {
+          fill: var(--icon-color-primary); }
+      button[type="button"][icon][primary]:hover, button[type="button"][icon][state="primary"]:hover, input[type="button"][icon][primary]:hover, input[type="button"][icon][state="primary"]:hover {
+        color: var(--icon-color-primary-hover); }
+        button[type="button"][icon][primary]:hover svg, button[type="button"][icon][state="primary"]:hover svg, input[type="button"][icon][primary]:hover svg, input[type="button"][icon][state="primary"]:hover svg {
+          fill: var(--icon-color-primary-hover); }
+          button[type="button"][icon][primary]:hover svg path.match-fill, button[type="button"][icon][state="primary"]:hover svg path.match-fill, input[type="button"][icon][primary]:hover svg path.match-fill, input[type="button"][icon][state="primary"]:hover svg path.match-fill {
+            fill: var(--icon-color-primary-hover); }
+      button[type="button"][icon][primary]:focus, button[type="button"][icon][primary]:active, button[type="button"][icon][state="primary"]:focus, button[type="button"][icon][state="primary"]:active, input[type="button"][icon][primary]:focus, input[type="button"][icon][primary]:active, input[type="button"][icon][state="primary"]:focus, input[type="button"][icon][state="primary"]:active {
+        color: var(--icon-color-primary-active); }
+        button[type="button"][icon][primary]:focus svg, button[type="button"][icon][primary]:active svg, button[type="button"][icon][state="primary"]:focus svg, button[type="button"][icon][state="primary"]:active svg, input[type="button"][icon][primary]:focus svg, input[type="button"][icon][primary]:active svg, input[type="button"][icon][state="primary"]:focus svg, input[type="button"][icon][state="primary"]:active svg {
+          fill: var(--icon-color-primary-active); }
+          button[type="button"][icon][primary]:focus svg path.match-fill, button[type="button"][icon][primary]:active svg path.match-fill, button[type="button"][icon][state="primary"]:focus svg path.match-fill, button[type="button"][icon][state="primary"]:active svg path.match-fill, input[type="button"][icon][primary]:focus svg path.match-fill, input[type="button"][icon][primary]:active svg path.match-fill, input[type="button"][icon][state="primary"]:focus svg path.match-fill, input[type="button"][icon][state="primary"]:active svg path.match-fill {
+            fill: var(--icon-color-primary-active); }
+      button[type="button"][icon][primary][disabled="true"], button[type="button"][icon][primary][disabled="true"]:hover, button[type="button"][icon][primary][disabled="true"]:focus, button[type="button"][icon][primary][disabled="true"]:active, button[type="button"][icon][state="primary"][disabled="true"], button[type="button"][icon][state="primary"][disabled="true"]:hover, button[type="button"][icon][state="primary"][disabled="true"]:focus, button[type="button"][icon][state="primary"][disabled="true"]:active, input[type="button"][icon][primary][disabled="true"], input[type="button"][icon][primary][disabled="true"]:hover, input[type="button"][icon][primary][disabled="true"]:focus, input[type="button"][icon][primary][disabled="true"]:active, input[type="button"][icon][state="primary"][disabled="true"], input[type="button"][icon][state="primary"][disabled="true"]:hover, input[type="button"][icon][state="primary"][disabled="true"]:focus, input[type="button"][icon][state="primary"][disabled="true"]:active {
+        color: var(--icon-color-primary-disabled); }
+        button[type="button"][icon][primary][disabled="true"] svg, button[type="button"][icon][primary][disabled="true"]:hover svg, button[type="button"][icon][primary][disabled="true"]:focus svg, button[type="button"][icon][primary][disabled="true"]:active svg, button[type="button"][icon][state="primary"][disabled="true"] svg, button[type="button"][icon][state="primary"][disabled="true"]:hover svg, button[type="button"][icon][state="primary"][disabled="true"]:focus svg, button[type="button"][icon][state="primary"][disabled="true"]:active svg, input[type="button"][icon][primary][disabled="true"] svg, input[type="button"][icon][primary][disabled="true"]:hover svg, input[type="button"][icon][primary][disabled="true"]:focus svg, input[type="button"][icon][primary][disabled="true"]:active svg, input[type="button"][icon][state="primary"][disabled="true"] svg, input[type="button"][icon][state="primary"][disabled="true"]:hover svg, input[type="button"][icon][state="primary"][disabled="true"]:focus svg, input[type="button"][icon][state="primary"][disabled="true"]:active svg {
+          fill: var(--icon-color-primary-disabled); }
+          button[type="button"][icon][primary][disabled="true"] svg path.match-fill, button[type="button"][icon][primary][disabled="true"]:hover svg path.match-fill, button[type="button"][icon][primary][disabled="true"]:focus svg path.match-fill, button[type="button"][icon][primary][disabled="true"]:active svg path.match-fill, button[type="button"][icon][state="primary"][disabled="true"] svg path.match-fill, button[type="button"][icon][state="primary"][disabled="true"]:hover svg path.match-fill, button[type="button"][icon][state="primary"][disabled="true"]:focus svg path.match-fill, button[type="button"][icon][state="primary"][disabled="true"]:active svg path.match-fill, input[type="button"][icon][primary][disabled="true"] svg path.match-fill, input[type="button"][icon][primary][disabled="true"]:hover svg path.match-fill, input[type="button"][icon][primary][disabled="true"]:focus svg path.match-fill, input[type="button"][icon][primary][disabled="true"]:active svg path.match-fill, input[type="button"][icon][state="primary"][disabled="true"] svg path.match-fill, input[type="button"][icon][state="primary"][disabled="true"]:hover svg path.match-fill, input[type="button"][icon][state="primary"][disabled="true"]:focus svg path.match-fill, input[type="button"][icon][state="primary"][disabled="true"]:active svg path.match-fill {
+            fill: var(--icon-color-primary-disabled); }
+    button[type="button"][icon]:hover, input[type="button"][icon]:hover {
+      color: var(--icon-color-normal-hover); }
+      button[type="button"][icon]:hover svg, input[type="button"][icon]:hover svg {
+        fill: var(--icon-color-normal-hover); }
+        button[type="button"][icon]:hover svg path.match-fill, input[type="button"][icon]:hover svg path.match-fill {
+          fill: var(--icon-color-normal-hover); }
+    button[type="button"][icon]:focus, button[type="button"][icon]:active, input[type="button"][icon]:focus, input[type="button"][icon]:active {
+      color: var(--icon-color-normal-active); }
+      button[type="button"][icon]:focus svg, button[type="button"][icon]:active svg, input[type="button"][icon]:focus svg, input[type="button"][icon]:active svg {
+        fill: var(--icon-color-normal-active); }
+        button[type="button"][icon]:focus svg path.match-fill, button[type="button"][icon]:active svg path.match-fill, input[type="button"][icon]:focus svg path.match-fill, input[type="button"][icon]:active svg path.match-fill {
+          fill: var(--icon-color-normal-active); }
+
 table[type="standard"] tr, table[type="standard"] td, table[type="standard"] th {
   border: 1px solid var(--black); }
 
-.table {
-  display: table; }
-  .table .tr {
-    display: table-row; }
-    .table .tr .td {
-      display: table-cell;
-      vertical-align: middle; }
-    .table .tr .td.quarter {
-      width: 25%; }
-
-.table {
-  display: table;
-  width: 100%; }
-
-.table-row {
-  display: table-row; }
-
-.table-cell {
-  display: table-cell; }
-  .table-cell.label {
-    font-size: 13px; }
-  .table-cell div {
-    display: inline-block; }
+/* css variables below */
+/* these can be used and overridden in svelte */
+:root {
+  --lightest-gray: #dee2e6;
+  --lighter-gray: #ced4da;
+  --light-gray: #adb5bd;
+  --gray: #868e96;
+  --dark-gray: #495057;
+  --darker-gray: #343a40;
+  --darkest-gray: #212529;
+  --lightest-purple: #e5dbff;
+  --lighter-purple: #d0bfff;
+  --light-purple: #b197fc;
+  --purple: #9775fa;
+  --dark-purple: #845ef7;
+  --darker-purple: #7048e8;
+  --darkest-purple: #5f3dc4;
+  --lightest-blue: #dbe4ff;
+  --lighter-blue: #bac8ff;
+  --light-blue: #91a7ff;
+  --blue: #5c7cfa;
+  --dark-blue: #4c6ef5;
+  --darker-blue: #3b5bdb;
+  --darkest-blue: #364fc7;
+  --lightest-green: #c3fae8;
+  --lighter-green: #63e6be;
+  --light-green: #20c997;
+  --green: #12b886;
+  --dark-green: #0ca678;
+  --darker-green: #099268;
+  --darkest-green: #087f5b;
+  --lightest-yellow: #fff3bf;
+  --lighter-yellow: #ffec99;
+  --light-yellow: #ffe066;
+  --yellow: #ffd43b;
+  --dark-yellow: #fcc419;
+  --darker-yellow: #fab005;
+  --darkest-yellow: #f59f00;
+  --lightest-orange: #ffe8cc;
+  --lighter-orange: #ffc078;
+  --light-orange: #ffa94d;
+  --orange: #fd7e14;
+  --dark-orange: #f76707;
+  --darker-orange: #e8590c;
+  --darkest-orange: #d9480f;
+  --lightest-red: #ffe3e3;
+  --lighter-red: #ffa8a8;
+  --light-red: #ff8787;
+  --red: #fa5252;
+  --dark-red: #f03e3e;
+  --darker-red: #e03131;
+  --darkest-red: #c92a2a;
+  --black: #212529;
+  --white: #ffffff;
+  --box-shadow: --var(--light-gray);
+  --critical: --var(--dark-red);
+  --critical-hover: --var(--red);
+  --critical-active: --var(--darkest-red);
+  --critical-disabled: --var(--light-red);
+  --primary: var(--blue);
+  --primary-hover: var(--dark-blue);
+  --primary-active: var(--darkest-blue);
+  --primary-disabled: var(--light-blue);
+  --code: var(--primary);
+  --icon-color-normal: var(--black);
+  --icon-color-normal-hover: var(--blue);
+  --icon-color-normal-active: var(--darker-blue);
+  --icon-color-normal-disabled: var(--gray);
+  --icon-color-primary: var(--blue);
+  --icon-color-primary-hover: var(--light-blue);
+  --icon-color-primary-active: var(--darker-blue);
+  --icon-color-primary-disabled: var(--lighter-blue);
+  --icon-color-critical: var(--red);
+  --icon-color-critical-hover: var(--light-red);
+  --icon-color-critical-active: var(--darker-red);
+  --icon-color-critical-disabled: var(--lighter-red);
+  --menu-background: #ffffff;
+  --menu-hover: #ffffff;
+  --menu-active: #ffffff;
+  --menu-disabled: #ffffff;
+  --font-family-primary: NunitoSans;
+  --font-family-primary-bold: NunitoSans;
+  --font-family-secondary: NunitoSans;
+  --font-family-secondary-bold: NunitoSans;
+  --font-family-monospace: Cascadia;
+  --font-family-monospace-bold: Cascadia;
+  --font-normal: normal;
+  --font-bold: bold;
+  --font-xxl: 28px;
+  --font-xl: 24px;
+  --font-l: 20px;
+  --font-m: 18px;
+  --font-s: 14px;
+  --font-xs: 11px;
+  --text-spacing-xxl: 28px;
+  --text-spacing-xl: 24px;
+  --text-spacing-l: 20px;
+  --text-spacing-m: 18px;
+  --text-spacing-s: 14px;
+  --text-spacing-xs: 11px;
+  --spacing-xxl: 72px;
+  --spacing-xl: 54px;
+  --spacing-l: 48px;
+  --spacing-m: 36px;
+  --spacing-s: 24px;
+  --spacing-xs: 18px;
+  --spacing-xxs: 14px;
+  --fine-spacing-xxl: 14px;
+  --fine-spacing-xl: 12px;
+  --fine-spacing-l: 10px;
+  --fine-spacing-m: 8px;
+  --fine-spacing-s: 6px;
+  --fine-spacing-xs: 4px;
+  --fine-spacing-xxs: 2px;
+  --corner-sharp: 0px;
+  --corner-s: 2px;
+  --corner-m: 4px;
+  --corner-l: 6px;
+  --corner-circle: 100%;
+  --breakpoint-min: 320px;
+  --breakpoint-xs: 600px;
+  --breakpoint-sm: 960px;
+  --breakpoint-md: 1280px;
+  --breakpoint-lg: 1920px;
+  --breakpoint-xs-1: 599.9999px;
+  --breakpoint-sm-1: 959.9999px;
+  --breakpoint-md-1: 1279.9999px;
+  --breakpoint-lg-1: 1919.9999px;
+  --responsive-xs-min: 320px;
+  --responsive-xs-max: 599.9999px;
+  --responsive-sm-min: 600px;
+  --responsive-sm-max: 959.9999px;
+  --responsive-md-min: 960px;
+  --responsive-md-max: 1279.9999px;
+  --responsive-lg-min: 1280px;
+  --responsive-lg-max: 1919.9999px;
+  --responsive-xl-min: 1920px; }

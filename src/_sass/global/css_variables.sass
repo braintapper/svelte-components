@@ -1,7 +1,8 @@
 /* css variables below */
 /* these can be used and overridden in svelte */
 \:root
-  // colors
+  // colors - these are defined in variables/colors.sass
+  // colors.sass also prebuilds many shortcut attributes for /generated/colors.sass
   --lightest-gray: #{$lightest-gray}
   --lighter-gray: #{$lighter-gray}
   --light-gray: #{$light-gray}
@@ -54,34 +55,38 @@
   --black: #{$black}
   --white: #{$white}
 
-  --box-shadow: #{$light-gray}
+
+  // these build on existing colors
+  --box-shadow: --var(--light-gray)
 
   // state colors
-  --critical: #{$critical}
-  --critical-hover: #{$critical-hover}
-  --critical-active: #{$critical-active}
-  --critical-disabled: #{$critical-disabled}
-  --code: #{$primary}
-  --primary: #{$primary}
-  --primary-hover: #{$primary-hover}
-  --primary-active: #{$primary-active}
-  --primary-disabled: #{$primary-disabled}
+  --critical: --var(--dark-red)
+  --critical-hover: --var(--red)
+  --critical-active: --var(--darkest-red)
+  --critical-disabled: --var(--light-red)
+
+  --primary: var(--blue)
+  --primary-hover: var(--dark-blue)
+  --primary-active: var(--darkest-blue)
+  --primary-disabled: var(--light-blue)
+
+  --code: var(--primary)
 
   // icon colors
-  --icon-color-normal: #{$black}
-  --icon-color-normal-hover: #{$blue}
-  --icon-color-normal-active: #{$darker-blue}
-  --icon-color-normal-disabled: #{$gray}
+  --icon-color-normal: var(--black)
+  --icon-color-normal-hover: var(--blue)
+  --icon-color-normal-active: var(--darker-blue)
+  --icon-color-normal-disabled: var(--gray)
 
-  --icon-color-primary: #{$blue}
-  --icon-color-primary-hover: #{$light-blue}
-  --icon-color-primary-active: #{$darker-blue}
-  --icon-color-primary-disabled: #{$lighter-blue}
+  --icon-color-primary: var(--blue)
+  --icon-color-primary-hover: var(--light-blue)
+  --icon-color-primary-active: var(--darker-blue)
+  --icon-color-primary-disabled: var(--lighter-blue)
 
-  --icon-color-critical: #{$red}
-  --icon-color-critical-hover: #{$light-red}
-  --icon-color-critical-active: #{$darker-red}
-  --icon-color-critical-disabled: #{$lighter-red}
+  --icon-color-critical: var(--red)
+  --icon-color-critical-hover: var(--light-red)
+  --icon-color-critical-active: var(--darker-red)
+  --icon-color-critical-disabled: var(--lighter-red)
 
 
 
@@ -91,60 +96,58 @@
   --menu-active: #{$white}
   --menu-disabled: #{$white}
 
+
+  // font faces
   --font-family-primary: #{$font-family-primary}
   --font-family-primary-bold: #{$font-family-primary-bold}
-  --font-family-primary-src: #{$font-family-primary-src}
-  --font-family-primary-bold-src: #{$font-family-primary-bold-src}
 
   --font-family-secondary: #{$font-family-secondary}
   --font-family-secondary-bold: #{$font-family-secondary-bold}
-  --font-family-secondary-src: #{$font-family-secondary-src}
-  --font-family-secondary-bold-src: #{$font-family-secondary-bold-src}
 
   --font-family-monospace: #{$font-family-monospace}
   --font-family-monospace-bold: #{$font-family-monospace-bold}
-  --font-family-monospace-src: #{$font-family-monospace-src}
-  --font-family-monospace-bold-src: #{$font-family-monospace-bold-src}
-
-  --font-normal: #{$font-normal}
-  --font-bold: #{$font-bold}
-  --font-xxl: #{$font-xxl}
-  --font-xl: #{$font-xl}
-  --font-l: #{$font-l}
-  --font-m: #{$font-m}
-  --font-s: #{$font-s}
-  --font-xs: #{$font-xs}
-
-  --text-spacing-xxl: #{$text-spacing-xxl}
-  --text-spacing-xl: #{$text-spacing-xl}
-  --text-spacing-l: #{$text-spacing-l}
-  --text-spacing-m: #{$text-spacing-m}
-  --text-spacing-s: #{$text-spacing-s}
-  --text-spacing-xs: #{$text-spacing-xs}
-
-  --spacing-xxl: #{$spacing-xxl}
-  --spacing-xxl: #{$spacing-xxl}
-  --spacing-xl: #{$spacing-xl}
-  --spacing-l: #{$spacing-l}
-  --spacing-m: #{$spacing-m}
-  --spacing-s: #{$spacing-s}
-  --spacing-xs: #{$spacing-xs}
-  --spacing-xxs: #{$spacing-xxs}
-
-  --fine-spacing-xxl: #{$fine-spacing-xxl}
-  --fine-spacing-xl: #{$fine-spacing-xl}
-  --fine-spacing-l: #{$fine-spacing-l}
-  --fine-spacing-m: #{$fine-spacing-m}
-  --fine-spacing-s: #{$fine-spacing-s}
-  --fine-spacing-xs: #{$fine-spacing-xs}
-  --fine-spacing-xxs: #{$fine-spacing-xxs}
 
 
-  --corner-sharp: #{$corner-sharp}
-  --corner-s: #{$corner-s}
-  --corner-m: #{$corner-m}
-  --corner-l: #{$corner-l}
-  --corner-circle: #{$corner-circle}
+  --font-normal: normal
+  --font-bold: bold
+  --font-xxl: 28px
+  --font-xl: 24px
+  --font-l: 20px
+  --font-m: 18px
+  --font-s: 14px
+  --font-xs: 11px
+
+  --text-spacing-xxl: 28px
+  --text-spacing-xl: 24px
+  --text-spacing-l: 20px
+  --text-spacing-m: 18px
+  --text-spacing-s: 14px
+  --text-spacing-xs: 11px
+
+
+  --spacing-xxl: 72px
+  --spacing-xl: 54px
+  --spacing-l: 48px
+  --spacing-m: 36px
+  --spacing-s: 24px
+  --spacing-xs: 18px
+  --spacing-xxs: 14px
+
+  --fine-spacing-xxl: 14px
+  --fine-spacing-xl: 12px
+  --fine-spacing-l: 10px
+  --fine-spacing-m: 8px
+  --fine-spacing-s: 6px
+  --fine-spacing-xs: 4px
+  --fine-spacing-xxs: 2px
+
+
+  --corner-sharp: 0px
+  --corner-s: 2px
+  --corner-m: 4px
+  --corner-l: 6px
+  --corner-circle: 100%
+
 
   --breakpoint-min: #{$breakpoint-min}
   --breakpoint-xs: #{$breakpoint-xs}
