@@ -1,5 +1,5 @@
 <script lang="coffeescript">
-  `export let links = []`
+  `export let pages = []`
   `export let style = undefined`
 </script>
 <style lang="sass">
@@ -8,9 +8,9 @@
 </style>
 
 <div layout="row" {style}>
-  {#each links as link}
+  {#each pages as page}
   <div flex="initial" >
-    <a href="{link.url}">{link.text}</a>
+    <a href="#{page.url}">{page.text}</a>
   </div>
   {/each}
   <div flex/>

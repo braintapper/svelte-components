@@ -22,46 +22,58 @@
   import Css from './pages/css/Group.svelte'
   import Layout from './pages/layout/Group.svelte'
 
-  links = [
+  pages = [
     {
-      url: "#/"
+      ordinal: 0
+      url: "/"
       text: "Styles"
+      context: "styles"
+      component: Styles
     }
     {
-      url: "#/css"
+      ordinal: 1
+      url: "/css"
       text: "CSS"
+      context: "css"
+      component: Css
     }
     {
-      url: "#/form"
+      ordinal: 2
+      url: "/form"
       text: "Form"
+      context: "form"
+      component: Form
     }
     {
-      url: "#/overlay"
+      ordinal: 3
+      url: "/overlay"
       text: "Overlay"
+      context: "overlay"
+      component: Overlay
     }
     {
-      url: "#/icons"
+      ordinal: 4
+      url: "/icons"
       text: "Icons"
+      context: "icons"
+      component: Icons
     }
     {
-      url: "#/layout"
+      ordinal: 5
+      url: "/layout"
       text: "Layout"
+      context: "layout"
+      component: Layout
     }
   ]
 
 
+  routes = {}
+
+  pages.sortBy('ordinal').forEach (page)->
+    routes[page.url] = page.component
 
 
-
-
-  routes =
-    '/': Styles
-    '/styles': Styles
-    '/form': Form
-    '/overlay': Overlay
-    '/icons': Icons
-    '/css': Css
-    '/layout': Layout
 
 
   appName = "Svelte-Components"
@@ -88,7 +100,7 @@
 
 <TopSplit header={true} headerSize="42px" footer={false}>
   <div slot="header">
-    <TopNavigator {links}/>
+    <TopNavigator {pages}/>
   </div>
   <div slot="content">
     <Router {routes}/>
