@@ -42,20 +42,20 @@ const handleBlur = (_) => {
 <style lang="sass">
 
   input, div
-    width: 100%
-    max-width: 100%
-    padding: 6px
-    border-radius: 6px
-    margin: 0px
+    font-family: var(--font-family-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+    font-size: var(--font-s)
+    border-radius: var(--corner-s)
     &:hover
-      background: #eeeeee
-
+      background: var(--lightest-gray)
   div
-    min-height: 24px
+    padding: var(--fine-spacing-xs) var(--fine-spacing-m)
+    min-height: var(--font-xl)
     border: 1px solid transparent
 
   .strikethrough
     text-decoration: line-through
+
+
 </style>
 {#if editing && (isText || isNumber)}
   <input
