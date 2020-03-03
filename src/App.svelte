@@ -14,13 +14,13 @@
   import {push,pop, location, link, replace} from 'svelte-spa-router'
 
 
-  import Index from './pages/Index.svelte'
 
   import Styles from './pages/styles/Group.svelte'
   import Form from './pages/form/Group.svelte'
   import Overlay from './pages/overlay/Group.svelte'
   import Icons from './pages/icons/Group.svelte'
   import Css from './pages/css/Group.svelte'
+  import Layout from './pages/layout/Group.svelte'
 
   links = [
     {
@@ -43,6 +43,10 @@
       url: "#/icons"
       text: "Icons"
     }
+    {
+      url: "#/layout"
+      text: "Layout"
+    }
   ]
 
 
@@ -57,6 +61,7 @@
     '/overlay': Overlay
     '/icons': Icons
     '/css': Css
+    '/layout': Layout
 
 
   appName = "Svelte-Components"

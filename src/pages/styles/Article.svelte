@@ -72,6 +72,7 @@
       <li>Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</li>
       <li>Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</li>
     </ul>
+    <h3>Ordered List</h3>
     <ol>
       <li>Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</li>
       <li>Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</li>

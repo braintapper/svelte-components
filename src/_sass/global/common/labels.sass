@@ -1,0 +1,33 @@
+// appears inside a text type of input on the right side
+// remember to add right padding on the input manually
+
+label[type="input"]
+  position: absolute
+  right: 0px
+  top: 0px
+  margin-top: 7px
+  margin-right: 8px
+  padding: 2px 6px
+  font-size: var(--font-xs)
+  font-weight: var(--font-bold)
+  color: var(--white)
+  background: var(--blue)
+  border-radius: var(--corner-s)
+
+// used with form inputs
+label[type="field"]
+  display: inline-block
+  font-size: var(--font-xs)
+  margin: var(--fine-spacing-xs) var(--fine-spacing-m)
+  color: var(--primary)
+  &[required], &[invalid="true"]
+    color: var(--critical)
+
+label[type="tag"]
+  display: inline-block
+  padding: 2px 6px
+  font-size: var(--font-xs)
+  font-weight: var(--font-bold)
+  color: var(--white)
+  background: var(--blue)
+  border-radius: var(--corner-s)

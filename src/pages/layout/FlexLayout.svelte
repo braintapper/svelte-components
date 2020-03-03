@@ -14,7 +14,7 @@
 
 </style>
 
-<Section title="Layout">
+<Section title="Flex Layout">
 
 
   <h1>Row</h1>

@@ -30,21 +30,6 @@
     width: 100%
     [picker-container]
       position: relative
-    input
-      width: 100%
-    label
-      position: absolute
-      right: 0px
-      top: 0px
-      margin-top: 7px
-      margin-right: 8px
-      padding: 3px 6px
-      font-size: 12px
-      font-weight: bold
-      color: white
-      background: blue
-      border-radius: 4px
-
 
     [button-group]
       padding-left: 8px
@@ -73,7 +58,7 @@
   <div flex>
     <div picker-container>
     <input type="effortpicker" bind:value={value} on:keyup={debouncedUpdate} maxlength="10" class="effort-picker"/>
-    <label>{HumanEffort.parseHours(value || "").format(2)}h</label>
+    <label type="input">{HumanEffort.parseHours(value || "").format(2)}h</label>
     </div>
   </div>
 </div>

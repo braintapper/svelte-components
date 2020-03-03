@@ -125,9 +125,7 @@
 
 <style lang="sass">
   input
-    width: 100%
-    height: 100%
-    padding: 0px
+  
     &[invalid="true"]
       color: var(--critical)
 

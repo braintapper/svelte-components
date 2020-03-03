@@ -12,10 +12,22 @@
 
   <h3>Text Inputs</h3>
   <div>
-  <input type="text"/>
-  <input type="text" disabled value="disabled"/>
-  <input type="text" required/>
-  <input type="text" invalid={true}/>
+  <field>
+    <label type="field">Basic Input</label>
+    <input type="text"/>
+  </field>
+  <field>
+    <label type="disabled">Basic Input</label>
+    <input type="text" disabled value="disabled"/>
+  </field>
+  <field>
+    <label type="field" required>Required Input</label>
+    <input type="text" required/>
+  </field>
+  <field>
+    <label type="field" invalid={true}>Invalid Input</label>
+    <input type="text" invalid={true}/>
+  </field>
   </div>
   <h3>Textareas</h3>
   <div>

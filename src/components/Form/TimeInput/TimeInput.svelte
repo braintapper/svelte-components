@@ -190,25 +190,10 @@
   [container]
     position: relative
     width: 100%
-    input
-      width: 100%
-    label
-      position: absolute
-      right: 0px
-      top: 0px
-      margin-top: 7px
-      margin-right: 8px
-      padding: 3px 6px
-      font-size: 12px
-      font-weight: bold
-      color: white
-      background: blue
-      border-radius: 4px
-
 
 
 </style>
 <div container>
   <input type="text" bind:value={value} maxlength="10" on:keyup={debouncedUpdate}/>
-  <label>{Date.create(parseTime(value)).format("{HH}:{mm}")}</label>
+  <label type="input">{Date.create(parseTime(value)).format("{HH}:{mm}")}</label>
 </div>
