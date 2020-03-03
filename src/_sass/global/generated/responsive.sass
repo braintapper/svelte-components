@@ -1,0 +1,70 @@
+// show only for that width
+
+[only="width-xs"]
+  @include width-gt-xs
+    display: none !important
+
+[only="width-sm"]
+  @include width-lt-sm
+    display: none !important
+  @include width-gt-sm
+    display: none !important
+
+[only="width-md"]
+  @include width-lt-md
+    display: none !important
+  @include width-gt-md
+    display: none !important
+
+[only="width-lg"]
+  @include width-lt-lg
+    display: none !important
+  @include width-gt-lg
+    display: none !important
+
+[only="width-xl"]
+  @include width-lt-xl
+    display: none !important
+
+
+
+// show anything greater than [size]
+
+[only="width-gt-xs"]
+  @include width-lt-sm
+    display: none !important
+[only="width-gt-sm"]
+  @include width-lt-md
+    display: none !important
+[only="width-gt-md"]
+  @include width-lt-lg
+    display: none !important
+
+[only="width-gt-lg"]
+  @include width-lt-xl
+    display: none !important
+
+// [width-gt-xl]
+  // no such size
+
+
+// show anything less than [size]
+
+//[width-lt-xs]
+  // no such size
+
+[only="width-lt-sm"]
+  @include width-gt-xs
+    display: none !important
+
+[only="width-lt-md"]
+  @include width-gt-sm
+    display: none !important
+
+[only="width-lt-lg"]
+  @include width-gt-md
+    display: none !important
+
+[only="width-lt-xl"]
+  @include width-gt-lg
+    display: none !important

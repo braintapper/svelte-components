@@ -6,19 +6,19 @@
       background-color: unquote("var(--#{$shade}#{$color})")
 
       @if ($shade == lightest-) or ($shade == lighter-) or ($shade==light-)
-        color: $darkest-gray
+        color: var(--darkest-gray)
       @else if ($shade == "")
         @if ($color == yellow)
-          color: $darkest-gray
+          color: var(--darkest-gray)
         @else
-          color: $white
+          color: var(--white)
       @else if ($shade==dark-)
         @if ($color == yellow)
-          color: $darkest-gray
+          color: var(--darkest-gray)
         @else
-          color: $white
+          color: var(--white)
       @else
-        color: $white
+        color: var(--white)
 
     [fg="#{$shade}#{$color}"]
       color: unquote("var(--#{$shade}#{$color})")
@@ -28,29 +28,29 @@
 
 
 [bg="black"]
-  background-color: $black
-  color: $white
+  background-color: var(--black)
+  color: var(--white)
 [fg="black"]
-  color: $black
+  color: var(--black)
 [bc="black"]
-  border-color: $black
+  border-color: var(--black)
 
 [bg="white"]
-  background-color: $white
-  color: $black
+  background-color: var(--white)
+  color: var(--black)
 [fg="white"]
-  color: $white
+  color: var(--white)
 
 [bg="critical"]
-  background-color: $critical
-  color: $white
+  background-color: var(--critical)
+  color: var(--white)
 [fg="critical"]
-  color: $critical
+  color: var(--critical)
 [bg="primary"]
-  background-color: $primary
-  color: $white
+  background-color: var(--primary)
+  color: var(--white)
 [fg="primary"]
-  color: $primary
+  color: var(--primary)
 
 
 

@@ -1,0 +1,81 @@
+
+
+
+// box shadow
+
+[shadow="vertical"], [shadow="top"]
+  box-shadow: 0px 2px 5px 0px var(--box-shadow)
+[shadow="bottom"]
+  box-shadow: 0px 0px 2px 5px var(--box-shadow)
+[shadow="right"], [shadow="horizontal"]
+  box-shadow: 2px 0px 5px 0px var(--box-shadow)
+[shadow="left"]
+  box-shadow: -2px 0px 5px 0px var(--box-shadow)
+
+
+
+
+// visibility
+
+[show="false"], [hide="true"], .hidden
+  display: none
+[show="false!"], [hide="true!"]
+  display: none !important
+
+
+
+
+// horizontal and vertical centering
+
+[c*="v"]
+  position: relative
+  top: 50%
+  transform: translateY(-50%)
+  /* prefixes needed for cross-browser support */
+  -ms-transform: translateY(-50%)
+  -webkit-transform: translateY(-50%)
+
+[c*="h"]
+  margin: 0 auto
+  //left: 50%
+  //transform: translateX(-50%)
+  /* prefixes needed for cross-browser support */
+  //-ms-transform: translateX(-50%)
+  //-webkit-transform: translateX(-50%)
+
+
+
+
+// todo: add more configs here
+[scroll]
+  overflow: auto
+[scroll-x]
+  overflow-x: scroll
+[scroll-y]
+  overflow: scroll
+[noscroll]
+  overflow: hidden
+
+
+// responsive shrink aligns when downsizing to the smallest screen size (xs)
+
+[shrink-align="r-c"], [shrink-align="r2c"]
+  @media (min-width: var(--breakpoint-xs))
+    text-align: right
+  @media (max-width: var(--breakpoint-xs-1))
+    text-align: center
+[shrink-align="l-c"], [shrink-align="l2c"]
+  @media (min-width: var(--breakpoint-xs))
+    text-align: left
+  @media (max-width: var(--breakpoint-xs-1))
+    text-align: center
+[shrink-align="r-l"], [shrink-align="r2l"]
+  @media (min-width: var(--breakpoint-xs))
+    text-align: right
+  @media (max-width: var(--breakpoint-xs-1))
+    text-align: left
+[shrink-align="c-l"], [shrink-align="c2l"]
+  @media (min-width: var(--breakpoint-xs))
+    text-align: center
+  @media (max-width: var(--breakpoint-xs-1))
+    text-align: left

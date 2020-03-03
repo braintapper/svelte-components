@@ -1,23 +1,26 @@
-// set the baseline
-
-@import "global/core/resets.sass"
-@import "global/core/layout.sass"
+// set variables
+@import "global/variables/colors.sass"
+@import "global/variables/typography.sass"
+@import "global/variables/measures.sass"
 
 // mixins
 @import "global/mixins/mixins.sass"
-@import "global/mixins/mixins.responsive.sass"
 
-// set variables
-@import "global/variables/fonts.sass"
-@import "global/variables/colors.sass"
-@import "global/variables/typography.sass"
 
-// generated - based on variables
-@import "global/generated/variables.sass"
+// core
+
+@import "global/core/resets.sass"
+@import "global/core/layout.sass"
+@import "global/core/css_variables.sass"
+
+// generated using mixins
 @import "global/generated/colors.sass"
-@import "global/generated/typography.sass"
+@import "global/generated/utility.sass"
+@import "global/generated/sizing.sass"
+@import "global/generated/responsive.sass"
 
-// utility
-@import "global/utility.sass"
-
-@import "global/form/buttons.sass"
+// common
+@import "global/common/typography.sass"
+@import "global/common/form.sass"
+@import "global/common/buttons.sass"
+@import "global/common/table.sass"

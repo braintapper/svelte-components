@@ -12,17 +12,17 @@
 
 <Section title="Buttons">
 <div>
-<button normal>normal</button>
-<button normal disabled>disabled</button>
-<button normal critical>critical</button>
-<button normal critical disabled>critical disabled</button>
-<button normal primary>primary</button>
-<button normal primary disabled>primary disabled</button>
+<button type="button">normal</button>
+<button type="button" disabled>disabled</button>
+<button type="button" critical>critical</button>
+<button type="button" critical disabled>critical disabled</button>
+<button type="button" primary>primary</button>
+<button type="button" primary disabled>primary disabled</button>
 </div>
 <div>
-<input normal type="button" value="input type=button">
-<input normal disabled type="button" value="input type=button">
-<input normal critical type="button" value="input type=button">
-<input normal primary type="button" value="input type=button">
+<input type="button" value="input type=button">
+<input disabled type="button" value="input type=button">
+<input critical type="button" value="input type=button">
+<input primary type="button" value="input type=button">
 </div>
 </Section>

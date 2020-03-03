@@ -1,159 +1,70 @@
-// # Base Mixins
-
-@mixin border-radius($radius)
-  -webkit-border-radius: $radius
-  -moz-border-radius: $radius
-  -ms-border-radius: $radius
-  border-radius: $radius
-
-
-@mixin vertical-box-shadow($distance, $blur, $opacity)
-  -webkit-box-shadow: 0px $distance $blur 0px rgba(0, 0, 0, $opacity)
-  -moz-box-shadow: 0px $distance $blur 0px rgba(0, 0, 0, $opacity)
-  box-shadow: 0px $distance $blur 0px rgba(0, 0, 0, $opacity)
-
-@mixin vertical-box-shadow-bottom($distance, $blur, $opacity)
-  -webkit-box-shadow: 0px $distance $blur 0px rgba(0, 0, 0, $opacity)
-  -moz-box-shadow: 0px $distance $blur 0px rgba(0, 0, 0, $opacity)
-  box-shadow: 0px 0px $blur $distance rgba(0, 0, 0, $opacity)
-
-@mixin horizontal-box-shadow($distance, $blur, $opacity)
-  -webkit-box-shadow: $distance 0px $blur 0px rgba(0, 0, 0, $opacity)
-  -moz-box-shadow: $distance 0px $blur 0px rgba(0, 0, 0, $opacity)
-  box-shadow: $distance 0px $blur 0px rgba(0, 0, 0, $opacity)
-
-
-@mixin input-attributes()
-  border-left: 0px
-  border-right: 0px
-  border-top: 0px
-  border-bottom: 1px solid silver
-  font-size: 16px
-
-@mixin ellipsis
-  text-overflow: ellipsis
-  overflow: hidden
-  white-space: nowrap
-
-@mixin button-background($normalColor, $hoverColor)
-  background: $normalColor
-  &:hover, &:active
-    background: $hoverColor
-
-@mixin md-icon-fill($color)
-  md-icon
-    svg
-      fill: $color
-      path.match-fill
-        fill: $color
-
-@mixin svg-fill($color)
+// icon colors
+@mixin icon-color($color)
+  color: $color // accommodate css icons
   svg
     fill: $color
     path.match-fill
       fill: $color
 
-@mixin svg-icon($name)
-  background: url('/cdn/images/icons/#{$name}.svg') !important
-  background-repeat: no-repeat
-  background-size: 100%  !important
-
-@mixin input-invalid-attributes
-  border-bottom: 1px solid $blue
-
-
-@mixin input-focus-attributes
-  border-bottom: 1px solid $blue
-
-
-@mixin translate($x,$y)
-  -webkit-transform: translate($x, $y)
-  -moz-transform: translate($x, $y)
-  -o-transform: translate($x, $y)
-  -ms-transform: translate($x, $y)
-  transform: translate($x, $y)
-
-
-@mixin header-footer-initialize
-  position: absolute
-  height: 48px
-  overflow: hidden
-  width: 100%
-  max-width: 100%
-  padding: 0px
-  display: block
-
-
-@mixin content-initialize
-  display: block
-  overflow-y: auto
-  overflow-x: hidden
-  width: 100%
-  max-width: 100%
-  position: absolute
-
-// # Layout Mixins
-
-@mixin flex-row
-  display: -webkit-flex
-  display: -ms-flexbox
-  display: flex
-  -webkit-justify-content: center
-  -ms-flex-pack: center
-  justify-content: center
-  -webkit-align-items: center
-  -ms-flex-align: center
-
-@mixin flex-column
-  display: -webkit-flex
-  display: -ms-flexbox
-  display: flex
-  -webkit-justify-content: center
-  -ms-flex-pack: center
-  justify-content: center
-  -webkit-align-items: center
-  -ms-flex-align: center
-
-@mixin flex-width($width)
-  min-width: $width
-  width: $width
-  flex-basis: $width
-
-@mixin fixed-width($width)
-  min-width: $width
-  width: $width
-  max-width: $width
-
-// # Typographic Mixins
-
-
-
-// ## Base Font
-
-
-
-// ## Small Subheader
-// Used in panels, forms, etc. Basically a gray, uppercase title
-
-@mixin small-subheader
-  text-transform: uppercase
-  font-size: 10px
-
-  font-weight: 700
-  letter-spacing: 1px
-  color: $darker-gray
-
-@mixin no-hover-underline
-  &:hover
-    text-decoration: none
-
-// eliminate blue glow on an active item
-@mixin no-glow
-    outline: none
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px inset
-
+// repeater, useful for trees
 @mixin repeater($character, $n)
   $c: ""
   @for $i from 1 through $n
     $c: $c + $character
   content: $c
+
+// responsive widths
+
+@mixin width-xs
+  @media  (max-width: $responsive-xs-max)
+    @content
+@mixin width-sm
+  @media (min-width: $responsive-sm-min) and (max-width: $responsive-sm-max)
+    @content
+@mixin width-md
+  @media (min-width: $responsive-md-min) and (max-width: $responsive-md-max)
+    @content
+@mixin width-lg
+  @media (min-width: $responsive-lg-min) and (max-width: $responsive-lg-max)
+    @content
+@mixin width-xl
+  @media (min-width: $responsive-xl-min)
+    @content
+
+
+// greater than
+
+@mixin width-gt-xs
+  @media (min-width: $responsive-sm-min)
+    @content
+
+@mixin width-gt-sm
+  @media (min-width: $responsive-md-min)
+    @content
+
+@mixin width-gt-md
+  @media (min-width: $responsive-lg-min)
+    @content
+
+@mixin width-gt-lg
+  @media (min-width: $responsive-xl-min)
+    @content
+
+// less than
+
+@mixin width-lt-sm
+  @media (max-width: $responsive-xs-max)
+    @content
+
+
+@mixin width-lt-md
+  @media (max-width: $responsive-sm-max)
+    @content
+
+@mixin width-lt-lg
+  @media (max-width: $responsive-md-max)
+    @content
+
+@mixin width-lt-xl
+  @media (max-width: $responsive-lg-max)
+    @content

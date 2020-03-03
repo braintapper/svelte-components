@@ -1,0 +1,113 @@
+$size-list: 8 10 12 24 36 40 48 50 60 64 72 80 96 100 120 128 140 150 200 240 300
+
+@each $size in $size-list
+  [w="#{$size}"]
+    width: #{$size}
+  [w="#{$size}!"]
+    width: #{$size} !important
+  [h="#{$size}"]
+    height: #{$size}
+  [h="#{$size}!"]
+    height: #{$size} !important
+
+
+
+$percent-list: "10%" "11.1%" "12.5%" "14.3%" "16.7%" "20%" "25%" "33.3%" "50%" "100%"
+
+@each $percent in $percent-list
+  [w="#{$percent}%"]
+    width: #{$percent}
+  [w="#{$percent}%!"]
+    width: #{$percent} !important
+  [h="#{$percent}%"]
+    height: #{$percent}
+  [h="#{$percent}%!"]
+    height: #{$percent} !important
+
+[w="tenth"]
+  width:  nth($percent-list,1)
+[w="ninth"]
+  width: nth($percent-list,2)
+[w="eighth"]
+  width: nth($percent-list,3)
+[w="seventh"]
+  width: nth($percent-list,4)
+[w="sixth"]
+  width: nth($percent-list,5)
+[w="fifth"]
+  width: nth($percent-list,6)
+[w="fourth"],[w="quarter"]
+  width: nth($percent-list,7)
+[w="third"]
+  width: nth($percent-list,8)
+[w="half"]
+  width: nth($percent-list,9)
+[w="whole"], [w="full"]
+  width: nth($percent-list,10)
+
+
+[w="tenth!"]
+  width: nth($percent-list,1) !important
+[w="ninth!"]
+  width:  nth($percent-list,2) !important
+[w="eighth!"]
+  width: nth($percent-list,3) !important
+[w="seventh!"]
+  width: nth($percent-list,4) !important
+[w="sixth!"]
+  width: nth($percent-list,5) !important
+[w="fifth!"]
+  width: nth($percent-list,6) !important
+[w="fourth!"],[w="quarter!"]
+  width: nth($percent-list,7) !important
+[w="third!"]
+  width: nth($percent-list,8) !important
+[w="half!"]
+  width: nth($percent-list,9) !important
+[w="whole!"], [w="full!"]
+  width: nth($percent-list,10) !important
+
+
+
+[h="tenth"]
+  height:  nth($percent-list,1)
+[h="ninth"]
+  height: nth($percent-list,2)
+[h="eighth"]
+  height: nth($percent-list,3)
+[h="seventh"]
+  height: nth($percent-list,4)
+[h="sixth"]
+  height: nth($percent-list,5)
+[h="fifth"]
+  height: nth($percent-list,6)
+[h="fourth"],[h="quarter"]
+  height: nth($percent-list,7)
+[h="third"]
+  height: nth($percent-list,8)
+[h="half"]
+  height: nth($percent-list,9)
+[h="whole"], [h="full"]
+  height: nth($percent-list,10)
+
+
+[h="tenth!"]
+  height: nth($percent-list,1) !important
+[h="ninth!"]
+  height:  nth($percent-list,2) !important
+[h="eighth!"]
+  height: nth($percent-list,3) !important
+[h="seventh!"]
+  height: nth($percent-list,4) !important
+[h="sixth!"]
+  height: nth($percent-list,5) !important
+[h="fifth!"]
+  height: nth($percent-list,6) !important
+[h="fourth!"],[h="quarter!"]
+  height: nth($percent-list,7) !important
+[h="third!"]
+  height: nth($percent-list,8) !important
+[h="half!"]
+  height: nth($percent-list,9) !important
+[h="whole!"], [h="full!"]
+  height: nth($percent-list,10) !important
