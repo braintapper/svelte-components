@@ -48,9 +48,12 @@ article, .article
   h6
     margin-top: var(--text-spacing-xxl)
     margin-bottom: var(--text-spacing-xs)
-  p, ol, ul, table, pre
+  p, ol, ul, table, pre, blockquote
     margin-bottom: var(--text-spacing-s)
 
+  blockquote
+    margin-left: var(--spacing-l)
+    margin-right: var(--spacing-l)
   pre
     background: var(--lightest-gray)
     padding: var(--text-spacing-s)
@@ -70,7 +73,7 @@ article, .article
               ul
                 list-style-type: circle
     li
-      margin-left: 20px
+      margin-left: var(--spacing-xs)
 
   ol
     list-style-type: decimal
@@ -85,13 +88,13 @@ article, .article
             ol
               list-style-type: decimal
     li
-      margin-left: 20px
+      margin-left: var(--spacing-s)
 
   table
     th
       font-weight: bold
     td, th
-      padding: 2px 6px
+      padding: var(--fine-spacing-xxs) var(--fine-spacing-s)
 
 // general formats
 
