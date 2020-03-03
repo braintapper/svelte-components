@@ -2,7 +2,8 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  text-alignment: left; }
+  text-align: left;
+  font-weight: normal; }
 
 *:focus {
   outline: none;
@@ -23,6 +24,10 @@ html, body {
 
 ul, ol {
   list-style-type: none; }
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse; }
 
 @-moz-document url-prefix() {
   [layout-fill] {
@@ -8417,6 +8422,7 @@ ul, ol {
   --critical-hover: #fa5252;
   --critical-active: #c92a2a;
   --critical-disabled: #ff8787;
+  --code: #4c6ef5;
   --primary: #4c6ef5;
   --primary-hover: #5c7cfa;
   --primary-active: #364fc7;
@@ -9671,7 +9677,27 @@ ul, ol {
 @font-face {
   font-family: NunitoSans;
   src: url("/fonts/NunitoSans-Bold.ttf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: NunitoSans;
+  src: url("/fonts/NunitoSans-Regular.ttf");
   font-weight: normal; }
+
+@font-face {
+  font-family: NunitoSans;
+  src: url("/fonts/NunitoSans-Bold.ttf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: Cascadia;
+  src: url("/fonts/Cascadia.ttf");
+  font-weight: normal; }
+
+@font-face {
+  font-family: Cascadia;
+  src: url("/fonts/Cascadia.ttf");
+  font-weight: bold; }
 
 body {
   font-family: var(--font-family-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -9705,26 +9731,79 @@ p {
 small {
   font-size: var(--font-xs); }
 
+pre, code {
+  font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: var(--font-s);
+  color: var(--code); }
+
 article h1, .article h1 {
+  margin-top: var(--text-spacing-xxl);
   margin-bottom: var(--text-spacing-xxl); }
 
 article h2, .article h2 {
+  margin-top: var(--text-spacing-xxl);
   margin-bottom: var(--text-spacing-xl); }
 
 article h3, .article h3 {
+  margin-top: var(--text-spacing-xxl);
   margin-bottom: var(--text-spacing-l); }
 
 article h4, .article h4 {
+  margin-top: var(--text-spacing-xxl);
   margin-bottom: var(--text-spacing-m); }
 
 article h5, .article h5 {
+  margin-top: var(--text-spacing-xxl);
   margin-bottom: var(--text-spacing-s); }
 
 article h6, .article h6 {
+  margin-top: var(--text-spacing-xxl);
   margin-bottom: var(--text-spacing-xs); }
 
-article p, .article p {
+article p, article ol, article ul, article table, article pre, .article p, .article ol, .article ul, .article table, .article pre {
   margin-bottom: var(--text-spacing-s); }
+
+article pre, .article pre {
+  background: var(--lightest-gray);
+  padding: var(--text-spacing-s); }
+
+article ul, .article ul {
+  list-style-type: disc; }
+  article ul ul, .article ul ul {
+    list-style-type: square; }
+    article ul ul ul, .article ul ul ul {
+      list-style-type: circle; }
+      article ul ul ul ul, .article ul ul ul ul {
+        list-style-type: square; }
+        article ul ul ul ul ul, .article ul ul ul ul ul {
+          list-style-type: disc; }
+          article ul ul ul ul ul ul, .article ul ul ul ul ul ul {
+            list-style-type: square; }
+            article ul ul ul ul ul ul ul, .article ul ul ul ul ul ul ul {
+              list-style-type: circle; }
+  article ul li, .article ul li {
+    margin-left: 20px; }
+
+article ol, .article ol {
+  list-style-type: decimal; }
+  article ol ol, .article ol ol {
+    list-style-type: upper-alpha; }
+    article ol ol ol, .article ol ol ol {
+      list-style-type: upper-roman; }
+      article ol ol ol ol, .article ol ol ol ol {
+        list-style-type: lower-alpha; }
+        article ol ol ol ol ol, .article ol ol ol ol ol {
+          list-style-type: lower-roman; }
+          article ol ol ol ol ol ol, .article ol ol ol ol ol ol {
+            list-style-type: decimal; }
+  article ol li, .article ol li {
+    margin-left: 20px; }
+
+article table th, .article table th {
+  font-weight: bold; }
+
+article table td, article table th, .article table td, .article table th {
+  padding: 2px 6px; }
 
 [ellipsis] {
   text-overflow: ellipsis;
@@ -9878,6 +9957,9 @@ button[type="button"], input[type="button"] {
         fill: var(--icon-color-normal-active); }
         button[type="button"][icon]:focus svg path.match-fill, button[type="button"][icon]:active svg path.match-fill, input[type="button"][icon]:focus svg path.match-fill, input[type="button"][icon]:active svg path.match-fill {
           fill: var(--icon-color-normal-active); }
+
+table[type="standard"] tr, table[type="standard"] td, table[type="standard"] th {
+  border: 1px solid var(--black); }
 
 .table {
   display: table; }

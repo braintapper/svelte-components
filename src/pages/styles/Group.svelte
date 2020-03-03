@@ -4,6 +4,7 @@
   import Colors from "./Colors.svelte"
   import Typography from "./Typography.svelte"
   import Layout from "./Layout.svelte"
+  import Article from "./Article.svelte"
 
 
 
@@ -11,5 +12,6 @@
 <Group title="Styles">
   <Colors/>
   <Typography/>
+  <Article/>
   <Layout/>
 </Group>
