@@ -15,9 +15,10 @@
 </style>
 
 <Section title="Checkbox">
-
-
-
-  <Checkbox bind:checked={checkboxValue}/>
+  <div>CheckboxValue: {checkboxValue}</div>
+  <Checkbox bind:checked={checkboxValue} label="This has a label"/>
+  <Checkbox/>
+  <Checkbox style="margin-bottom: 18px" label="This has a margin style applied"/>
+  <Checkbox/>
 
 </Section>

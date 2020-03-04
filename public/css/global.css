@@ -9802,6 +9802,7 @@ button, input {
         color: var(--dark-gray); }
     button[type="button"][icon], input[type="button"][icon] {
       padding: 0px;
+      font-size: 0px;
       background-color: transparent;
       color: var(--icon-color-normal); }
       button[type="button"][icon] svg, input[type="button"][icon] svg {
