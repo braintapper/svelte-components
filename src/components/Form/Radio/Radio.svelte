@@ -52,6 +52,6 @@
       </svg>
   </button>
   {#if label.length > 0}
-  <label>{label}</label>
+  <label on:click={set}>{label}</label>
   {/if}
 </div>

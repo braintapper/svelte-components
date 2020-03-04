@@ -13,11 +13,11 @@
   <h3>Text Inputs</h3>
   <div>
   <field>
-    <label type="field">Basic Input</label>
+    <label type="field">Field Label</label>
     <input type="text"/>
   </field>
   <field>
-    <label type="disabled">Basic Input</label>
+    <label type="field" disabled>Disabled</label>
     <input type="text" disabled value="disabled"/>
   </field>
   <field>
@@ -32,7 +32,7 @@
   <h3>Textareas</h3>
   <div>
   <h4>Basic</h4>
-  <textarea required/>
+  <textarea rows="10"/>
   <h4>Auto Expanding</h4>
   <Autogrow/>
   </div>
