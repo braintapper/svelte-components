@@ -7,6 +7,7 @@
   import DateInput  from "./DateInput.svelte"
   import DurationInput  from "./DurationInput.svelte"
   import InlineInput  from "./InlineInput.svelte"
+  import SearchInput  from "./SearchInput.svelte"
   import TimeInput  from "./TimeInput.svelte"
   import Checkbox  from "./Checkbox.svelte"
   import Combobox  from "./Combobox.svelte"
@@ -17,6 +18,7 @@
   <Common/>
   <Buttons/>
   <InlineInput/>
+  <SearchInput/>
   <DateInput/>
   <TimeInput/>
   <DurationInput/>

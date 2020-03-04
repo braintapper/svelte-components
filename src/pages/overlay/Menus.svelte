@@ -42,12 +42,12 @@
 
   <div>
     <button type="button" normal on:click={menu1} bind:this={menuRef1}>Text</button>
-    <Menu bind:showMenu={showMenu1} items={menuOptions} on:click={menuClick} {labelKey} {idKey} bind:parent={menuRef1} />
+    <Menu bind:showMenu={showMenu1} items={menuOptions} on:click={menuClick} {labelKey} {idKey} bind:trigger={menuRef1} />
   </div>
 
   <div >
     <button type="button" icon on:click={menu2} bind:this={menuRef2}>{@html CommonIcons["starred"]}</button>
-    <Menu bind:showMenu={showMenu2} items={menuOptions} on:click={menuClick} {labelKey} {idKey} bind:parent={menuRef2} align="right"/>
+    <Menu bind:showMenu={showMenu2} items={menuOptions} on:click={menuClick} {labelKey} {idKey} bind:trigger={menuRef2} align="right"/>
   </div>
 
 

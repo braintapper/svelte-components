@@ -27,11 +27,12 @@
 
   `export let align = "left"`
 
+  # trigger is required
+  `export let trigger = undefined`
 
-  `export let parent = undefined`
-  # if a parent is defined, it maps the width to the parent
+  # if a trigger is defined, it maps the width to the parent
   # and is placed just below it, used for combobox and custom select
-  `export let matchParent = false`
+  `export let matchTrigger = false`
 
 
   style = undefined
@@ -60,22 +61,22 @@
 
 
 
-  checkParent = (i)->
-    if parent?
-      if matchParent
-        style = "width: #{width};top: #{parent.clientHeight + 4}px; width: #{parent.clientWidth + 2}px"
+  checkTrigger = (i)->
+    if trigger?
+      if matchTrigger
+        style = "width: #{width};top: #{trigger.clientHeight + 4}px; width: #{trigger.clientWidth + 2}px"
       else
 
         if align == "left"
-          style = "width: #{width};top: #{parent.clientHeight + 4}px;"
+          style = "width: #{width};top: #{trigger.clientHeight + 4}px;"
         else
-          parentContainerWidth = parent.offsetParent.clientWidth
-          parentCoords = parent.getBoundingClientRect()
-          right = parentContainerWidth  - (parentCoords.width)
-          style = "width: #{width};top: #{parent.clientHeight + 4}px; right: #{right}px"
+          triggerContainerWidth = trigger.offsetParent.clientWidth
+          triggerCoords = trigger.getBoundingClientRect()
+          right = triggerContainerWidth  - (triggerCoords.width)
+          style = "width: #{width};top: #{trigger.clientHeight + 4}px; right: #{right}px"
 
 
-  `$: checkParent(parent)`
+  `$: checkTrigger(trigger)`
 
   menuItemClick = (item, index)->
     `showMenu = false`
@@ -85,9 +86,7 @@
   overlayClick = ()->
     `showMenu = false`
 
-  afterUpdate ()->
-    if parent?
-      console.log parent.getBoundingClientRect()
+
 </script>
 
 

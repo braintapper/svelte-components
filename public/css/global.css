@@ -9979,6 +9979,7 @@ label[type="tag"] {
   --primary-active: var(--darkest-blue);
   --primary-disabled: var(--light-blue);
   --code: var(--primary);
+  --icon-size: 24px;
   --icon-color-normal: var(--black);
   --icon-color-normal-hover: var(--blue);
   --icon-color-normal-active: var(--darker-blue);
