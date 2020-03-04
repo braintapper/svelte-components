@@ -36,7 +36,7 @@
   <h4>Auto Expanding</h4>
   <Autogrow/>
   </div>
-  <h3>Radio Buttons</h3>
+  <h3>Browser Native Radio Buttons</h3>
   <div>
   <input type="radio" id="male" name="gender" value="male">
   <label for="male">Male</label><br>
@@ -45,7 +45,7 @@
   <input type="radio" id="other" name="gender" value="other">
   <label for="other">Other</label>
   </div>
-  <h3>Checkboxes</h3>
+  <h3>Browser Native Checkboxes</h3>
   <div>
   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
   <label for="vehicle1"> I have a bike</label><br>

@@ -1,7 +1,7 @@
 <script lang="coffeescript">
 
   import Section from "../_page_components/Section.svelte"
-  import Icon from "../../components/CssGg/Icon.svelte"
+  import Icon from "../../components/External/CssGg/Icon.svelte"
 
   icons = [
     "abstract"
