@@ -7,7 +7,8 @@ input
 
 // standard
 
-button, input
+// div is for fake buttons
+button, input, div
   font-family: var(--font-family-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
   &[type="button"]
     width: auto
@@ -51,6 +52,20 @@ button, input
       font-size: 0px
       background-color: transparent
       @include icon-color(var(--icon-color-normal))
+
+      height: var(--icon-size)
+      width: var(--icon-size)
+      cursor: pointer
+
+      &[input-left]
+        position: absolute
+        left: 8px
+        top: 4px
+      &[input-right]
+        position: absolute
+        right: 8px
+        top: 4px
+
 
       &:hover, &:active, &:focus, &[disabled="true"], &[disabled="true"]:hover, &[disabled="true"]:focus, &[disabled="true"]:active
         background-color: transparent

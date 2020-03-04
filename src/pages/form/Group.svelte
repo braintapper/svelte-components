@@ -6,6 +6,7 @@
   import Common from "./Common.svelte"
   import DateInput  from "./DateInput.svelte"
   import DurationInput  from "./DurationInput.svelte"
+  import TranslatedInput  from "./TranslatedInput.svelte"
   import InlineInput  from "./InlineInput.svelte"
   import SearchInput  from "./SearchInput.svelte"
   import TimeInput  from "./TimeInput.svelte"
@@ -23,6 +24,7 @@
   <InlineInput/>
   <SearchInput/>
   <DateInput/>
+  <TranslatedInput/>
   <TimeInput/>
   <DurationInput/>
 

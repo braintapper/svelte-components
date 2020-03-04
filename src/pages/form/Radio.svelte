@@ -20,5 +20,4 @@
   <Radio bind:value={radioValue} option="second" label="Second Option"/>
   <Radio bind:value={radioValue} style="margin-bottom: 18px"  option="third" label="This has a margin style applied"/>
   <Radio bind:value={radioValue} option="fourth" label="Fourth Option"/>
-
 </Section>

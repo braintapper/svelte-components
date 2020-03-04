@@ -58,7 +58,7 @@
   <div flex>
     <div picker-container>
     <input type="effortpicker" bind:value={value} on:keyup={debouncedUpdate} maxlength="10" class="effort-picker"/>
-    <label type="input">{HumanEffort.parseHours(value || "").format(2)}h</label>
+    <label type="translated-input">{HumanEffort.parseHours(value || "").format(2)}h</label>
     </div>
   </div>
 </div>

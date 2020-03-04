@@ -195,5 +195,5 @@
 </style>
 <div container>
   <input type="text" bind:value={value} maxlength="10" on:keyup={debouncedUpdate}/>
-  <label type="input">{Date.create(parseTime(value)).format("{HH}:{mm}")}</label>
+  <label type="translated-input">{Date.create(parseTime(value)).format("{HH}:{mm}")}</label>
 </div>
