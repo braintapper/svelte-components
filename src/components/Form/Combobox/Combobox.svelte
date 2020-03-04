@@ -125,7 +125,7 @@
 
 <style lang="sass">
   input
-  
+
     &[invalid="true"]
       color: var(--critical)
 
@@ -200,7 +200,7 @@
       </button>
 
     </listboxfield>
-    <Menu bind:showMenu={showMenu} items={filteredItems} on:click={menuClick} {labelKey} {idKey} bind:blankSlate={blankSlate} bind:parent={comboboxRef}/>
+    <Menu bind:showMenu={showMenu} items={filteredItems} on:click={menuClick} {labelKey} {idKey} bind:blankSlate={blankSlate} bind:parent={inputRef} matchParent={true}/>
     showMenu: {showMenu}
   </div>
 </div>

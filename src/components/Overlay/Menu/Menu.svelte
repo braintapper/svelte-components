@@ -1,7 +1,7 @@
 <script lang="coffeescript">
 
 
-  import { createEventDispatcher } from 'svelte'
+  import { createEventDispatcher, onMount, afterUpdate } from 'svelte'
   import { slide } from 'svelte/transition'
 
 
@@ -10,10 +10,11 @@
   `export let disabled = false`
   `export let id = uuid()`
   `export let items = []`
+  `export let width = '200px'`
 
   `export let selectedIndex = -1`
   `export let size = undefined`
-  `export let style = undefined`
+
 
   `export let value = ""`
   `export let blankSlate = ""`
@@ -24,25 +25,18 @@
 
   `export let showMenu = false`
 
+  `export let align = "left"`
+
+
   `export let parent = undefined`
-
-  findLabelForValue = (value)->
-    found = items.find (item)->
-      item[idKey] == value
-    if found?
-      return found[labelKey]
-    else
-      return ""
-
-  inputValue = findLabelForValue(value)
+  # if a parent is defined, it maps the width to the parent
+  # and is placed just below it, used for combobox and custom select
+  `export let matchParent = false`
 
 
-
-
+  style = undefined
 
   menuRef = undefined
-
-
 
   hasfocus = false
 
@@ -59,32 +53,41 @@
 
 
 
+  menuId = uuid()
+
+  onMount ()->
+    console.log "parent, mounted"
 
 
+
+  checkParent = (i)->
+    if parent?
+      if matchParent
+        style = "width: #{width};top: #{parent.clientHeight + 4}px; width: #{parent.clientWidth + 2}px"
+      else
+
+        if align == "left"
+          style = "width: #{width};top: #{parent.clientHeight + 4}px;"
+        else
+          parentContainerWidth = parent.offsetParent.clientWidth
+          parentCoords = parent.getBoundingClientRect()
+          right = parentContainerWidth  - (parentCoords.width)
+          style = "width: #{width};top: #{parent.clientHeight + 4}px; right: #{right}px"
+
+
+  `$: checkParent(parent)`
 
   menuItemClick = (item, index)->
     `showMenu = false`
     dispatch "click", item
 
-  menuId = uuid()
 
-  bodyClick = (event) ->
-    console.log "bodyclick"
-    console.log event.target
-    console.log "parent.contains(event.target): #{parent.contains(event.target)}"
+  overlayClick = ()->
+    `showMenu = false`
+
+  afterUpdate ()->
     if parent?
-      console.log parent.contains?
-
-      unless parent.contains(event.target)
-        console.log "parent blur"
-        `showMenu = false`
-    else
-      if menuRef
-        unless menuRef.contains(event.target)
-          console.log "menu blur"
-          `showMenu = false`
-
-
+      console.log parent.getBoundingClientRect()
 </script>
 
 
@@ -93,28 +96,31 @@
 
   div[menu]
     position: absolute
+
     background: white
     display: inline-block
-    border: 1px solid black
+    border: 1px solid var(--menu-border)
     width: auto
-    margin: 6px
     text-align: left
-    z-index: 100
+    z-index: var(--z-index-menu)
+    &[align="left"]
+      left: 0
+
 
   [menu-item]
     display: block
     position: relative
     width: 100%
-    padding: 8px 16px
+    padding: var(--fine-spacing-s) var(--fine-spacing-m)
     &:hover
       background: var(--lighter-gray)
 
 
 
 </style>
-<svelte:body on:click={bodyClick} />
+<div type="overlay" clear open={showMenu} on:click={overlayClick}/>
 {#if showMenu}
-  <div bind:this={menuRef} menu id={menuId} transition:slide="{{duration: 75}}">
+  <div bind:this={menuRef} menu id={menuId} transition:slide="{{duration: 75}}" {style} {align}>
     {#each items as item, i (item.id || i)}
       <button menu-item id={item[idKey]} active={selectedIndex === i} highlighted={highlightedIndex === i || selectedIndex === i} on:click={menuItemClick(item,i)}>
         {item[labelKey]}

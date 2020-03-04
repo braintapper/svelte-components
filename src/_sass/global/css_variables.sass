@@ -57,7 +57,26 @@
 
 
   // these build on existing colors
+
+  --input-border: var(--light-gray)
+  --menu-border: var(--light-gray)
   --box-shadow: var(--light-gray)
+
+
+  --tooltip-bg: var(--black)
+  --tooltip-bg-opacity: 1
+  --tooltip-fg: var(--white)
+
+  --overlay: var(--black)
+  --overlay-opacity: 0.25
+
+
+  // z-index
+
+  --z-index-overlay: 9
+  --z-index-menu: 10
+  --z-index-tooltip: 90
+  --z-index-modal: 1000
 
   // state colors
   --critical: var(--dark-red)
@@ -147,6 +166,9 @@
   --corner-m: 4px
   --corner-l: 6px
   --corner-circle: 100%
+
+
+
 
 
   --breakpoint-min: #{$breakpoint-min}

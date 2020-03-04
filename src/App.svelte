@@ -21,6 +21,7 @@
   import Icons from './pages/icons/Group.svelte'
   import Css from './pages/css/Group.svelte'
   import Layout from './pages/layout/Group.svelte'
+  import Navigation from './pages/navigation/Group.svelte'
 
   pages = [
     {
@@ -64,6 +65,13 @@
       text: "Layout"
       context: "layout"
       component: Layout
+    }
+    {
+      ordinal: 6
+      url: "/navigation"
+      text: "Navigation"
+      context: "navigation"
+      component: Navigation
     }
   ]
 

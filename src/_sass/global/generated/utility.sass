@@ -22,8 +22,21 @@
 [show="false!"], [hide="true!"]
   display: none !important
 
-
-
+// overlay
+[type="overlay"]
+  display: none
+  height: 100%
+  width: 100%
+  position: fixed
+  z-index: var(--z-index-overlay)
+  top: 0
+  left: 0
+  background-color: var(--overlay)
+  opacity: var(--overlay-opacity)
+  &[clear]
+    background-color: transparent
+  &[open="true"]
+    display: block
 
 // horizontal and vertical centering
 

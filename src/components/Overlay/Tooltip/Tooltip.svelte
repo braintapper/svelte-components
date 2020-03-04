@@ -1,61 +1,8 @@
 <script lang="coffeescript">
 
-  # todo: inject menu width ul[role=menu] or maybe use a class , narrow, medium, wide
+  # todo: make the positioning "smart"
 
-
-  import { createEventDispatcher, setContext, afterUpdate } from 'svelte'
-  import { slide } from 'svelte/transition'
-  import { writable } from 'svelte/store'
-
-  `export let direction = 'bottom'`
-  `export let flipped = false`
-  `export let id = uuid()`
-  `export let style = undefined`
-  `export let tabindex = '0'`
-
-  dispatch = createEventDispatcher();
-
-  show = false
-
-  triggerRef = undefined
-  buttonWidth = undefined
-  tooltipRef = undefined
-
-  showTooltip = () ->
-    show = true
-
-
-  hideTooltip = () ->
-    show = false
-
-
-  onKeydown = (event) ->
-    if (event.key == 'Escape')
-      event.stopPropagation()
-      show = false
-
-  afterUpdate () ->
-
-    if show
-      width = triggerRef.getBoundingClientRect().width
-      height = triggerRef.getBoundingClientRect().height
-
-      buttonWidth = width
-
-      offsetX = 0
-      offsetY = 0
-
-      if (flipped)
-        tooltipRef.style.left = 'auto'
-        tooltipRef.style.right = 0
-
-
-      if (direction == 'top')
-        tooltipRef.style.top = 'auto'
-        tooltipRef.style.bottom = height + 'px'
-
-
-  `$: ariaLabel = $$props['aria-label'] || 'menu'`
+  `export let position = undefined`
 
 </script>
 <style lang="sass">
@@ -64,7 +11,7 @@
     display: inline-block
     position: relative
     width: auto
-
+    border: 1px solid black
 
   [role=tooltip]
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3)
@@ -85,7 +32,9 @@
     text-align: left
     font-size: 12px
     line-height: 18px
-
+    display: none
+    &[open="true"]
+      display: block
     &::after
       content: ''
       position: absolute
@@ -118,24 +67,62 @@
       width: 0.375rem
 
 
+  .tooltip
+    position: relative
+    display: inline-block
+
+    .tooltiptext
+      font-size: var(--font-xs)
+      padding: var(--font-xs)
+      visibility: hidden
+      width: 120px
+      background-color: var(--tooltip-bg)
+
+      color: var(--tooltip-fg)
+      border-radius: var(--corner-s)
+
+      position: absolute
+      z-index: var(--z-index-tooltip)
+      bottom: 125%
+      left: 50%
+      margin-left: -60px
+      opacity: 0
+      transition: opacity 0.3s
+      &[position="right"]
+        top: -5px
+        left: 105%
+      &[position="left"]
+        top: -5px
+        right: 105%
+      &[position="top"]
+        width: 120px
+        bottom: 100%
+        left: 50%
+        margin-left: -60px //* Use half of the width (120/2 = 60), to center the tooltip */
+      &[position="bottom"]
+        width: 120px
+        top: 100%
+        left: 50%
+        margin-left: -60px //* Use half of the width (120/2 = 60), to center the tooltip */
+      &::after
+        content: ""
+        position: absolute
+        top: 100%
+        left: 50%
+        margin-left: -5px
+        border-width: 5px
+        border-style: solid
+        border-color: var(--tooltip-bg) transparent transparent transparent
+
+
+
+    &:hover .tooltiptext
+      visibility: visible
+      opacity: var(--tooltip-bg-opacity)
 
 </style>
 
-
-<div tooltipcontainer {style} {id}>
-  <div bind:this={triggerRef} on:mouseover={showTooltip} on:mouseout={hideTooltip} on:click={hideTooltip} on:blur={hideTooltip} on:keydown={onKeydown}>
-    <slot/>
-  </div>
-{#if show}
-  <div
-    bind:this={tooltipRef}
-    {id}
-    role="tooltip"
-    aria-label={ariaLabel}
-    data-floating-menu-direction={direction}
-    transition:slide="{{duration: 75}}"
-    >
-    <slot name="tip"/>
-  </div>
-{/if}
+<div class="tooltip">
+  <slot/>
+  <span class="tooltiptext"><slot name="tip"/></span>
 </div>

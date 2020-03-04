@@ -10,6 +10,7 @@
   import TimeInput  from "./TimeInput.svelte"
   import Checkbox  from "./Checkbox.svelte"
   import Combobox  from "./Combobox.svelte"
+  import Select  from "./Select.svelte"
 
 </script>
 <Group title="Form">
@@ -20,5 +21,6 @@
   <TimeInput/>
   <DurationInput/>
   <Checkbox/>
+  <Select/>
   <Combobox/>
 </Group>

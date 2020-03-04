@@ -2,11 +2,10 @@
 
 //  todo: validation states
 
-textarea, input
-  font-family:
+textarea, input, select, button[type="select"]
   border-radius: var(--corner-s)
   padding: var(--fine-spacing-s) var(--fine-spacing-m)
-  border: 1px solid var(--light-gray)
+  border: 1px solid var(--input-border)
   font-family: var(--font-family-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
   font-size: var(--font-s)
   width: 100%
@@ -15,8 +14,12 @@ textarea, input
   &[disabled]
     color: var(--dark-gray)
 
+
+  option
+    padding: var(--fine-spacing-s) var(--fine-spacing-m)
+    font-size: var(--font-s)
+
+
 field
   display: block
   margin: var(--fine-spacing-l) 0px
-
-  

@@ -6,6 +6,8 @@
 
   import CommonIcons from "../../helpers/icons/common.js"
 
+  import Sidenav from "../../components/Navigation/Sidenav/Sidenav.svelte"
+
   menuOptions = [
     { id: 1, value: "test1", label: "Label 1", icon: "1"}
     { id: 2, value: "test2", label: "Label 2", icon: "2"}
@@ -20,11 +22,16 @@
   labelKey = "label"
   idKey = "value"
 
-  showMenu1 = false
+  position = "left"
+
+  showNav = false
   showMenu2 = false
 
-  menu1 = ()->
-    showMenu1 = true
+  togglenav = () ->
+    showNav = !showNav
+
+  hideNav = ()->
+    showNav = false
 
   menu2 = ()->
     showMenu2 = true
@@ -37,18 +44,31 @@
   menuRef2 = undefined
 
 </script>
-<Section title="Menus">
+<style>
 
-
+</style>
+<Section title="Sidenav">
   <div>
-    <button type="button" normal on:click={menu1} bind:this={menuRef1}>Text</button>
-    <Menu bind:showMenu={showMenu1} items={menuOptions} on:click={menuClick} {labelKey} {idKey} bind:parent={menuRef1} />
+    <select bind:value={position}>
+      <option value="left">Left</option>
+      <option value="right">Right</option>
+    </select>
   </div>
 
-  <div >
-    <button type="button" icon on:click={menu2} bind:this={menuRef2}>{@html CommonIcons["starred"]}</button>
-    <Menu bind:showMenu={showMenu2} items={menuOptions} on:click={menuClick} {labelKey} {idKey} bind:parent={menuRef2} align="right"/>
+  <div bind:this={menuRef1}>
+    <button type="button" normal on:click={togglenav}>Toggle</button>
+    <div>{showNav}</div>
+
   </div>
+
 
 
 </Section>
+
+<Sidenav bind:open={showNav} {position}>
+  <p><a href="javascript:void(0)" class="closebtn" on:click={togglenav()}>&times;</a></p>
+  <p><a href="#">About</a></p>
+  <p><a href="#">Services</a></p>
+  <p><a href="#">Clients</a></p>
+  <p><a href="#">Contact</a></p>
+</Sidenav>
