@@ -20,7 +20,7 @@
   <header>
     <h1>{title}</h1>
   </header>
-  <article>
+  <article type="content">
     <slot/>
   </article>
   <footer>
