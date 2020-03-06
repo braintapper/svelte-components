@@ -1,0 +1,35 @@
+.CodeMirror {
+  width: 100%;
+  height: auto;
+  --margin-left: 60px;
+  margin-left: calc(var(--margin-left)  * -1); }
+  .CodeMirror .CodeMirror-lines {
+    padding: 12px 0px;
+    background: var(--lightest-gray);
+    border: 1px solid var(--light-gray); }
+    .CodeMirror .CodeMirror-lines .CodeMirror-line, .CodeMirror .CodeMirror-lines .CodeMirror-linenumber {
+      padding-top: 2px;
+      padding-bottom: 2px; }
+    .CodeMirror .CodeMirror-lines .CodeMirror-line {
+      padding-left: 16px;
+      padding-right: 16px; }
+
+.CodeMirror-linenumber {
+  color: var(--gray); }
+
+.CodeMirror-gutter-wrapper {
+  left: -42px !important; }
+
+.CodeMirror-gutters {
+  background: transparent;
+  width: var(--margin-left); }
+
+.CodeMirror, .CodeMirror pre.CodeMirror-line, .CodeMirror pre.CodeMirror-line-like {
+  font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: var(--font-s);
+  font-weight: var(--normal);
+  color: var(--dark-gray); }
+
+.CodeMirror-sizer {
+  padding-left: 1px;
+  margin-left: var(--margin-left) !important; }

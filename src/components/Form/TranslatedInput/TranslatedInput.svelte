@@ -1,10 +1,8 @@
 <script lang="coffeescript">
-  # dependent on Sugar
+
   import { onMount, afterUpdate, createEventDispatcher } from 'svelte'
 
-
   `export let value = ''`
-  `export let translatedValue = ''`
   `export let maxlength = 50`
   `export let translateFn = (val) => { return (val || "empty").toUpperCase() }`
   `export let validateFn = (val) => { return true }`
@@ -19,11 +17,7 @@
 
 
   change = (e)->
-    console.log "debounced change"
     dispatch "change", { value: value, translatedValue: translatedValue }
-
-  debouncedUpdate = change.debounce(250)
-
 
   afterUpdate ()->
 
@@ -38,12 +32,33 @@
 
 </script>
 <style lang="sass">
+  // appears inside a text type of input on the right side
+  // remember to add right padding on the input manually
 
-
+  label[type="translated-input"]
+    position: absolute
+    right: 0px
+    top: 0px
+    margin-top: 7px
+    margin-right: 8px
+    padding: 2px 6px
+    font-size: var(--font-xs)
+    font-weight: var(--font-bold)
+    color: var(--white)
+    background: var(--blue)
+    border-radius: var(--corner-s)
+    &[state=empty],&[state=neutral]
+      background: var(--neutral)
+    &[state="ok"]
+      background: var(--ok)
+    &[state=critical]
+      background: var(--critical)
+    &[state=warning]
+      background: var(--warning)
 
 
 </style>
-<div container>
-  <input type="text" bind:value={value} on:keyup={debouncedUpdate} {style} {maxlength} {valid}/>
+<div>
+  <input type="text" bind:value={value} on:keyup={change} on:change={change} {style} {maxlength} invalid={!valid}/>
   <label bind:this={labelRef} type="translated-input" {state}>{translatedValue}</label>
 </div>

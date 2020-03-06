@@ -22,6 +22,7 @@
   import Css from './pages/css/Group.svelte'
   import Layout from './pages/layout/Group.svelte'
   import Navigation from './pages/navigation/Group.svelte'
+  import External from './pages/external/Group.svelte'
 
   pages = [
     {
@@ -72,6 +73,13 @@
       text: "Navigation"
       context: "navigation"
       component: Navigation
+    }
+    {
+      ordinal: 7
+      url: "/external"
+      text: "External"
+      context: "external"
+      component: External
     }
   ]
 

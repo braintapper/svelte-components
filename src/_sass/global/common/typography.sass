@@ -16,7 +16,7 @@ h5
   font-size: var(--font-s)
 h6
   font-size: var(--font-xs)
-  text-transform: uppercase
+
 p
   font-size: var(--font-s)
 small
@@ -25,6 +25,7 @@ pre, code
   font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace
   font-size: var(--font-s)
   color: var(--code)
+
 
 
 // encapsulate "body" text in content type articles
@@ -48,6 +49,8 @@ pre, code
   h6
     margin-top: var(--text-spacing-xxl)
     margin-bottom: var(--text-spacing-xs)
+    text-transform: uppercase
+
   p, ol, ul, table, pre, blockquote
     margin-bottom: var(--text-spacing-s)
 
@@ -62,32 +65,32 @@ pre, code
   ul
     list-style-type: disc
     ul
-      list-style-type: square
+      list-style-type: circle
       ul
-        list-style-type: circle
+        list-style-type: disc
         ul
-          list-style-type: square
+          list-style-type: circle
           ul
             list-style-type: disc
             ul
-              list-style-type: square
+              list-style-type: circle
               ul
-                list-style-type: circle
+                list-style-type: disc
     li
       margin-left: var(--spacing-xs)
 
   ol
     list-style-type: decimal
     ol
-      list-style-type: upper-alpha
+      list-style-type: lower-alpha
       ol
-        list-style-type: upper-roman
+        list-style-type: lower-roman
         ol
-          list-style-type: lower-alpha
+          list-style-type: decimal
           ol
-            list-style-type: lower-roman
+            list-style-type: lower-alpha
             ol
-              list-style-type: decimal
+              list-style-type: lower-roman
     li
       margin-left: var(--spacing-s)
 
@@ -96,7 +99,8 @@ pre, code
       font-weight: bold
     td, th
       padding: var(--fine-spacing-xxs) var(--fine-spacing-s)
-
+    tr, td, th
+      border: 1px solid var(--black)
 // general formats
 
 // ellipsis usually needs two containers to work
@@ -105,13 +109,6 @@ pre, code
   text-overflow: ellipsis
   overflow: hidden
   white-space: nowrap
-
-// strikethrough
-.strike, .strikethrough
-  text-decoration: line-through
-
-[break-word]
-  word-wrap: break-word
 
 // text alignment
 
@@ -141,7 +138,3 @@ pre, code
   vertical-align: middle !important
 [va="b!"]
   vertical-align: bottom !important
-
-// fix spacing problems for inline-blocks
-.zerofont
-  font-size: 0px

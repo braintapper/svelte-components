@@ -1,0 +1,65 @@
+.CodeMirror.cm-s-solver.CodeMirror-wrap .CodeMirror-lines > [role="presentation"] {
+  margin-right: 200px; }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .CodeMirror {
+  margin-left: calc(var(--margin-left)  * -1);
+  width: 600px;
+  font-family: var(--font-family-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+  font-size: var(--font-s);
+  line-height: 28px; }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .CodeMirror-lines {
+  padding: 12px 0px;
+  background: var(--lightest-gray);
+  border: 1px solid var(--light-gray); }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .CodeMirror-scroll {
+  height: auto;
+  overflow-y: hidden;
+  overflow-x: auto; }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .CodeMirror-gutters {
+  background: transparent;
+  width: var(--margin-left);
+  left: 0 !important; }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .CodeMirror-cursor {
+  height: 18px; }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .CodeMirror-rightbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  border-left: 1px solid #EEE;
+  width: 200px;
+  height: 100%;
+  padding: 12px 0px; }
+  .CodeMirror.cm-s-solver.CodeMirror-wrap .CodeMirror-rightbar pre {
+    border-radius: 0px;
+    height: 21px;
+    padding: 2px 16px;
+    margin: 0px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .CodeMirror-rightbar-text {
+  color: #000;
+  background: var(--yellow);
+  text-align: left;
+  padding: .4em .2em .4em .4em;
+  white-space: pre !important; }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .cm-number {
+  color: #2c773f; }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .cm-op {
+  color: #00629b; }
+
+.CodeMirror.cm-s-solver.CodeMirror-wrap .cm-unit {
+  color: #9117b4; }

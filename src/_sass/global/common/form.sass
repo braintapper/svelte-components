@@ -1,5 +1,3 @@
-
-
 //  todo: validation states
 
 textarea, input, select, button[type="select"]
@@ -23,3 +21,11 @@ textarea, input, select, button[type="select"]
 field
   display: block
   margin: var(--fine-spacing-l) 0px
+
+aside[type="field"], field aside
+  display: inline-block
+  font-size: var(--font-xs)
+  margin: var(--fine-spacing-xs) var(--fine-spacing-0)
+  color: var(--neutral)
+  &[required], &[invalid="true"], &[critical]
+    color: var(--critical)

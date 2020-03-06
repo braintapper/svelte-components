@@ -1,21 +1,24 @@
 <script lang="coffeescript">
-  # dependent on Sugar
-  import { onMount, afterUpdate, createEventDispatcher } from 'svelte'
+  import { createEventDispatcher } from 'svelte'
+
+  import TranslatedInput from './TranslatedInput.svelte'
 
   `export let seconds = false`
-  `export let value = 8`
+  `export let value = 0`
+
   dispatch = createEventDispatcher()
 
-  update = (e)->
-    console.log "change"
-
-    dispatch "change", {
+  change = (e)->
+    event =
       inputString: value
       timeString: Date.create(parseTime(value)).format("{HH}:{mm}") # 24h clock
       dateValue: Date.create(parseTime(value))
-    }
+    dispatch "change", event
 
-  debouncedUpdate = update.debounce(500)
+
+
+
+  debouncedChange = change.debounce(500)
   normalize = ->
 
     if arguments.length == 1
@@ -184,16 +187,21 @@
 
 
 
+  translateFn = (val)->
+    return Date.create(parseTime(value)).format("{HH}:{mm}")
+
+  validateFn = (val)->
+    if val.length == 0
+      return false
+    else
+      return true
+      
+  stateFn = (val)->
+    if val.length == 0
+      return "empty"
+    else
+      return "ok"
+
 </script>
-<style lang="sass">
 
-  [container]
-    position: relative
-    width: 100%
-
-
-</style>
-<div container>
-  <input type="text" bind:value={value} maxlength="10" on:keyup={debouncedUpdate}/>
-  <label type="translated-input">{Date.create(parseTime(value)).format("{HH}:{mm}")}</label>
-</div>
+<TranslatedInput bind:value={value} maxlength="7" {translateFn} {validateFn} {stateFn} on:change={debouncedChange}/>

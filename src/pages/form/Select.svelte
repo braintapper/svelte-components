@@ -3,7 +3,7 @@
   import Section from "../_page_components/Section.svelte"
 
   import Select from "../../components/Form/Select/Select.svelte"
-
+  import Combobox from "../../components/Form/Select/Combobox.svelte"
 
   inputOptions = [
     { id: 1, value: "test1", label: "Label 1", icon: "1"}
@@ -26,17 +26,16 @@
 
 </style>
 
-<Section title="Select">
+<Section title="Selection Types">
 
-
-
-  <Select items={inputOptions} bind:value={value}/>
-
-
-  <div>
-    &lt;ComboBox bind:value=&#123;item.data.mode&#125; items=&#123;comboBoxItems&#125; on:change=&#123;comboBoxUpdated&#125; /&gt;
-
-  </div>
+  <h3>Select</h3>
+  <field>
+    <Select items={inputOptions} bind:value={value}/>
+  </field>
+  <h3>Combobox/Autocomplete</h3>
+  <field>
+    <Combobox items={inputOptions} bind:value={value}/>
+  </field>
 
 
 </Section>

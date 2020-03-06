@@ -85,7 +85,7 @@
     <div layout="row">
       {#each shades[color] as colorCode, index}
           <swatch-container>
-            <swatch bg="{prefixes[index].length == 0 ? "" : prefixes[index] + "-"}{color}">
+            <swatch style="background: var(--{prefixes[index].length == 0 ? "" : prefixes[index] + "-"}{color})">
                 <swatch-info>
                 <h1>{prefixes[index].titleize()}</h1>
                 <h1>{color.titleize()}</h1>

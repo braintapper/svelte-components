@@ -8,6 +8,10 @@
 .CodeMirror.cm-s-hypermd-light
   height: auto
 
+  // override codemirror's global css
+  pre.CodeMirror-line
+    font-family: var(--font-family-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important
+    font-size: var(--font-s)
 
   .CodeMirror-gutters
     // this is required for proper folding (override CodeMirror defaults)
@@ -15,7 +19,7 @@
       width: 60px
 
   .CodeMirror-gutter-wrapper
-    left: -18px !important
+    left: -24px !important
 
     .CodeMirror-foldgutter-open, .CodeMirror-foldgutter-folded
       position: relative
@@ -23,7 +27,7 @@
 
 
   .CodeMirror-lines
-    background: #ffff
+    background: var(--white)
     border: none
 
 
@@ -104,8 +108,8 @@
   font-weight: normal
   font-style: normal
 
-.cm-s-hypermd-light
-  font-family: -apple-system, BlinkMacSystemFont, "Nunito Sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Noto Sans CJK SC", "Microsoft YaHei", STHeiti, "Microsoft Jhenghei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important
+.CodeMirror.cm-s-hypermd-light
+  font-family: var(--font-family-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important
   -webkit-font-smoothing: antialiased
   line-height: 1.5
   font-size: 12pt
@@ -113,30 +117,30 @@
   color: #000
 
   .hmd-fold-html-stub, .hmd-fold-code-stub, &.CodeMirror div.HyperMD-hover > .HyperMD-hover-content code, pre.HyperMD-table-row span.cm-hmd-table-sep
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
+    font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace
 
   span
     &.cm-formatting-hashtag, &.cm-inline-code
-      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
+      font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important
 
   // codeblock within HMD - to match Codemirror
   pre.HyperMD-codeblock
-    font-family: monospace
+    font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important
     font-size: 13px
 
   span
     &.cm-formatting-task, &.cm-hmd-indent-in-quote
-      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
+      font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important
 
   pre.HyperMD-hr
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
+    font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important
 
   span
     &.cm-hmd-frontmatter, &.cm-hmd-orgmode-markup, &.cm-formatting-em, &.cm-formatting-strong, &.cm-formatting-strikethrough, &.cm-formatting-code, &.cm-formatting-link, &.cm-formatting-image, &.cm-url, &.cm-math, &.hmd-fold-math-placeholder
-      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
+      font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important
 
   .CodeMirror-linewidget kbd, .hmd-fold-html kbd
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
+    font-family: var(--font-family-monospace), "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important
 
   .CodeMirror-linewidget table, .hmd-fold-html table
     border-collapse: collapse
@@ -300,16 +304,19 @@
       > span > span:first-child
         margin-left: 0 !important
 
+
+      // heading styles
       &.HyperMD-header-1
-        font-weight: 600
-        font-size: 24pt
+        font-weight: var(--bold)
+        font-size: var(--font-xxl)
 
       &.HyperMD-header-2
-        font-weight: 600
-        font-size: 18pt
+        font-weight: var(--bold)
+        font-size: var(--font-xl)
 
       &.HyperMD-header-3
-        font-size: 14.4pt
+        font-weight: var(--bold)
+        font-size: var(--font-l)
 
     &.HyperMD-header-line
       color: rgba(0, 0, 0, 0.3)
@@ -594,7 +601,7 @@
     &.HyperMD-codeblock
       padding: 3px 8px
       line-height: 1.2
-      color: #000 // match codemirror
+      color: var(--black)
 
       span.cm-inline-code
         display: inherit
@@ -620,24 +627,24 @@
     &.HyperMD-codeblock-bg
       left: 0px
       right: 0px
-      background-color: #eeeeee // to match codemirror
-      border-left: 1px solid #ddd // to match codemirror
-      border-right: 1px solid #ddd // to match codemirror
+      background-color: var(--lightest-gray)
+      border-left: 1px solid var(--light-gray)
+      border-right: 1px solid var(--light-gray)
 
 
 
     &.HyperMD-codeblock-begin-bg
-      border-top: 1px solid #ddd // to match codemirror
+      border-top: 1px solid var(--light-gray) // to match codemirror
       //border-top-left-radius: 4px
       //border-top-right-radius: 4px
 
     &.HyperMD-codeblock-end-bg
-      border-bottom: 1px solid #ddd // to match codemirror
+      border-bottom: 1px solid var(--light-gray) // to match codemirror
       //border-bottom-left-radius: 4px
       //border-bottom-right-radius: 4px
 
     &.HyperMD-codeblock-begin-bg, &.HyperMD-codeblock-end-bg
-      background-color: #eee // to match codemirror
+      background-color: var(--lightest-gray) // to match codemirror
 
   .cm-formatting-link + .cm-formatting-link-string
     display: inline-block
@@ -731,7 +738,7 @@
       margin-top: -0.2em
 
     &.cm-inline-code
-      color: #922
+      color: var(--black)
       font-size: 90%
 
       &:not(.cm-formatting):not(.cm-hmd-indented-code)
@@ -745,9 +752,8 @@
         font-size: 0
 
     &.cm-hashtag
-      background-color: #999
-      background-color: rgba(0, 0, 0, 0.3)
-      color: #FFF
+      background-color: var(--blue)
+      color: var(--white)
       font-size: 0.84em
       display: inline-block
       vertical-align: middle

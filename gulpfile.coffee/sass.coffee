@@ -8,7 +8,13 @@ destinationPath = "./public/css"
 module.exports = ()->
   console.log sourcePath
   console.log destinationPath
-  gulp.src(sourcePath).pipe(sass({indentedSyntax: true}).on('error', sass.logError)).pipe(gulp.dest(destinationPath))
+
+
+  gulp.src("src/_sass/*.sass").pipe(sass({indentedSyntax: true}).on('error', sass.logError)).pipe(gulp.dest(destinationPath))
+
+  gulp.src("src/_sass/vendor/**/*.sass").pipe(sass({indentedSyntax: true}).on('error', sass.logError)).pipe(gulp.dest("#{destinationPath}/vendor/"))
+
+
 
 
 module.exports.watch = watchPath

@@ -134,6 +134,3 @@ on:blur
 </button>
 <Menu bind:showMenu={showMenu} items={items} on:click={menuClick} {labelKey} {idKey} bind:trigger={inputRef} matchTrigger={true}/>
 </div>
-<p> value: [{value}]</p>
-<p> inputValue: [{inputValue}]</p>
-<p>showMenu: {showMenu}</p>
