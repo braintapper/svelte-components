@@ -20,7 +20,11 @@
   <header>
     <h1>{title}</h1>
   </header>
+<<<<<<< HEAD
   <article type="content">
+=======
+<article type="content">
+>>>>>>> 2281ec76cf87920f082cd520700f52d369cb119e
     <slot/>
   </article>
   <footer>

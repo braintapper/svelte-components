@@ -9457,6 +9457,8 @@ label[type="field"] {
   color: var(--primary); }
   label[type="field"][required], label[type="field"][invalid="true"] {
     color: var(--critical); }
+  label[type="field"][disabled] {
+    color: var(--icon-color-normal-disabled); }
 
 label[type="tag"] {
   display: inline-block;
