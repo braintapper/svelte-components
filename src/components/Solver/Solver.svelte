@@ -64,7 +64,7 @@
   wrapper = null
 
   showEditor = ()->
-    console.log "create editor"
+    console.log "create solver"
     textareaRef = document.getElementById(thisUuid)
 
     if codeMirrorInstance?

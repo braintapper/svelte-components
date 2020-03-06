@@ -14,11 +14,7 @@
     <input type="text"/>
   </field>
   <field>
-<<<<<<< HEAD
     <label type="field" disabled>Disabled Input</label>
-=======
-    <label type="field" disabled>Disabled</label>
->>>>>>> 2281ec76cf87920f082cd520700f52d369cb119e
     <input type="text" disabled value="disabled"/>
   </field>
   <field>
@@ -32,15 +28,11 @@
   </div>
   <h2>Text Areas</h2>
   <div>
-<<<<<<< HEAD
+
   <h3>Basic</h3>
   <textarea/>
   <h3 va="m">Auto Expanding <label type="tag" margin-left-xs>Component</label></h3>
-=======
-  <h4>Basic</h4>
-  <textarea rows="10"/>
-  <h4>Auto Expanding</h4>
->>>>>>> 2281ec76cf87920f082cd520700f52d369cb119e
+
   <Autogrow/>
   </div>
   <h2>Browser Native Input Controls</h2>
