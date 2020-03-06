@@ -6,7 +6,9 @@ class ScriptLoader
 
   queue: []
 
-  callbacks: []
+
+
+  callback: null
 
   loaded: []
 
@@ -14,22 +16,14 @@ class ScriptLoader
 
   enqueue: (queue, cb)->
     that = @
-    notRun = queue.exclude (item)->
-      present = that.loaded.includes(item)
-      if present
-        console.log "#{item} is already loaded, not queued"
-      return present
-    @queue.append notRun
+    @queue.append queue
 
-    @callbacks.append cb
+    @callback = cb
 
     unless @isLoading
-      console.log "start queue"
+
       @isLoading = true
       @load()
-
-    else
-      console.log "added items to runing queue"
 
 
   constructor:  (@subscribe, @set, @update, constructor_callback)->
@@ -48,10 +42,10 @@ class ScriptLoader
           that.load()
         else
           that.isLoading = false
-          that.callbacks.forEach (callback)->
-            callback()
 
+          that.callback()
 
+          # todo: need to clear callback as they are run
       itemToLoad = that.queue.shift()
 
       # console.log "item to load: #{ itemToLoad}, #{that.queue.length} items remaining"
@@ -59,7 +53,9 @@ class ScriptLoader
       that.loadItem itemToLoad, cb
 
     @loadItem = (url, cb) ->
+
       unless document.getElementById(url)
+        console.log "queuing #{url}"
         s = document.createElement("script")
         s.setAttribute("type", "text/javascript")
         s.setAttribute("src", url)
@@ -71,7 +67,7 @@ class ScriptLoader
             cb()
         document.body.appendChild(s)
       else
-        # console.warn "skipped #{url}, already loaded"
+        console.warn "skipped #{url}, already loaded"
         cb()
 
 

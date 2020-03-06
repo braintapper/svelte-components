@@ -8,8 +8,7 @@ createLoaderInstance = ()->
   cb = ()->
     console.log "Code mirror modes initialized"
   `const { subscribe, set, update } = writable(null)`
-  dbcb = ()->
-    databaseLoaded.set(true)
+
   return new ScriptLoader(subscribe, set, update, cb)
 
 
