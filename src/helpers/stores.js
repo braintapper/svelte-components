@@ -8,14 +8,11 @@ import {
 import ScriptLoader from "./script_loader.js";
 
 createLoaderInstance = function() {
-  var cb, dbcb;
+  var cb;
   cb = function() {
     return console.log("Code mirror modes initialized");
   };
   const { subscribe, set, update } = writable(null);
-  dbcb = function() {
-    return databaseLoaded.set(true);
-  };
   return new ScriptLoader(subscribe, set, update, cb);
 };
 

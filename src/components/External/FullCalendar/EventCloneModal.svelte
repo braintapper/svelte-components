@@ -1,11 +1,10 @@
 <script lang="coffeescript">
 
   import Modal from "../../Overlay/Modal/ModalGeneric.svelte"
-  import ModalFooterSave from "../../Overlay/Modal/ModalFooterDelete.svelte"
+  import ModalFooterSave from "../../Overlay/Modal/ModalFooterSave.svelte"
   import DatePicker from "../../Date/DatePicker/DatePicker.svelte"
   import EffortPicker from "../../Form/TranslatedInput/DurationInput.svelte"
   import TimeInput from "../../Form/TranslatedInput/TimeInput.svelte"
-
 
 
 
@@ -119,49 +118,80 @@
 
 </script>
 <Modal>
-  <h1 slot="header">Event</h1>
+  <h1 slot="header">Clone Event</h1>
   <div>
+
+    <h1>Event</h1>
     <table>
       <tr>
         <td>Date:</td>
+        <td>{event.extendedProps.dateString}</td>
+      </tr>
+      <tr>
+        <td>Memo</td>
+        <td>{event.title}</td>
+      </tr>
+      <tr>
+        <td>Start Time</td>
+        <td>{event.extendedProps.startTimeString}</td>
+      </tr>
+      <tr>
+        <td>Duration</td>
+        <td>{event.extendedProps.durationString}</td>
+      </tr>
+      <tr>
+        <td>End Time</td>
+        <td>{event.extendedProps.endTimeString}</td>
+      </tr>
+    </table>
+
+    <h1>Clone Options</h1>
+    <table>
+      <tr>
+        <td>Target</td>
+        <td>
+          <select>
+            <option value="">Week Days</option>
+            <option value="">Calendar Days</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Collision Handling</td>
+        <td>
+          <select>
+            <option value="">Skip</option>
+            <option value="">Override*</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Date Range</td>
+        <td>
+          <select>
+            <option value="">End of Week</option>
+            <option value="">End of Month</option>
+            <option value="">Custom</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Start Date</td>
         <td>
           <input type="text" bind:value={event.extendedProps.dateString} on:keyup={dateInputChange}>
           <DatePicker flipped={true} direction="top" on:change={datepickerChange} {calendarDate}>pick</DatePicker>
         </td>
       </tr>
       <tr>
-        <td colspan="2">
-
-        </td>
-      </tr>
-      <tr>
-        <td>Memo</td>
-        <td>
-          <textarea bind:value={event.title}></textarea>
-        </td>
-      </tr>
-      <tr>
-        <td>Start Time*</td>
-        <td>
-          <div><TimeInput on:change={updateStart} bind:value={event.extendedProps.startTimeInputString}/></div>
-        </td>
-      </tr>
-
-      <tr>
-      <tr>
-        <td>Duration</td>
-        <td>
-          <EffortPicker bind:value={event.extendedProps.durationString} on:change={updateDuration}/>
-
-        </td>
-      </tr>
-      <tr>
-        <td>End Time</td>
-        <td>
-          <div><TimeInput on:change={updateEnd} bind:value={event.extendedProps.endTimeInputString}/></div>
-        </td>
+        <td>Iterations</td>
+        <td><input type="number"></td>
       </tr>
     </table>
+
+
+
+
+
   </div>
 
   <div slot="footer">

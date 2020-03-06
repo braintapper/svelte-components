@@ -8385,12 +8385,6 @@ table {
 [shadow="left"] {
   box-shadow: -2px 0px 5px 0px var(--box-shadow); }
 
-[show="false"], [hide="true"], .hidden {
-  display: none; }
-
-[show="false!"], [hide="true!"] {
-  display: none !important; }
-
 [type="overlay"] {
   display: none;
   height: 100%;
@@ -8405,6 +8399,18 @@ table {
     background-color: transparent; }
   [type="overlay"][open="true"] {
     display: block; }
+
+[show] {
+  display: block; }
+
+[show="false"], [hide="true"], .hidden {
+  display: none; }
+
+[show="false!"], [hide="true!"] {
+  display: none !important; }
+
+[show="true!"] {
+  display: block !important; }
 
 [c*="v"] {
   position: relative;
@@ -9205,7 +9211,7 @@ pre, code {
   margin-bottom: var(--text-spacing-xs);
   text-transform: uppercase; }
 
-[type="content"] p, [type="content"] ol, [type="content"] ul, [type="content"] table, [type="content"] pre, [type="content"] blockquote, .content p, .content ol, .content ul, .content table, .content pre, .content blockquote {
+[type="content"] p, [type="content"] ol, [type="content"] ul, [type="content"] table[type], [type="content"] pre, [type="content"] blockquote, .content p, .content ol, .content ul, .content table[type], .content pre, .content blockquote {
   margin-bottom: var(--text-spacing-s); }
 
 [type="content"] blockquote, .content blockquote {
@@ -9249,13 +9255,13 @@ pre, code {
   [type="content"] ol li, .content ol li {
     margin-left: var(--spacing-s); }
 
-[type="content"] table th, .content table th {
+[type="content"] table[type] th, .content table[type] th {
   font-weight: bold; }
 
-[type="content"] table td, [type="content"] table th, .content table td, .content table th {
+[type="content"] table[type] td, [type="content"] table[type] th, .content table[type] td, .content table[type] th {
   padding: var(--fine-spacing-xxs) var(--fine-spacing-s); }
 
-[type="content"] table tr, [type="content"] table td, [type="content"] table th, .content table tr, .content table td, .content table th {
+[type="content"] table[type][type="standard"] tr, [type="content"] table[type][type="standard"] td, [type="content"] table[type][type="standard"] th, .content table[type][type="standard"] tr, .content table[type][type="standard"] td, .content table[type][type="standard"] th {
   border: 1px solid var(--black); }
 
 [ellipsis] {

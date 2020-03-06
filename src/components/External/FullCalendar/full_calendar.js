@@ -1,4 +1,3 @@
-`
 const calendarOptions = [
 	'allDayDefault',
 	'allDayHtml',
@@ -132,4 +131,3 @@ export function getCalendarProps(props) {
 
 	return calendarProps;
 }
-`

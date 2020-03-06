@@ -1,11 +1,19 @@
 <svelte:head>
-  <link rel='stylesheet' href='./css/vendor/hypermd/hypermd-editor.css'>
+
 </svelte:head>
 <script lang="coffeescript">
 
   import uuid from 'uuid'
   import { onMount, afterUpdate, onDestroy } from 'svelte'
-  import { loader } from "../../../helpers/stores.js"
+  import ScriptLoader from "../../../helpers/script_loader.js"
+
+  loader = new ScriptLoader
+
+  import StylesheetLoader from "../../../helpers/stylesheet_loader.js"
+
+  cssLoader = new StylesheetLoader
+
+
 
 
 
@@ -62,8 +70,6 @@
     modePath("yaml")
     modePath("javascript")
     hmdPath("ai1")
-    #"./js/mathjax/MathJax.js"
-    #hmdPath("powerpack/fold-math-with-mathjax")
     hmdPath("marked")
     hmdPath("powerpack/hover-with-marked")
     hmdPath("turndown")
@@ -72,10 +78,12 @@
     hmdPath("emojione")
     hmdPath("powerpack/fold-emoji-with-emojione")
   ]
+    #"./js/mathjax/MathJax.js"
+    #hmdPath("powerpack/fold-math-with-mathjax")
 
-
-
-
+  stylesheets = [
+    './css/vendor/hypermd/hypermd-editor.css'
+  ]
 
 
 
@@ -172,8 +180,8 @@
   onMount ()->
     isMounted = true
 
-    loader.enqueue prereqs, queueCb
-
+    loader.enqueue "hypermd", prereqs, queueCb
+    cssLoader.enqueue stylesheets
 
 
 

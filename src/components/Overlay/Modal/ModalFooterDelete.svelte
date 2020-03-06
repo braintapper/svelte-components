@@ -19,6 +19,6 @@
 
 <div layout="row">
     <div flex="flex">&nbsp;</div>
-    <div flex="initial" a="r"><button on:click="{cancel}" normal >Cancel</button></div>
-    <div flex="initial"><button on:click="{destroy}" normal critical ml="12">Delete</button></div>
+    <div flex="initial" a="r"><button on:click="{cancel}" type="button" normal >Cancel</button></div>
+    <div flex="initial"><button on:click="{destroy}" type="button" normal critical margin-left="s">Delete</button></div>
 </div>

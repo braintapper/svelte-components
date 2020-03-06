@@ -1,21 +1,33 @@
 <script lang="coffeescript">
 
   import uuid from 'uuid'
-  import { onMount, afterUpdate, onDestroy } from 'svelte'
+  import { onMount, beforeUpdate, afterUpdate, onDestroy } from 'svelte'
   import ComboBox from "../../Form/Select/ComboBox.svelte"
 
-  import { loader } from "../../../helpers/stores.js"
+  #import ScriptLoader from "../../../helpers/script_loader.js"
+
+  # loader = new ScriptLoader
+
+  import {loader} from "../../../helpers/stores.js"
+
+  import StylesheetLoader from "../../../helpers/stylesheet_loader.js"
+
+  cssLoader = new StylesheetLoader
 
 
 
-
-  `export let code = "yada"`
+  `export let code = ""`
 
   textareaRef = null
   codeMirrorInstance = null
   thisUuid = "#{uuid()}"
   console.log "thisUuid #{thisUuid}"
   mode = null
+
+
+  modes = [
+    { id: null, label: "No Syntax"}
+  ]
 
 
   # codemirror ---------------------------------
@@ -39,25 +51,31 @@
     modePath("yaml")
     modePath("javascript")
   ]
+  stylesheets = [
+    './css/vendor/codemirror/codemirror.css'
+    './css/vendor/codemirror/foldgutter.css'
+    './css/vendor/codemirror/global-codemirror.css'
+  ]
 
 
   queueCb = ()->
     console.log "cm queue completed"
+
     showEditor()
 
 
 
   codeMirrorConfig =
     lineNumbers: true
-
-
-  b =
-    mode: mode
     readOnly: false
     height: Infinity
     indentWithTabs: false
     tabSize: 2
     indentUnit: 2
+    fixedGutter: true
+    coverGutterNextToScrollbar: true
+
+
 
 
   editorRef = null
@@ -75,6 +93,16 @@
 
     codeMirrorInstance = CodeMirror.fromTextArea textareaRef, codeMirrorConfig
 
+    cmmodes = CodeMirror.modeInfo.map (mode)->
+      return { id: mode.name.toLowerCase(), label: mode.name }
+
+
+    modes = modes.append cmmodes
+
+    console.log modes
+
+
+
 
     # this is required because of CodeMirror idiosyncracy
     # codeMirrorInstance.setOption("value", code)
@@ -89,8 +117,14 @@
     codeMirrorInstance.on 'change', (cm)->
       debouncedUpdate(cm)
 
+    codeMirrorInstance.on 'redraw', (cm)->
+      console.error "redraw"
 
+    codeMirrorInstance.on 'update', (cm)->
+      console.error "update"
 
+    codeMirrorInstance.on 'veiwportChange', (cm)->
+      console.error "veiwportChange"
 
   onMount ()->
     console.log "mount"
@@ -99,42 +133,43 @@
     #textarea.setAttribute("id", thisUuid)
     #editorRef.appendChild(textarea)
     console.log "created element"
-
-    loader.enqueue prereqs, queueCb
-
+    console.log "enqueue"
+    loader.enqueue "codemirror", prereqs, queueCb
+    console.log "..."
+    cssLoader.enqueue stylesheets
 
 
   loadMode = (modeName, cb) ->
     that = @
     switch modeName
       when "dart"
-        loader.queue append [modePath("clike")]
+        loader.enqueue [modePath("clike")]
       when "django"
-        loader.queue append [modePath("htmlmixed")]
+        loader.enqueue [modePath("htmlmixed")]
       when "dockerfile", "factor","nsis","rust"
-        loader.queue append [addonPath("mode/simple")]
+        loader.enqueue [addonPath("mode/simple")]
       when "haml","slim"
-        loader.queue append [modePath("htmlmixed"), modePath("ruby")]
+        loader.enqueue [modePath("htmlmixed"), modePath("ruby")]
       when "handlebars"
-        loader.queue append [addonPath("mode/simple"), addonPath("mode/multiplex")]
+        loader.enqueue [addonPath("mode/simple"), addonPath("mode/multiplex")]
       when "haskell-literate"
-        loader.queue append [modePath("haskell")]
+        loader.enqueue [modePath("haskell")]
       when "htmlembedded"
-        loader.queue append [modePath("htmlmixed"), addonPath("mode/multiplex")]
+        loader.enqueue [modePath("htmlmixed"), addonPath("mode/multiplex")]
       when "htmlmixed", "sass"
-        loader.queue append [modePath("css")]
+        loader.enqueue [modePath("css")]
       when "php"
-        loader.queue append [modePath("htmlmixed"), modePath("clike")]
+        loader.enqueue [modePath("htmlmixed"), modePath("clike")]
       when "pug"
-        loader.queue append [modePath("css"), modePath("htmlmixed")]
+        loader.enqueue [modePath("css"), modePath("htmlmixed")]
       when "rst"
-        loader.queue append [modePath("python")]
+        loader.enqueue [modePath("python")]
       when "soy","tornado"
-        loader.queue append [modePath("htmlmixed")]
+        loader.enqueue [modePath("htmlmixed")]
       when "twig"
-        loader.queue append [addonPath("mode/multiplex")]
+        loader.enqueue [addonPath("mode/multiplex")]
 
-    loader.load(cb)
+    # loader.load(cb)
 
 
 
@@ -229,12 +264,9 @@
 
 
 
-
 </script>
 <svelte:head>
-  <link rel='stylesheet' href='./css/vendor/codemirror/codemirror.css'>
-  <link rel='stylesheet' href='./css/vendor/codemirror/foldgutter.css'>
-  <link rel='stylesheet' href='./css/vendor/codemirror/global-codemirror.css'>
+
 </svelte:head>
 <style lang="sass">
   div
@@ -250,11 +282,11 @@
   textarea
     display: none
 </style>
-<div bind:this={editorRef}>
+
   <field>
     <label>Syntax Highlighting Mode</label>
-  <field>
+    <ComboBox bind:items={modes} bind:value={mode} />
+  </field>
   <field>
     <textarea bind:value={code} id={thisUuid}/>
   </field>
-</div>

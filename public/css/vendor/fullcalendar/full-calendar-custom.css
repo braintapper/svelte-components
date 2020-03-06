@@ -1,0 +1,6 @@
+.fc-button-primary {
+  border: none; }
+
+button.fc-today-button[type="button"] {
+  background-color: var(--blue);
+  color: var(--white); }

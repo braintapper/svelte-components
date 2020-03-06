@@ -6,12 +6,15 @@
   import CodeMirror from "./CodeMirror.svelte"
   import Solver from "./Solver.svelte"
   import HyperMD from "./HyperMD.svelte"
+  import FullCalendar from "./FullCalendar.svelte"
 
+  window.dispatchEvent(new Event('resize'))
 
 </script>
 <Group title="External">
+  <!--<FullCalendar/>-->
   <Solver/>
   <HyperMD/>
   <CodeMirror/>
-  <Quill/>
+  <!--<Quill/>-->
 </Group>

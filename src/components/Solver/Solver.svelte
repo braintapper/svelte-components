@@ -1,8 +1,5 @@
 <svelte:head>
-  <link rel='stylesheet' href='./css/vendor/codemirror/codemirror.css'>
-  <link rel='stylesheet' href='./css/vendor/codemirror/foldgutter.css'>
-  <link rel='stylesheet' href='./css/vendor/codemirror/global-codemirror.css'>
-  <link rel='stylesheet' href='./css/solver.css'>
+
 </svelte:head>
 <script lang="coffeescript">
 
@@ -10,8 +7,15 @@
   import { onMount, afterUpdate, onDestroy } from 'svelte'
 
 
-  import { loader } from "../../helpers/stores.js"
+  # import ScriptLoader from "../../helpers/script_loader.js"
 
+  # loader = new ScriptLoader
+
+  import {loader} from "../../helpers/stores.js"
+
+  import StylesheetLoader from "../../helpers/stylesheet_loader.js"
+
+  cssLoader = new StylesheetLoader
 
 
   `export let code = "yada"`
@@ -32,8 +36,15 @@
   addonPath = (path)-> return codeMirrorPath("addon/#{path}")
 
   prereqs = [
+
     "./js/umbrella.min.js"
     codeMirrorPath("codemirror")
+  ]
+  stylesheets = [
+    './css/vendor/codemirror/codemirror.css'
+    './css/vendor/codemirror/foldgutter.css'
+    './css/vendor/codemirror/global-codemirror.css'
+    './css/solver.css'
 
   ]
 
@@ -64,7 +75,7 @@
   wrapper = null
 
   showEditor = ()->
-    console.log "create solver"
+    console.error "create solver"
     textareaRef = document.getElementById(thisUuid)
 
     if codeMirrorInstance?
@@ -129,8 +140,10 @@
     console.log "rightbar"
     console.log rightbar
     codeMirrorInstance.refresh()
+
   queueCb = ()->
     console.log "solver queue completed"
+    console.log window.loader.loaded
     showEditor()
 
   onMount ()->
@@ -141,41 +154,8 @@
     #editorRef.appendChild(textarea)
     console.log "created element"
 
-    loader.enqueue prereqs, queueCb
-
-
-
-  loadMode = (modeName, cb) ->
-    that = @
-    switch modeName
-      when "dart"
-        loader.queue append [modePath("clike")]
-      when "django"
-        loader.queue append [modePath("htmlmixed")]
-      when "dockerfile", "factor","nsis","rust"
-        loader.queue append [addonPath("mode/simple")]
-      when "haml","slim"
-        loader.queue append [modePath("htmlmixed"), modePath("ruby")]
-      when "handlebars"
-        loader.queue append [addonPath("mode/simple"), addonPath("mode/multiplex")]
-      when "haskell-literate"
-        loader.queue append [modePath("haskell")]
-      when "htmlembedded"
-        loader.queue append [modePath("htmlmixed"), addonPath("mode/multiplex")]
-      when "htmlmixed", "sass"
-        loader.queue append [modePath("css")]
-      when "php"
-        loader.queue append [modePath("htmlmixed"), modePath("clike")]
-      when "pug"
-        loader.queue append [modePath("css"), modePath("htmlmixed")]
-      when "rst"
-        loader.queue append [modePath("python")]
-      when "soy","tornado"
-        loader.queue append [modePath("htmlmixed")]
-      when "twig"
-        loader.queue append [addonPath("mode/multiplex")]
-
-    loader.load(cb)
+    loader.enqueue "solver", prereqs, queueCb
+    cssLoader.enqueue stylesheets
 
 
 

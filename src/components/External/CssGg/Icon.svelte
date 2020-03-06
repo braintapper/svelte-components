@@ -6,6 +6,9 @@
   $: iconStyles = "color: var(--" + color +"); transform: scale(" + (size / 24) + ");"
   $: animationClass = (animate ? "" : " no-animate")
 </script>
+<svelte:head>
+  
+</svelte:head>
 
 <style lang="sass">
   div
@@ -15,7 +18,7 @@
 
   .no-animate,.no-animate::before,.no-animate::after
     animation-play-state: paused
-  
+
 </style>
 
 <div style="height: {size}px; width: {size}px;">

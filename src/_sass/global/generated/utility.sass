@@ -12,16 +12,6 @@
 [shadow="left"]
   box-shadow: -2px 0px 5px 0px var(--box-shadow)
 
-
-
-
-// visibility
-
-[show="false"], [hide="true"], .hidden
-  display: none
-[show="false!"], [hide="true!"]
-  display: none !important
-
 // overlay
 [type="overlay"]
   display: none
@@ -37,6 +27,19 @@
     background-color: transparent
   &[open="true"]
     display: block
+
+
+
+// visibility
+[show]
+  display: block
+[show="false"], [hide="true"], .hidden
+  display: none
+[show="false!"], [hide="true!"]
+  display: none !important
+
+[show="true!"]
+  display: block !important
 
 // horizontal and vertical centering
 

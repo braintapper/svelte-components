@@ -107,11 +107,7 @@
 
 <svelte:head>
     <title>{ appName }</title>
-    <!--link(rel="stylesheet" href="./css/fullcalendar/core/main.css" lang="css" media=screen)
-    //link(rel="stylesheet" href="./css/fullcalendar/daygrid/main.css" lang="css" media=screen)
-    //link(rel="stylesheet" href="./css/fullcalendar/timegrid/main.css" lang="css" media=screen)
-    //link(rel="stylesheet" href="./css/fullcalendar/list/main.css" lang="css" media=screen)
-    -->
+
 </svelte:head>
 
 <TopSplit header={true} headerSize="42px" footer={false}>

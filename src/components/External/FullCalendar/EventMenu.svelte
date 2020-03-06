@@ -1,6 +1,7 @@
 <script lang="coffeescript">
 
 
+
   import { createEventDispatcher, onMount, afterUpdate } from 'svelte'
   import { slide } from 'svelte/transition'
 
@@ -41,20 +42,12 @@
 
   hasfocus = false
 
-  highlightedIndex = -1
-
-  changeIndex = (direction) ->
-    index = highlightedIndex + direction;
-
-    if (index < 0)
-      index = items.length - 1
-    else if (index >= items.length)
-      index = 0
-    highlightedIndex = index
-
-
 
   menuId = uuid()
+
+
+  console.log("window.innerHeight", window.innerHeight)
+  console.log("window.innerWidth", window.innerWidth)
 
   onMount ()->
     console.log "parent, mounted"
@@ -62,39 +55,42 @@
 
 
   checkTrigger = (i)->
+    # position menu
+    console.log("checkTrigger")
+
     if trigger?
+      console.log trigger.jsEvent
       if matchTrigger
         style = "width: #{width};top: #{trigger.clientHeight + 4}px; width: #{trigger.clientWidth + 2}px"
       else
 
         if align == "left"
-          style = "width: #{width};top: #{trigger.offsetParent.clientHeight + 4}px;"
+          style = "width: #{width};top: #{trigger.jsEvent.clientY + 4}px; left: #{trigger.jsEvent.clientX}px"
         else
           triggerContainerWidth = trigger.offsetParent.clientWidth
           triggerCoords = trigger.getBoundingClientRect()
           right = triggerContainerWidth  - (triggerCoords.width)
           style = "width: #{width};top: #{trigger.offsetParent.clientHeight + 4}px; right: #{right}px"
-    console.log style
 
-  `$: checkTrigger(trigger)`
+
+
 
   menuItemClick = (item, index)->
     `showMenu = false`
-    dispatch "click", item
-
+    dispatch "click", { menuItem: item, event: trigger.event }
 
   overlayClick = ()->
     `showMenu = false`
 
 
+  `$: checkTrigger(trigger)`
+
 </script>
-
-
 <style lang="sass">
 
 
   div[menu]
-    position: absolute
+    position: fixed
 
     background: white
     display: inline-block
@@ -115,13 +111,16 @@
       background: var(--lighter-gray)
 
 
-
 </style>
-<div type="overlay" clear open={showMenu} on:click={overlayClick}/>
+
+
+
+
+<div type="overlay" clear show={showMenu} on:click={overlayClick}/>
 {#if showMenu}
   <div bind:this={menuRef} menu id={menuId} transition:slide="{{duration: 75}}" {style} {align}>
     {#each items as item, i (item.id || i)}
-      <button menu-item id={item[idKey]} active={selectedIndex === i} highlighted={highlightedIndex === i || selectedIndex === i} on:click={menuItemClick(item,i)}>
+      <button menu-item id={item[idKey]} active={selectedIndex === i}  on:click={menuItemClick(item,i)}>
         {item[labelKey]}
       </button>
     {/each}

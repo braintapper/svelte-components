@@ -2,73 +2,60 @@
 class ScriptLoader
 
 
-  # todo: DRY this out
-
-  queue: []
-
-
-
-  callback: null
 
   loaded: []
 
-  isLoading: false
+  load: (name, url, scb)->
+    unless document.getElementById(url)
+      console.log "#{name}: attempting #{url}"
+      asset = document.createElement("script")
+      asset.setAttribute("type", "text/javascript")
+      asset.setAttribute("src", url)
+      asset.setAttribute("id", url)
+      asset.onload = (args)->
+        console.info "#{name}: loaded #{url}"
+        that.loaded.append url
+        nextInQueue()
+      document.body.appendChild(asset)
 
-  enqueue: (queue, cb)->
+  enqueue: (name, queue, scb)->
+
+    console.log "enqueue"
     that = @
-    @queue.append queue
 
-    @callback = cb
 
-    unless @isLoading
+    nextInQueue = ()->
+      console.log "#{name}: next in queue"
+      # console.log queue
+      if queue.length > 0
+        url = queue.shift()
+        unless that.loaded.find(url)?
+          unless document.getElementById(url)
+            console.log "#{name}: attempting #{url}"
+            asset = document.createElement("script")
+            asset.setAttribute("type", "text/javascript")
+            asset.setAttribute("src", url)
+            asset.setAttribute("id", "#{url}")
+            asset.onload = (args)->
+              console.info "#{name}: loaded #{url}"
+              that.loaded.append "#{url}"
+              nextInQueue()
+            document.body.appendChild(asset)
+          else
+            console.log "#{name}: #{url} already in DOM, might be loading from other queue, debouncing for 250ms"
+            debouncedNextInQueue()
+        else
+          console.log "#{name}: #{url} previously loaded"
+          nextInQueue()
+      else
+        console.log "Queue completed"
+        scb()
 
-      @isLoading = true
-      @load()
-
+    debouncedNextInQueue = nextInQueue.debounce(250)
+    nextInQueue()
 
   constructor:  (@subscribe, @set, @update, constructor_callback)->
-
-
-    that = @
-
-    # @queue = queue || []
-
-
-
-
-    @load = ()->
-      cb = ()->
-        if that.queue.length > 0
-          that.load()
-        else
-          that.isLoading = false
-
-          that.callback()
-
-          # todo: need to clear callback as they are run
-      itemToLoad = that.queue.shift()
-
-      # console.log "item to load: #{ itemToLoad}, #{that.queue.length} items remaining"
-
-      that.loadItem itemToLoad, cb
-
-    @loadItem = (url, cb) ->
-
-      unless document.getElementById(url)
-        console.log "queuing #{url}"
-        s = document.createElement("script")
-        s.setAttribute("type", "text/javascript")
-        s.setAttribute("src", url)
-        s.setAttribute("id", url)
-        s.onload = (args)->
-          console.info "loaded #{url}"
-          that.loaded.append url
-          if cb?
-            cb()
-        document.body.appendChild(s)
-      else
-        console.warn "skipped #{url}, already loaded"
-        cb()
+    window.loader = @
 
 
 

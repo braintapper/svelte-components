@@ -19,8 +19,8 @@
       position: relative;
       top: 3px; }
   .CodeMirror.cm-s-hypermd-light .CodeMirror-lines {
-    background: var(--white);
-    border: none; }
+    background: var(--lightest-gray);
+    border: 1px solid var(--light-gray); }
   .CodeMirror.cm-s-hypermd-light .hmd-fold-math, .CodeMirror.cm-s-hypermd-light pre.HyperMD-table-row .cm-hmd-table-sep {
     display: inline-block;
     vertical-align: middle; }

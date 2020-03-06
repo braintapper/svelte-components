@@ -51,7 +51,7 @@ pre, code
     margin-bottom: var(--text-spacing-xs)
     text-transform: uppercase
 
-  p, ol, ul, table, pre, blockquote
+  p, ol, ul, table[type], pre, blockquote
     margin-bottom: var(--text-spacing-s)
 
   blockquote
@@ -94,13 +94,14 @@ pre, code
     li
       margin-left: var(--spacing-s)
 
-  table
+  table[type]
     th
       font-weight: bold
     td, th
       padding: var(--fine-spacing-xxs) var(--fine-spacing-s)
-    tr, td, th
-      border: 1px solid var(--black)
+    &[type="standard"]
+      tr, td, th
+        border: 1px solid var(--black)
 // general formats
 
 // ellipsis usually needs two containers to work

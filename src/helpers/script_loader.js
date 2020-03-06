@@ -2,83 +2,73 @@ var ScriptLoader;
 
 ScriptLoader = (function() {
   class ScriptLoader {
-    enqueue(queue, cb) {
-      var notRun, that;
-      that = this;
-      notRun = queue.exclude(function(item) {
-        var present;
-        present = that.loaded.includes(item);
-        if (present) {
-          console.log(`${item} is already loaded, not queued`);
-        }
-        return present;
-      });
-      this.queue.append(notRun);
-      this.callbacks.append(cb);
-      if (!this.isLoading) {
-        console.log("start queue");
-        this.isLoading = true;
-        return this.load();
-      } else {
-        return console.log("added items to runing queue");
+    load(name, url, scb) {
+      var asset;
+      if (!document.getElementById(url)) {
+        console.log(`${name}: attempting ${url}`);
+        asset = document.createElement("script");
+        asset.setAttribute("type", "text/javascript");
+        asset.setAttribute("src", url);
+        asset.setAttribute("id", url);
+        asset.onload = function(args) {
+          console.info(`${name}: loaded ${url}`);
+          that.loaded.append(url);
+          return nextInQueue();
+        };
+        return document.body.appendChild(asset);
       }
     }
 
+    enqueue(name, queue, scb) {
+      var debouncedNextInQueue, nextInQueue, that;
+      console.log("enqueue");
+      that = this;
+      nextInQueue = function() {
+        var asset, url;
+        console.log(`${name}: next in queue`);
+        // console.log queue
+        if (queue.length > 0) {
+          url = queue.shift();
+          if (that.loaded.find(url) == null) {
+            if (!document.getElementById(url)) {
+              console.log(`${name}: attempting ${url}`);
+              asset = document.createElement("script");
+              asset.setAttribute("type", "text/javascript");
+              asset.setAttribute("src", url);
+              asset.setAttribute("id", `${url}`);
+              asset.onload = function(args) {
+                console.info(`${name}: loaded ${url}`);
+                that.loaded.append(`${url}`);
+                return nextInQueue();
+              };
+              return document.body.appendChild(asset);
+            } else {
+              console.log(`${name}: ${url} already in DOM, might be loading from other queue, debouncing for 250ms`);
+              return debouncedNextInQueue();
+            }
+          } else {
+            console.log(`${name}: ${url} previously loaded`);
+            return nextInQueue();
+          }
+        } else {
+          console.log("Queue completed");
+          return scb();
+        }
+      };
+      debouncedNextInQueue = nextInQueue.debounce(250);
+      return nextInQueue();
+    }
+
     constructor(subscribe, set, update, constructor_callback) {
-      var that;
       this.subscribe = subscribe;
       this.set = set;
       this.update = update;
-      that = this;
-      // @queue = queue || []
-      this.load = function() {
-        var cb, itemToLoad;
-        cb = function() {
-          if (that.queue.length > 0) {
-            return that.load();
-          } else {
-            that.isLoading = false;
-            return that.callbacks.forEach(function(callback) {
-              return callback();
-            });
-          }
-        };
-        itemToLoad = that.queue.shift();
-        // console.log "item to load: #{ itemToLoad}, #{that.queue.length} items remaining"
-        return that.loadItem(itemToLoad, cb);
-      };
-      this.loadItem = function(url, cb) {
-        var s;
-        if (!document.getElementById(url)) {
-          s = document.createElement("script");
-          s.setAttribute("type", "text/javascript");
-          s.setAttribute("src", url);
-          s.setAttribute("id", url);
-          s.onload = function(args) {
-            console.info(`loaded ${url}`);
-            that.loaded.append(url);
-            if (cb != null) {
-              return cb();
-            }
-          };
-          return document.body.appendChild(s);
-        } else {
-          // console.warn "skipped #{url}, already loaded"
-          return cb();
-        }
-      };
+      window.loader = this;
     }
 
   };
 
-  // todo: DRY this out
-  ScriptLoader.prototype.queue = [];
-
-  ScriptLoader.prototype.callbacks = [];
-
   ScriptLoader.prototype.loaded = [];
-
-  ScriptLoader.prototype.isLoading = false;
 
   return ScriptLoader;
 

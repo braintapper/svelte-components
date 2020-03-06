@@ -1,7 +1,7 @@
 <script lang="coffeescript">
 
 
-  import { createEventDispatcher } from 'svelte'
+  import { createEventDispatcher, afterUpdate } from 'svelte'
 
   import Menu from "../../Overlay/Menu/Menu.svelte"
 
@@ -97,6 +97,10 @@
   updateValue = (value)->
     filteredItems = items.filter(filteredList)
     invalid = (filteredItems.length == 0) && (inputValue.length > 0)
+
+  afterUpdate ()->
+    console.log "after update"
+    console.log value
 
   `$: ariaLabel = $$props['aria-label'] || 'Choose an item'`
   `$: selectedItem = items[selectedIndex]`
