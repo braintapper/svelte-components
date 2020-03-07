@@ -15,14 +15,17 @@
 
 
 
-  import Styles from './pages/styles/Group.svelte'
-  import Form from './pages/form/Group.svelte'
-  import Overlay from './pages/overlay/Group.svelte'
-  import Icons from './pages/icons/Group.svelte'
-  import Css from './pages/css/Group.svelte'
-  import Layout from './pages/layout/Group.svelte'
-  import Navigation from './pages/navigation/Group.svelte'
-  import External from './pages/external/Group.svelte'
+  import Styles from './pages/Styles/Group.svelte'
+  import Form from './pages/Form/Group.svelte'
+  import Overlay from './pages/Overlay/Group.svelte'
+  import Icons from './pages/Icons/Group.svelte'
+  import Css from './pages/Css/Group.svelte'
+  import Layout from './pages/Layout/Group.svelte'
+  import Navigation from './pages/Navigation/Group.svelte'
+  import External from './pages/External/Group.svelte'
+  import Controls from './pages/Controls/Group.svelte'
+
+
 
   pages = [
     {
@@ -73,6 +76,13 @@
       text: "Navigation"
       context: "navigation"
       component: Navigation
+    }
+    {
+      ordinal: 6
+      url: "/controls"
+      text: "Controls"
+      context: "controls"
+      component: Controls
     }
     {
       ordinal: 7
