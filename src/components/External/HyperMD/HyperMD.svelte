@@ -9,9 +9,6 @@
 
   loader = new ScriptLoader
 
-  import StylesheetLoader from "../../../helpers/stylesheet_loader.js"
-
-  cssLoader = new StylesheetLoader
 
 
 
@@ -64,6 +61,10 @@
     codeMirrorPath("addon/fold/foldgutter")
     codeMirrorPath("addon/fold/markdown-fold")
     codeMirrorPath("addon/mode/overlay")
+    './css/vendor/codemirror/codemirror.css'
+    './css/vendor/codemirror/foldgutter.css'
+    './css/vendor/codemirror/global-codemirror.css'
+    './css/vendor/hypermd/hypermd-editor.css'
     modePath("markdown")
     modePath("xml")
     modePath("stex")
@@ -81,9 +82,6 @@
     #"./js/mathjax/MathJax.js"
     #hmdPath("powerpack/fold-math-with-mathjax")
 
-  stylesheets = [
-    './css/vendor/hypermd/hypermd-editor.css'
-  ]
 
 
 
@@ -181,7 +179,7 @@
     isMounted = true
 
     loader.enqueue "hypermd", prereqs, queueCb
-    cssLoader.enqueue stylesheets
+
 
 
 

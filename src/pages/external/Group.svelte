@@ -2,6 +2,8 @@
 
   import Group from "../_page_components/Group.svelte"
 
+  import Select from "../../components/Form/Select/Select.svelte"
+
   import Quill from "./Quill.svelte"
   import CodeMirror from "./CodeMirror.svelte"
   import Solver from "./Solver.svelte"
@@ -10,11 +12,56 @@
 
   window.dispatchEvent(new Event('resize'))
 
+  library = "fullcalendar"
+
+  inputOptions = [
+    { id: "fullcalendar", label: "FullCalendar", icon: "1"}
+    { id: "hypermd", label: "HyperMD", icon: "2"}
+    { id: "solver", label: "Solver", icon: "3"}
+    { id: "codemirror", label: "CodeMirror", icon: "4"}
+    { id: "quill",  label: "Quill", icon: "5"}
+    { id: "ckeditor",  label: "CKEditor", icon: "5"}
+    { id: "aggrid",  label: "agGrid", icon: "5"}
+  ]
+
 </script>
 <Group title="External">
-  <!--<FullCalendar/>-->
-  <Solver/>
-  <HyperMD/>
-  <CodeMirror/>
-  <!--<Quill/>-->
+
+  <div>
+    <h3>Select A Component</h3>
+    <field>
+      <Select items={inputOptions} bind:value={library}/>
+    </field>
+  </div>
+  <div>
+    {#if library=="fullcalendar"}
+      <FullCalendar/>
+    {/if}
+    {#if library=="solver"}
+      <Solver/>
+    {/if}
+
+    {#if library=="hypermd"}
+      <HyperMD/>
+    {/if}
+
+    {#if library=="codemirror"}
+      <CodeMirror/>
+    {/if}
+
+    {#if library=="quill"}
+      <Quill/>
+    {/if}
+
+    {#if library=="ckeditor"}
+      CKEditor goes here
+    {/if}
+
+    {#if library=="aggrid"}
+      agGrid goes here
+    {/if}
+
+
+
+  </div>
 </Group>

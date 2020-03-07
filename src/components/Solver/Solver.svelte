@@ -7,15 +7,9 @@
   import { onMount, afterUpdate, onDestroy } from 'svelte'
 
 
-  # import ScriptLoader from "../../helpers/script_loader.js"
-
-  # loader = new ScriptLoader
-
   import {loader} from "../../helpers/stores.js"
 
-  import StylesheetLoader from "../../helpers/stylesheet_loader.js"
 
-  cssLoader = new StylesheetLoader
 
 
   `export let code = "yada"`
@@ -37,15 +31,12 @@
 
   prereqs = [
 
-    "./js/umbrella.min.js"
+
     codeMirrorPath("codemirror")
-  ]
-  stylesheets = [
     './css/vendor/codemirror/codemirror.css'
     './css/vendor/codemirror/foldgutter.css'
     './css/vendor/codemirror/global-codemirror.css'
     './css/solver.css'
-
   ]
 
 
@@ -155,7 +146,7 @@
     console.log "created element"
 
     loader.enqueue "solver", prereqs, queueCb
-    cssLoader.enqueue stylesheets
+
 
 
 

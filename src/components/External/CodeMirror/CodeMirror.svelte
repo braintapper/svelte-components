@@ -4,15 +4,8 @@
   import { onMount, beforeUpdate, afterUpdate, onDestroy } from 'svelte'
   import ComboBox from "../../Form/Select/ComboBox.svelte"
 
-  #import ScriptLoader from "../../../helpers/script_loader.js"
-
-  # loader = new ScriptLoader
-
   import {loader} from "../../../helpers/stores.js"
 
-  import StylesheetLoader from "../../../helpers/stylesheet_loader.js"
-
-  cssLoader = new StylesheetLoader
 
 
 
@@ -41,6 +34,9 @@
   prereqs = [
     codeMirrorPath("codemirror")
     codeMirrorPath("mode/meta")
+    './css/vendor/codemirror/codemirror.css'
+    './css/vendor/codemirror/foldgutter.css'
+    './css/vendor/codemirror/global-codemirror.css'
     codeMirrorPath("addon/fold/foldcode")
     codeMirrorPath("addon/fold/foldgutter")
     codeMirrorPath("addon/fold/markdown-fold")
@@ -51,12 +47,6 @@
     modePath("yaml")
     modePath("javascript")
   ]
-  stylesheets = [
-    './css/vendor/codemirror/codemirror.css'
-    './css/vendor/codemirror/foldgutter.css'
-    './css/vendor/codemirror/global-codemirror.css'
-  ]
-
 
   queueCb = ()->
     console.log "cm queue completed"
@@ -93,6 +83,8 @@
 
     codeMirrorInstance = CodeMirror.fromTextArea textareaRef, codeMirrorConfig
 
+
+    console.log CodeMirror.modeInfo
     cmmodes = CodeMirror.modeInfo.map (mode)->
       return { id: mode.name.toLowerCase(), label: mode.name }
 
@@ -136,7 +128,7 @@
     console.log "enqueue"
     loader.enqueue "codemirror", prereqs, queueCb
     console.log "..."
-    cssLoader.enqueue stylesheets
+
 
 
   loadMode = (modeName, cb) ->
