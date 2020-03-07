@@ -1,22 +1,43 @@
 # requires umbrellajs
 class ScriptLoader
 
-
+  # todo: DRY this up
 
   loaded: []
 
   load: (name, url, scb)->
-    unless document.getElementById(url)
+
+    mode = "js"
+    if url.endsWith(".css")
+      found = u("[href=\"#{url}\"]").length > 0
+      mode = "css"
+    else
+      # js
+      found = u("[src=\"#{url}\"]").length > 0
+
+    unless found
       console.log "#{name}: attempting #{url}"
-      asset = document.createElement("script")
-      asset.setAttribute("type", "text/javascript")
-      asset.setAttribute("src", url)
-      asset.setAttribute("id", url)
+      asset = null
+
+      if mode == "css"
+        asset = document.createElement("link")
+        asset.setAttribute("rel", "stylesheet")
+        asset.setAttribute("href", url)
+      else
+        asset = document.createElement("script")
+        asset.setAttribute("type", "text/javascript")
+        asset.setAttribute("src", url)
+
       asset.onload = (args)->
         console.info "#{name}: loaded #{url}"
-        that.loaded.append url
+        that.loaded.append "#{url}"
         scb()
-      document.body.appendChild(asset)
+
+      if mode == "css"
+        document.head.appendChild(asset)
+      else #js
+        document.body.appendChild(asset)
+
 
   enqueue: (name, queue, scb)->
 
@@ -47,12 +68,10 @@ class ScriptLoader
               asset = document.createElement("link")
               asset.setAttribute("rel", "stylesheet")
               asset.setAttribute("href", url)
-              asset.setAttribute("id", url)
             else
               asset = document.createElement("script")
               asset.setAttribute("type", "text/javascript")
               asset.setAttribute("src", url)
-              asset.setAttribute("id", "#{url}")
 
             asset.onload = (args)->
               console.info "#{name}: loaded #{url}"

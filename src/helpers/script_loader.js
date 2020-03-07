@@ -4,19 +4,37 @@ var ScriptLoader;
 ScriptLoader = (function() {
   class ScriptLoader {
     load(name, url, scb) {
-      var asset;
-      if (!document.getElementById(url)) {
+      var asset, found, mode;
+      mode = "js";
+      if (url.endsWith(".css")) {
+        found = u(`[href=\"${url}\"]`).length > 0;
+        mode = "css";
+      } else {
+        // js
+        found = u(`[src=\"${url}\"]`).length > 0;
+      }
+      if (!found) {
         console.log(`${name}: attempting ${url}`);
-        asset = document.createElement("script");
-        asset.setAttribute("type", "text/javascript");
-        asset.setAttribute("src", url);
-        asset.setAttribute("id", url);
+        asset = null;
+        if (mode === "css") {
+          asset = document.createElement("link");
+          asset.setAttribute("rel", "stylesheet");
+          asset.setAttribute("href", url);
+        } else {
+          asset = document.createElement("script");
+          asset.setAttribute("type", "text/javascript");
+          asset.setAttribute("src", url);
+        }
         asset.onload = function(args) {
           console.info(`${name}: loaded ${url}`);
-          that.loaded.append(url);
+          that.loaded.append(`${url}`);
           return scb();
         };
-        return document.body.appendChild(asset);
+        if (mode === "css") {
+          return document.head.appendChild(asset); //js
+        } else {
+          return document.body.appendChild(asset);
+        }
       }
     }
 
@@ -47,12 +65,10 @@ ScriptLoader = (function() {
                 asset = document.createElement("link");
                 asset.setAttribute("rel", "stylesheet");
                 asset.setAttribute("href", url);
-                asset.setAttribute("id", url);
               } else {
                 asset = document.createElement("script");
                 asset.setAttribute("type", "text/javascript");
                 asset.setAttribute("src", url);
-                asset.setAttribute("id", `${url}`);
               }
               asset.onload = function(args) {
                 console.info(`${name}: loaded ${url}`);
@@ -90,6 +106,7 @@ ScriptLoader = (function() {
 
   };
 
+  // todo: DRY this up
   ScriptLoader.prototype.loaded = [];
 
   return ScriptLoader;
