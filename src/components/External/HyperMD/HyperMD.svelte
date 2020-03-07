@@ -1,16 +1,11 @@
-<svelte:head>
-
-</svelte:head>
 <script lang="coffeescript">
+
+  # requires scriptloader in store
 
   import uuid from 'uuid'
   import { onMount, afterUpdate, onDestroy } from 'svelte'
-  import ScriptLoader from "../../../helpers/script_loader.js"
 
-  loader = new ScriptLoader
-
-
-
+  import {loader} from "../../../helpers/stores.js"
 
 
 

@@ -1,13 +1,19 @@
 <svelte:head>
 
-  <link rel='stylesheet' href='./css/vendor/fullcalendar/core/main.css' lang="css" media=screen/>
-  <link rel='stylesheet' href='./css/vendor/fullcalendar/daygrid/main.css' lang="css" media=screen/>
-  <link rel='stylesheet' href='./css/vendor/fullcalendar/timegrid/main.css' lang="css" media=screen/>
-  <link rel='stylesheet' href='./css/vendor/fullcalendar/list/main.css' lang="css" media=screen/>
-  <link rel='stylesheet' href='./css/vendor/fullcalendar/full-calendar-custom.css' lang="css" media=screen/>
+
 
 </svelte:head>
 <script lang="coffee">
+    # requires scriptloader in store
+  import {loader} from "../../../helpers/stores.js"
+
+  prereqs = [
+    './css/vendor/fullcalendar/core/main.css'
+    './css/vendor/fullcalendar/daygrid/main.css'
+    './css/vendor/fullcalendar/timegrid/main.css'
+    './css/vendor/fullcalendar/list/main.css'
+    './css/vendor/fullcalendar/full-calendar-custom.css'
+  ]
 
   import CommonIcons from "../../../helpers/icons/common.js"
   import { onMount, onDestroy, createEventDispatcher } from 'svelte'
@@ -107,10 +113,15 @@
 
 
   mounted = false
+  queueCb = ()->
+    console.log "fullcalendar queue completed"
+    window.dispatchEvent(new Event('resize'));
+
   onMount ()->
     mounted = true
+    loader.enqueue "fullcalendar", prereqs, queueCb
     # hack to force proper initial position, such bs
-    window.dispatchEvent(new Event('resize'));
+
 
 
 

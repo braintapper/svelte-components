@@ -9,10 +9,13 @@
   import Solver from "./Solver.svelte"
   import HyperMD from "./HyperMD.svelte"
   import FullCalendar from "./FullCalendar.svelte"
+  import CLEditor from "./CLEditor.svelte"
+  import AgGrid from "./AgGrid.svelte"
+
 
   window.dispatchEvent(new Event('resize'))
 
-  library = "fullcalendar"
+  library = "aggrid"
 
   inputOptions = [
     { id: "fullcalendar", label: "FullCalendar", icon: "1"}
@@ -20,7 +23,8 @@
     { id: "solver", label: "Solver", icon: "3"}
     { id: "codemirror", label: "CodeMirror", icon: "4"}
     { id: "quill",  label: "Quill", icon: "5"}
-    { id: "ckeditor",  label: "CKEditor", icon: "5"}
+    { id: "cleditor",  label: "CLEditor", icon: "5"}
+
     { id: "aggrid",  label: "agGrid", icon: "5"}
   ]
 
@@ -52,13 +56,13 @@
     {#if library=="quill"}
       <Quill/>
     {/if}
-
-    {#if library=="ckeditor"}
-      CKEditor goes here
+    {#if library=="cleditor"}
+      <CLEditor/>
     {/if}
 
+
     {#if library=="aggrid"}
-      agGrid goes here
+      <AgGrid/>
     {/if}
 
 

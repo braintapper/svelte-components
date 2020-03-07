@@ -1,14 +1,18 @@
 <script>
+  import {loader} from "../../../helpers/stores.js";
+
+
   export let value = "info";
   export let color = "red";
   export let size = 24;
   export let animate = true;
   $: iconStyles = "color: var(--" + color +"); transform: scale(" + (size / 24) + ");"
   $: animationClass = (animate ? "" : " no-animate")
+
+
+  loader.enqueue( "cssgg", ["./css/vendor/css.gg.css/css.gg.css"], ()=> {})
+
 </script>
-<svelte:head>
-  
-</svelte:head>
 
 <style lang="sass">
   div

@@ -30,17 +30,17 @@
   let mounted = false;
   let gridOptions;
 
-  gridOptions = resource.gridOptions; // gridOptions can be passed directly, but I prefer to pass a resource that contains the gridOptions definition
+  //gridOptions = resource.gridOptions;
 
 
   onMount(function() {
     mounted = true;
-    let grid = new agGrid.Grid(datagrid, gridOptions);
-    gridOptions.api.setRowData(items);
+    //let grid = new agGrid.Grid(datagrid, gridOptions);
+    // gridOptions.api.setRowData(items);
   });
 
 
-  $: { if (mounted) { gridOptions.api.setRowData(items);} };
+  //$: { if (mounted) { gridOptions.api.setRowData(items);} };
 
 </script>
 
@@ -57,5 +57,5 @@
   }
 
 </style>
-
-<datagrid class="ag-theme-balham" bind:this="{datagrid}" style="height: 100%; width: 100%"></datagrid>
+<div>agGrid goes here</div>
+<!--<datagrid class="ag-theme-balham" bind:this="{datagrid}" style="height: 100%; width: 100%"></datagrid>-->

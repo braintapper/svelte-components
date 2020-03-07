@@ -1,4 +1,8 @@
 # requires umbrellajs
+
+
+# dynamically add script or stylesheet but only once
+
 class ScriptLoader
 
   # todo: DRY this up
@@ -16,7 +20,7 @@ class ScriptLoader
       found = u("[src=\"#{url}\"]").length > 0
 
     unless found
-      console.log "#{name}: attempting #{url}"
+      # console.log "#{name}: attempting #{url}"
       asset = null
 
       if mode == "css"
@@ -41,13 +45,13 @@ class ScriptLoader
 
   enqueue: (name, queue, scb)->
 
-    console.log "enqueue"
+    # console.log "enqueue"
     that = @
 
 
     nextInQueue = ()->
-      console.log "#{name}: next in queue"
-      # console.log queue
+      # console.log "#{name}: next in queue"
+      # # console.log queue
       if queue.length > 0
         url = queue.shift()
         unless that.loaded.find(url)?
@@ -61,7 +65,7 @@ class ScriptLoader
             found = u("[src=\"#{url}\"]").length > 0
 
           unless found
-            console.log "#{name}: attempting #{url}"
+            # console.log "#{name}: attempting #{url}"
             asset = null
 
             if mode == "css"
@@ -84,13 +88,13 @@ class ScriptLoader
               document.body.appendChild(asset)
 
           else
-            console.log "#{name}: #{url} already in DOM, might be loading from other queue, debouncing for 250ms"
+            # console.log "#{name}: #{url} already in DOM, might be loading from other queue, debouncing for 250ms"
             debouncedNextInQueue()
         else
-          console.log "#{name}: #{url} previously loaded"
+          # console.log "#{name}: #{url} previously loaded"
           nextInQueue()
       else
-        console.log "Queue completed"
+        # console.log "Queue completed"
         scb()
 
     debouncedNextInQueue = nextInQueue.debounce(250)

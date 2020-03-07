@@ -1,4 +1,6 @@
 // requires umbrellajs
+
+// dynamically add script or stylesheet but only once
 var ScriptLoader;
 
 ScriptLoader = (function() {
@@ -14,7 +16,7 @@ ScriptLoader = (function() {
         found = u(`[src=\"${url}\"]`).length > 0;
       }
       if (!found) {
-        console.log(`${name}: attempting ${url}`);
+        // console.log "#{name}: attempting #{url}"
         asset = null;
         if (mode === "css") {
           asset = document.createElement("link");
@@ -40,12 +42,12 @@ ScriptLoader = (function() {
 
     enqueue(name, queue, scb) {
       var debouncedNextInQueue, nextInQueue, that;
-      console.log("enqueue");
+      // console.log "enqueue"
       that = this;
       nextInQueue = function() {
         var asset, found, mode, url;
-        console.log(`${name}: next in queue`);
-        // console.log queue
+        // console.log "#{name}: next in queue"
+        // # console.log queue
         if (queue.length > 0) {
           url = queue.shift();
           if (that.loaded.find(url) == null) {
@@ -59,7 +61,7 @@ ScriptLoader = (function() {
               found = u(`[src=\"${url}\"]`).length > 0;
             }
             if (!found) {
-              console.log(`${name}: attempting ${url}`);
+              // console.log "#{name}: attempting #{url}"
               asset = null;
               if (mode === "css") {
                 asset = document.createElement("link");
@@ -81,15 +83,15 @@ ScriptLoader = (function() {
                 return document.body.appendChild(asset);
               }
             } else {
-              console.log(`${name}: ${url} already in DOM, might be loading from other queue, debouncing for 250ms`);
+              // console.log "#{name}: #{url} already in DOM, might be loading from other queue, debouncing for 250ms"
               return debouncedNextInQueue();
             }
           } else {
-            console.log(`${name}: ${url} previously loaded`);
+            // console.log "#{name}: #{url} previously loaded"
             return nextInQueue();
           }
         } else {
-          console.log("Queue completed");
+          // console.log "Queue completed"
           return scb();
         }
       };

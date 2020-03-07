@@ -1,4 +1,5 @@
 <script lang="coffeescript">
+  # requires scriptloader in store
 
   import uuid from 'uuid'
   import { onMount, beforeUpdate, afterUpdate, onDestroy } from 'svelte'
