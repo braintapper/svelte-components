@@ -47,7 +47,7 @@
         <h6>Summary</h6>
       </div>
       <div flex="initial">
-        <button on:click={()=>{checkboxValue = !checkboxValue}}>Click Me</button>
+        <button on:click={()=>{checkboxValue = !checkboxValue}}>open:{checkboxValue}</button>
       </div>
     </div>
     <div>Details</div>
