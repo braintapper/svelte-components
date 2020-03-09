@@ -1,10 +1,9 @@
-<svelte:head>
-
-</svelte:head>
 <script lang="coffeescript">
 
   import uuid from 'uuid'
   import { onMount, afterUpdate, onDestroy } from 'svelte'
+
+
 
 
   import {loader} from "../../helpers/stores.js"
@@ -12,7 +11,9 @@
 
 
 
-  `export let code = "yada"`
+  `export let value = ""`
+  `export let parserFn =  (val)=> {  return val.toUpperCase() }`
+
 
   textareaRef = null
   codeMirrorInstance = null
@@ -40,10 +41,6 @@
   ]
 
 
-  parser =
-    parse: (val)->
-      console.log "parse #{val}"
-      return val.toUpperCase()
 
   codeMirrorConfig =
     lineNumbers: true
@@ -76,6 +73,8 @@
     codeMirrorInstance = CodeMirror.fromTextArea textareaRef, codeMirrorConfig
 
 
+
+
     # this is required because of CodeMirror idiosyncracy
     # codeMirrorInstance.setOption("value", code)
 
@@ -87,6 +86,8 @@
       change(cm)
 
     codeMirrorInstance.on 'change', (cm)->
+      console.log "change"
+      console.log cm
       debouncedUpdate(cm)
 
     codeMirrorInstance.on 'update', (cm)->
@@ -98,7 +99,7 @@
       for i in [0 ... cm.lineCount()]
         val = ''
         try
-          val = parser.parse cm.getLine i
+          val = parserFn cm.getLine i
           console.log("VAL: " + val)
           val ?= ''
         catch e
@@ -257,10 +258,11 @@
     margin-bottom: 12px
   textarea
     display: none
+
 </style>
 <div bind:this={editorRef}>
 
   <field>
-    <textarea bind:value={code} id={thisUuid}/>
+    <textarea bind:value={value} id={thisUuid}/>
   </field>
 </div>

@@ -32,14 +32,11 @@
     "uuid": "^3.3.3"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-basic-styles": "^16.0.0",
-    "@ckeditor/ckeditor5-build-balloon": "^16.0.0",
-    "@ckeditor/ckeditor5-build-balloon-block": "^16.0.0",
-    "@ckeditor/ckeditor5-build-decoupled-document": "^16.0.0",
-    "@ckeditor/ckeditor5-code-block": "^16.0.0",
     "@fullcalendar/list": "^4.3.0",
     "cl-editor": "^1.4.0",
     "codemirror": "^5.51.0",
+    "compromise": "^13.1.1",
+    "compromise-highlight": "0.0.1",
     "fast-deep-equal": "^3.1.1",
     "gulp-sass": "^4.0.2",
     "hypermd": "^0.3.11",

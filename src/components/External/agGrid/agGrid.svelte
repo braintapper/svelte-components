@@ -3,9 +3,9 @@
 
   Usage:
 
-  <DataGrid items="{items}" resource="{resource}"></DataGrid>
+  <DataGrid rows="{rows}" resource="{resource}"></DataGrid>
 
-  items = array of data
+  rows = array of data
   resource = object containing gridoptions (see ag-grid doc)
 
   Prerequisite:
@@ -18,44 +18,48 @@
   <script src="/javascripts/ag-grid-community.min.noStyle.js"></script>
   ```
 -->
-<script>
+<script lang="coffeescript">
 
-  import { onMount } from 'svelte';
+  import { onMount } from 'svelte'
+  import {loader} from "../../../helpers/stores.js"
+
+  `export let rows = []`
+  `export let gridOptions = {}`
+  `export let style = "height: 600px; width: 100%"`
+
+  datagrid = undefined
+  datagridEl = undefined
+  mounted = false
+
+  prereqs = [
+    "/js/ag-grid/ag-grid-community.min.noStyle.js"
+    "/css/vendor/ag-grid/ag-grid.css"
+    "/css/vendor/ag-grid/ag-theme-balham.css"
+  ]
+
+  # gridOptions = resource.gridOptions;
+
+  queuecb = ()->
+    console.log "loaded dependencies"
+    grid datagridEl
+
+  onMount () ->
+    mounted = true
+    loader.enqueue "agGrid",prereqs, queuecb
+
+  # $: { if (mounted) { gridOptions.api.setRowData(rows);} };
 
 
-  export let items;
-  export let resource;
 
-  let datagrid;
-  let mounted = false;
-  let gridOptions;
-
-  //gridOptions = resource.gridOptions;
-
-
-  onMount(function() {
-    mounted = true;
-    //let grid = new agGrid.Grid(datagrid, gridOptions);
-    // gridOptions.api.setRowData(items);
-  });
-
-
-  //$: { if (mounted) { gridOptions.api.setRowData(items);} };
+  grid = (el)->
+    console.log "do it"
+    console.log agGrid
+    datagrid = new agGrid.Grid(el, gridOptions);
+    gridOptions.api.setRowData(rows);
 
 </script>
 
 <style>
-
-  :global(.ag-theme-balham .ag-root) {
-    border-bottom: 1px solid #FFF !important;
-  }
-  :global(.ag-center-cols-container) {
-    min-width: 100% !important;
-  }
-  :global(.ag-popup-editor .ag-large-text .ag-large-textarea textarea) {
-      margin: 0px;
-  }
-
 </style>
-<div>agGrid goes here</div>
-<!--<datagrid class="ag-theme-balham" bind:this="{datagrid}" style="height: 100%; width: 100%"></datagrid>-->
+
+<div bind:this={datagridEl} {style} class="ag-theme-balham"></div>

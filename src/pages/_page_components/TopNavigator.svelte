@@ -2,7 +2,7 @@
   `export let pages = []`
   `export let style = undefined`
   `export let theme = undefined`
-  import {location} from 'svelte-spa-router'
+  import {location, link} from 'svelte-spa-router'
 </script>
 <style lang="sass">
   [active="true"]
@@ -14,7 +14,7 @@
 <div layout="row" {style}>
   {#each pages as page}
   <div flex="initial" active={page.url == $location}>
-    <a href="#{page.url}">{page.text}</a>
+    <a href="{page.url}" use:link>{page.text}</a>
   </div>
   {/each}
   <div flex/>
