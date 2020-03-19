@@ -1,7 +1,7 @@
 <script lang="coffeescript">
-  `export let pages = []`
-  `export let style = undefined`
-  `export let theme = undefined`
+  export pages = []
+  export style = undefined
+  export theme = undefined
   import {location, link} from 'svelte-spa-router'
 </script>
 <style lang="sass">

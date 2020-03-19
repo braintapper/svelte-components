@@ -1,7 +1,7 @@
 <script lang="coffeescript">
 
-  `export let events = []`
-  `export let calendarDate`
+  export events = []
+  export calendarDate
 
   import {  createEventDispatcher } from 'svelte'
 

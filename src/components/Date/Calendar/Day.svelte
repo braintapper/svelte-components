@@ -1,9 +1,9 @@
 <script lang="coffeescript">
   import { createEventDispatcher } from 'svelte'
-  `export let calendarDate = Date.create()`
-  `export let events = []`
-  `export let showColumnHeadings = false`
-  `export let showRowHeadings = false`
+  export calendarDate = Date.create()
+  export events = []
+  export showColumnHeadings = false
+  export showRowHeadings = false
   dispatch = createEventDispatcher()
 
   interval = 15

@@ -2,16 +2,16 @@
 
   import Quill from "quill"
 
-  `
-  export let toolbarOptions = [
-  [{ header: 1 }, { header: 2 }, "blockquote", "link", "image", "video"],
-  ["bold", "italic", "underline", "strike"],
-  [{ list: "ordered" }, { list: "ordered" }],
-  [{ align: [] }],
-  ["clean"]
+
+  export toolbarOptions = [
+    [{ header: 1 }, { header: 2 }, "blockquote", "link", "image", "video"]
+    ["bold", "italic", "underline", "strike"]
+    [{ list: "ordered" }, { list: "ordered" }]
+    [{ align: [] }]
+    ["clean"]
   ]
-  `
-  `export let placeholder = "Type something..."`
+
+  export placeholder = "Type something..."
 
   quill = (element) ->
     return new Quill element,

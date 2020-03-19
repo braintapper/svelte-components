@@ -2,11 +2,11 @@
   import { createEventDispatcher } from 'svelte'
 
   import Popover from "./Popover.svelte"
-  `export let item`
-  `export let placement='bottom-start'`
+  export item = undefined
+  export placement='bottom-start'
 
 
-  `let openstate`
+  openstate = undefined
   dispatch = createEventDispatcher()
 
   `$: {console.log(openstate)}`

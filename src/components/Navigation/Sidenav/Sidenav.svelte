@@ -1,9 +1,9 @@
 <script lang="coffeescript">
-  `export let open = false`
-  `export let position = "left"`
+  export open = false
+  export position = "left"
   import { slide } from 'svelte/transition'
-  `export let style = undefined`
-  `export let panelRef = undefined`
+  export style = undefined
+  export panelRef = undefined
 
   clickCount = 0
 
@@ -18,7 +18,7 @@
 
 
   overlayClick = ()->
-    `open = false`
+    open = false
 
 
 </script>

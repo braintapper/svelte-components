@@ -1,5 +1,5 @@
-<script>
-  export let title = "";
+<script lang="coffeescript">
+  export title = ""
 </script>
 <style lang="sass">
 

@@ -7,14 +7,14 @@
 
   dispatch = createEventDispatcher()
 
-  `export let disabled = false`
-  `export let id = uuid()`
-  `export let items = []`
-  `export let placeholder = ''`
-  `export let selectedIndex = -1`
-  `export let value = ""`
-  `export let labelKey = "label"`
-  `export let idKey = "id"`
+  export disabled = false
+  export id = uuid()
+  export items = []
+  export placeholder = ''
+  export selectedIndex = -1
+  export value = ""
+  export labelKey = "label"
+  export idKey = "id"
 
 
   showMenu = false
@@ -65,7 +65,7 @@
   menuClick = (e)->
     console.log "menuClick"
     console.log e.detail
-    `value = e.detail[idKey]`
+    value = e.detail[idKey]
     inputValue = e.detail[labelKey]
 
 

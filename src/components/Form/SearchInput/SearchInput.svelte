@@ -4,17 +4,17 @@
   dispatch = createEventDispatcher()
 
 
-  `export let autofocus = false`
-  `export let closeButtonLabelText = 'Clear search input'`
-  `export let id = uuid()`
-  `export let placeholder = 'Search...'`
+  export autofocus = false
+  export closeButtonLabelText = 'Clear search input'
+  export id = uuid()
+  export placeholder = 'Search...'
 
-  `export let value = ''`
+  export value = ''
 
   inputRef = undefined
 
   clear = ()->
-    `value = ''`
+    value = ''
     inputRef.focus()
   `$: showClear = (value != '')`
 </script>

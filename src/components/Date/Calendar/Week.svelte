@@ -2,8 +2,8 @@
 
   import { createEventDispatcher } from 'svelte'
   dispatch = createEventDispatcher()
-  `export let calendarDate = Date.create()`
-  `export let events = []`
+  export calendarDate = Date.create()
+  export events = []
   import Day from "./Day.svelte"
 
 

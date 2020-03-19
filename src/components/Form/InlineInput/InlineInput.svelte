@@ -1,43 +1,48 @@
-<script>
-import { tick, createEventDispatcher } from 'svelte';
+<script lang="coffeescript">
+  import { tick, createEventDispatcher } from 'svelte'
 
-let dispatch = createEventDispatcher();
-// Props
-export let value = '';
-export let style = undefined;
-export let type = 'text';
-export let placeholder = '';
-export let labelClasses = '';
-export let inputClasses = '';
-let editing = false;
-let inputEl;
-let label;
-// Computed
-$: isText = type === 'text';
-$: isNumber = type === 'number';
-$: if (isNumber) {
-      label = value === '' ? placeholder : value;
-    } else if (isText) {
-      label = value ? value : placeholder;
+  dispatch = createEventDispatcher()
+  # Props
+  export value = ''
+  export style = undefined
+  export type = 'text'
+  export placeholder = ''
+  export labelClasses = ''
+  export inputClasses = ''
+  editing = false
+  inputEl = undefined
+  label = undefined
+  # Computed
+  `$: isText = type === 'text'`
+  `$: isNumber = type === 'number'`
+  `$: if (isNumber) {
+        label = value === '' ? placeholder : value;
+      } else if (isText) {
+        label = value ? value : placeholder;
+      }
+  const toggle = async (_) => {
+    editing = !editing;
+    if (editing) {
+      await tick();
+      inputEl.focus();
     }
-const toggle = async (_) => {
-  editing = !editing;
-  if (editing) {
-    await tick();
-    inputEl.focus();
-  }
-};
-const handleInput = (e) => {
-  value = isNumber ? +e.target.value : e.target.value;
-};
-const handleKeyup = (e) => {
-  dispatch("keyup", value);
-  if (e.keyCode === 13) inputEl.blur();
-};
-const handleBlur = (_) => {
-  toggle();
-  dispatch("update",value);
-};
+  }`
+  handleInput = (e) ->
+    if isNumber
+      value = +e.target.value
+    else
+    value = e.target.value
+
+
+  handleKeyup = (e) ->
+    dispatch("keyup", value)
+    if (e.keyCode == 13)
+      inputEl.blur()
+
+  handleBlur = (_) ->
+    toggle()
+    dispatch("update",value)
+
 </script>
 <style lang="sass">
 

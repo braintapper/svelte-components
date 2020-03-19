@@ -1,11 +1,11 @@
 <script lang="coffeescript">
-  `export let open = true`
-  `export let allowClick = true`
-  `export let style = undefined`
+  export open = true
+  export allowClick = true
+  export style = undefined
   handleClick = (e)->
     console.log "handleclick"
     if allowClick
-      `open = !open`
+      open = !open
 </script>
 <style lang="sass">
 

@@ -1,9 +1,9 @@
 <script lang="coffeescript">
 
-  `export let headerSize = "100px"`
-  `export let footerSize = "100px"`
-  `export let header = true`
-  `export let footer = true`
+  export headerSize = "100px"
+  export footerSize = "100px"
+  export header = true
+  export footer = true
 
 </script>
 

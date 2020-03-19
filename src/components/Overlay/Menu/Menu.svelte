@@ -7,32 +7,32 @@
 
   dispatch = createEventDispatcher()
 
-  `export let disabled = false`
-  `export let id = uuid()`
-  `export let items = []`
-  `export let width = '200px'`
+  export disabled = false
+  export id = uuid()
+  export items = []
+  export width = '200px'
 
-  `export let selectedIndex = -1`
-  `export let size = undefined`
-
-
-  `export let value = ""`
-  `export let blankSlate = ""`
-
-  `export let labelKey = "label"`
-  `export let idKey = "id"`
+  export selectedIndex = -1
+  export size = undefined
 
 
-  `export let showMenu = false`
+  export value = ""
+  export blankSlate = ""
 
-  `export let align = "left"`
+  export labelKey = "label"
+  export idKey = "id"
+
+
+  export showMenu = false
+
+  export align = "left"
 
   # trigger is required
-  `export let trigger = undefined`
+  export trigger = undefined
 
   # if a trigger is defined, it maps the width to the parent
   # and is placed just below it, used for combobox and custom select
-  `export let matchTrigger = false`
+  export matchTrigger = false
 
 
   style = undefined

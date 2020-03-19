@@ -10,7 +10,7 @@
 
 
 
-  `export let code = ""`
+  export code = ""
 
   textareaRef = null
   codeMirrorInstance = null
@@ -26,7 +26,7 @@
 
   # codemirror ---------------------------------
 
-  `export let scriptPath = "./js/codemirror"`
+  export scriptPath = "./js/codemirror"
 
   codeMirrorPath = (path)-> return "#{scriptPath}/#{path}.js"
   modePath = (name)-> return codeMirrorPath("mode/#{name}/#{name}")

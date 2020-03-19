@@ -8,16 +8,16 @@
   import { sineInOut } from "svelte/easing"
 
 
-  `export let style = undefined`
-  `export let checked = false`
-  `export let label = ""`
+  export style = undefined
+  export checked = false
+  export label = ""
 
   dispatch = createEventDispatcher()
 
   duration = 250
 
   toggle = ()->
-    `checked = !checked`
+    checked = !checked
 
 </script>
 

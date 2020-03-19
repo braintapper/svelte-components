@@ -8,17 +8,17 @@
 
 
 
-  `export let style = undefined`
-  `export let value = false`
-  `export let option = undefined`
-  `export let label = ""`
+  export style = undefined
+  export value = false
+  export option = undefined
+  export label = ""
 
   dispatch = createEventDispatcher()
 
   duration = 250
 
   set = ()->
-    `value = option`
+    value = option
 
 </script>
 

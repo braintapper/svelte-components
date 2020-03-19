@@ -11,8 +11,9 @@
 
 
 
-  `export let value = ""`
-  `export let parserFn =  (val)=> {  return val.toUpperCase() }`
+  export value = ""
+  export parserFn =  (val)->
+    return val.toUpperCase()
 
 
   textareaRef = null
@@ -24,7 +25,7 @@
 
   # codemirror ---------------------------------
 
-  `export let scriptPath = "./js/codemirror"`
+  export scriptPath = "./js/codemirror"
 
   codeMirrorPath = (path)-> return "#{scriptPath}/#{path}.js"
   modePath = (name)-> return codeMirrorPath("mode/#{name}/#{name}")

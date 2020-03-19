@@ -29,7 +29,7 @@
 
   ###
 
-  `export let event = null`
+  export event = null
 
 
   calendarDate = Date.create(event.start)

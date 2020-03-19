@@ -1,6 +1,6 @@
 <script lang="coffeescript">
 
-  `export let environment`
+  export environment = undefined
 
 
 

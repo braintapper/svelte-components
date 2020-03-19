@@ -11,7 +11,7 @@
 
   import { createEventDispatcher } from 'svelte'
 
-  `export let event = null`
+  export event = null
 
   dispatch = createEventDispatcher()
 

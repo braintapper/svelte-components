@@ -2,7 +2,7 @@
   # dependent on Sugar
   import { onMount, afterUpdate, createEventDispatcher } from 'svelte'
 
-  `export let value`
+  export value = undefined
 
   dispatch = createEventDispatcher()
   displayValue = null

@@ -1,9 +1,9 @@
 <script lang="coffeescript">
 
-  `export let value = undefined`
-  `export let style = undefined`
-  `export let classes = undefined`
-  `export let id = undefined`
+  export value = undefined
+  export style = undefined
+  export classes = undefined
+  export id = undefined
 
   textarea = undefined
 

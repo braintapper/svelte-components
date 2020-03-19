@@ -2,11 +2,14 @@
 
   import { onMount, afterUpdate, createEventDispatcher } from 'svelte'
 
-  `export let value = ''`
-  `export let maxlength = 50`
-  `export let translateFn = (val) => { return (val || "empty").toUpperCase() }`
-  `export let validateFn = (val) => { return true }`
-  `export let stateFn = (val) => { return "ok" }`
+  export value = ''
+  export maxlength = 50
+  export translateFn = (val) ->
+    return (val || "empty").toUpperCase()
+  export validateFn = (val) ->
+    return true
+  export stateFn = (val) ->
+    return "ok"
 
   style = undefined
 

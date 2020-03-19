@@ -23,9 +23,9 @@
   import { onMount } from 'svelte'
   import {loader} from "../../../helpers/stores.js"
 
-  `export let rows = []`
-  `export let gridOptions = {}`
-  `export let style = "height: 600px; width: 100%"`
+  export rows = []
+  export gridOptions = {}
+  export style = "height: 600px; width: 100%"
 
   datagrid = undefined
   datagridEl = undefined

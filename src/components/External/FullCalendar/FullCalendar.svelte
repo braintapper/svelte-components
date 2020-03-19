@@ -37,8 +37,8 @@
   # General Props
 
   `export { classes as class }`
-  `export let style = undefined`
-  `export let value = []`
+  export style = undefined
+  export value = []
 
   dispatch = createEventDispatcher()
 
@@ -196,6 +196,10 @@
       console.log "not mounted, didn't rerender"
 
 
+  save = ()->
+
+  destroy = ()->
+
   cloneEvent = ()->
 
 
@@ -311,7 +315,7 @@
 <div id="calendar-{instanceId}" use:fullCalendar class={classes} {style} />
 
 {#if eventModal}
-<EventModal on:cancel={cancel} on:save={save} on:destroy={destroy} event={editableEvent}/>
+  <EventModal on:cancel={cancel} on:save={save} on:destroy={destroy} event={editableEvent}/>
 {/if}
 
 

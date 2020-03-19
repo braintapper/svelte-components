@@ -9,9 +9,9 @@
 
 
 
-  `export let cmScriptPath = "./js/codemirror"`
-  `export let hmdScriptPath = "./js/hypermd"`
-  `export let value = "test"`
+  export cmScriptPath = "./js/codemirror"
+  export hmdScriptPath = "./js/hypermd"
+  export value = "test"
 
   codeMirrorPath = (path)-> return "#{cmScriptPath}/#{path}.js"
   modePath = (name)-> return codeMirrorPath("mode/#{name}/#{name}")

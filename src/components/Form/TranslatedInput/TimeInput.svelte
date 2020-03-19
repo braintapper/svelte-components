@@ -3,8 +3,8 @@
 
   import TranslatedInput from './TranslatedInput.svelte'
 
-  `export let seconds = false`
-  `export let value = 0`
+  export seconds = false
+  export value = 0
 
   dispatch = createEventDispatcher()
 
@@ -195,7 +195,7 @@
       return false
     else
       return true
-      
+
   stateFn = (val)->
     if val.length == 0
       return "empty"

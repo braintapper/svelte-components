@@ -2,7 +2,7 @@
   import { createEventDispatcher } from 'svelte'
 
   import Popover from "./Popover.svelte"
-  `export let popoverText`
+  export popoverText
 
 
 

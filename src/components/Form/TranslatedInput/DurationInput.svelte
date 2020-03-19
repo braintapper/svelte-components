@@ -8,8 +8,8 @@
   # todo: integrate this into a core lib?
   import HumanEffort from "../../../helpers/human_effort.js"
 
-  `export let value = 0`
-  `export let presets = ['8h','4h','2h']`
+  export value = 0
+  export presets = ['8h','4h','2h']
 
   effortInput = HumanEffort.humanizeHours(value || 0)
 

@@ -2,7 +2,7 @@
 
   # todo: make the positioning "smart"
 
-  `export let position = undefined`
+  export position = undefined
 
 </script>
 <style lang="sass">

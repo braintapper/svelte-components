@@ -7,18 +7,18 @@
 
   dispatch = createEventDispatcher()
 
-  `export let disabled = false`
-  `export let id = uuid()`
-  `export let items = []`
-  `export let placeholder = ''`
-  `export let selectedIndex = -1`
-  `export let size = undefined`
-  `export let style = undefined`
+  export disabled = false
+  export id = uuid()
+  export items = []
+  export placeholder = ''
+  export selectedIndex = -1
+  export size = undefined
+  export style = undefined
 
-  `export let value = null`
+  export value = null
 
-  `export let labelKey = "label"`
-  `export let idKey = "id"`
+  export labelKey = "label"
+  export idKey = "id"
 
 
   showMenu = false
@@ -42,7 +42,7 @@
 
   menuItemClick = (item, index)->
     console.log("menuitem click item: #{item}, hide menu")
-    `value = item[idKey]`
+    value = item[idKey]
     inputValue = item[labelKey]
     showMenu = false
 
@@ -57,7 +57,7 @@
   menuClick = (e)->
     console.log "menuClick"
     console.log e.detail
-    `value = e.detail[idKey]`
+    value = e.detail[idKey]
     inputValue = e.detail[labelKey]
 
 
@@ -68,8 +68,8 @@
         showMenu = false
 
   clear = ()->
-    `inputValue = ""`
-    `value = null`
+    inputValue = ""
+    value = null
 </script>
 
 

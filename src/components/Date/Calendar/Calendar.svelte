@@ -25,7 +25,7 @@
 
 
 
-  `export let view`
+  export view = undefined
 
   console.log "Calendar.svelte"
   console.log view

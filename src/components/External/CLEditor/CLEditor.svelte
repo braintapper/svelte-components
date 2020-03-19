@@ -1,6 +1,6 @@
 <script lang="coffeescript">
 
-  `export let value = ''`
+  export value = ''
 
   import uuid from 'uuid'
   import { createEventDispatcher } from 'svelte'
@@ -23,7 +23,7 @@
 
 
   change = (html)->
-    `value = html`
+    value = html
     dispatch "change", html
 
   debouncedChange = change.debounce(500)
