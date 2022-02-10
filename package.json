@@ -16,7 +16,7 @@
     "coffeescript": "^2.4.1",
     "gulp": "^4.0.2",
     "gulp-coffee": "^3.0.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "postcss": "^7.0.23",
     "pug": "^2.0.4",
     "rollup": "^1.20.0",
